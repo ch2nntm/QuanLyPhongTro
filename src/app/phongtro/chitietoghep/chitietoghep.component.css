@@ -1,0 +1,471 @@
+:root{
+    --primary-color: #55B3D9;
+    --second-color: rgb(160, 217, 244);
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 2px solid rgb(186, 182, 182);
+}
+
+.navbar .logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .link {
+    margin-left: -400px;
+}
+
+.navbar .link a {
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    position: relative;
+    color: #000;
+    font-weight: bolder;
+    transition: color ease 1s;
+}
+
+.navbar .link a:nth-child(3):after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+}
+
+
+.navbar .link a:not(:nth-child(3)):after {
+    content: '';
+    position: absolute;
+    transform: scale(0);
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.navbar .link a:hover::after {
+    transform-origin: left;
+    transform: scale(1);
+}
+
+.navbar .button{
+    display: flex;
+    gap: 30px;
+}
+
+.navbar .button .like,
+.navbar .button .notification,
+.navbar .button .account{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .button .like img,
+.navbar .button .notification img{
+    position: relative;
+}
+
+.navbar .button .like p,
+.navbar .button .notification p{
+    position: absolute;
+    margin-left: 13px;
+    margin-top: -5px;
+    background: var(--second-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.navbar .button .like p{
+    margin-left: 15px;
+}
+
+.navbar .button .account{
+    gap: 5px;
+    position: relative;
+}
+
+.navbar .button .account:hover .display{
+    display: block;
+}
+
+.navbar .button .account .display{
+    display: none;
+    position: absolute;
+    width: 280px;
+    top: 50px;
+    margin-left: -100px;
+    z-index: 2;
+    background: #FFF;
+    border: 1px solid rgb(233, 232, 232);
+    border-radius: 20px;
+    height: 360px;
+}
+
+.navbar .button .account .display .register{
+    background: linear-gradient(180deg, #74C6DB 4.35%, #3E6A75 85.96%);
+    margin-top: -20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.navbar .button .account .display .register h3{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+}
+
+.navbar .button .account .display .register .register-inf{
+    display: flex;
+    margin-left: 0px;
+    margin-top: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar .button .account .display .register .register-inf .a-register{
+    border: none;
+    color: #FFF;
+    border-radius: 5px;
+    background: var(--primary-color);
+    padding: 10px;
+    transition: all ease 1s;
+    text-decoration: none;
+}
+
+.navbar .button .account .display .register .register-inf .a-register:hover{
+    cursor: pointer;
+    background: var(--second-color);
+    color:#000;
+}
+
+.navbar .button .account .display .register .register-inf img{
+    width: 130px;
+    height: 130px;
+    margin-left: -5px;
+    margin-top: 20px;
+}
+
+.navbar .button .account .display .register .register-inf .inf p{
+    width: 140px;
+    color: #fff;
+}
+
+.navbar .button .account .display .register .register-inf .inf button{
+    font-weight: bold;
+}
+
+.navbar .button .account .display .inf-group{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 230px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background: #fff;
+    border: none;
+    transition: all ease 0.3s;
+    border-bottom: 1px solid rgb(233, 232, 232);
+    padding-bottom: 10px;
+}
+
+.navbar .button .account .display .inf-group:hover{
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.navbar .button .account .display .inf-group p{
+    margin-left: 5px;
+}
+
+.navbar .button .account .display .logout:hover{
+    cursor: pointer;
+    background: var(--second-color);
+    color:#000
+}
+
+.navbar .button .account .display .logout{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border: none;
+    background: var(--primary-color);
+    color: #FFF;
+    border-radius: 5px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    transition: all ease 1s;
+}
+
+.navbar .button .account .display .logout img{
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+.navbar .button img{
+    width: 25px;
+    height: 25px;
+}
+
+.navbar .button .upload:last-child{
+    border: none;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 0 15px;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 35px;
+    transition: all ease 1s;
+}
+
+.navbar .button .upload:hover{
+    cursor: pointer;
+}
+
+.navbar .button .upload:last-child:hover{
+    background-color: var(--second-color);
+    color: grey;
+}
+
+.body{
+    display: flex;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 20px;
+}
+
+.body img{
+    width: 15px;
+    height: 15px;
+}
+
+.body .inf-room .img img{
+    border-radius: 5px;
+}
+
+.body .inf-room .img .main{
+    position: relative;
+}
+
+.body .inf-room .img .main button{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 45%;
+    left: 700px;
+    background: none;
+    border-radius: 5px;
+    border: .5px solid rgb(234, 233, 233);
+    transition: all ease .5s;
+}
+
+.body .inf-room .img .main .left{
+    margin-left: -680px;
+}
+
+.body .inf-room .img .main button>img{
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+}
+
+.body .inf-room .img .main button:hover{
+    cursor: pointer;
+    background: rgb(234, 233, 233);
+}
+
+.body .inf-room .img .main img{
+    width: 750px;
+    height: 450px;
+}
+
+.body .inf-room .img .extra{
+    display: flex;
+    margin-left: -10px;
+}
+
+.body .inf-room .img .extra img{
+    display: block;
+    width: 180px;
+    height: 130px;
+    margin-left: 10px;
+}
+
+.body .inf-room .intro{
+    margin-left: 10px;
+    font-size: 24px;
+    margin-top: 10px;
+    width: 700px;
+}
+
+.body .inf-room .address{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    border-bottom: 1px solid rgb(234, 233, 233);
+}
+
+.body .inf-room .detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid rgb(234, 233, 233);
+}
+
+.body .inf-room .detail .detail-content{
+    display: flex;
+    margin-left: 10px;
+    gap: 40px;
+}
+
+.body .inf-room .detail .detail-content .price,
+.body .inf-room .detail .detail-content .acreage,
+.body .inf-room .detail .detail-content .bedroom{
+    display: flex;
+    align-items: center;
+}
+
+
+.body .inf-room .detail .detail-icon img{
+    width: 20px;
+    height: 20px;
+}
+
+.body .inf-room .detail .detail-icon>button{
+    width: 20px;
+    height: 20px;
+    background: #FFF;
+    border: none;
+}
+
+.body .inf-room .detail .detail-icon>button:first-child{
+    margin-right: 30px;
+}
+
+.body .inf-room .detail .detail-icon img{
+    margin-left: -7px;
+    margin-top: -3px;
+}
+
+.body .inf-room .detail .detail-icon img:hover{
+    cursor: pointer;
+}
+
+.body .inf-room .description{
+    margin-left: 10px;
+    margin-top: 30px;
+    width: 700px;
+}
+
+.body .inf-room .description p{
+    margin-top: 5px;
+}
+
+.body .inf-room .features{
+    padding-left: 10px;
+    margin-top: 30px;
+} 
+
+.body .inf-room .features .item{
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 200px;
+    gap: 40px;
+    border-top: 1px solid rgb(234, 233, 233);
+}
+
+.body .inf-room .features .item p{
+    width: 150px;
+}
+
+.body .inf-room .features .item:first-child p{
+    margin-top: 10px;
+    color: #55B3D9;
+}
+
+.body .inf-room .time-type{
+    display: flex;
+    padding-left: 50px;
+    padding-right: 150px;
+    justify-content: space-between;
+    border-top: 1px solid rgb(234, 233, 233);
+    border-bottom: 1px solid rgb(234, 233, 233);
+    padding-bottom: 10px;
+}
+
+.body .inf-room .time-type .item{
+    text-align: center;
+}
+
+.body .inf-user{
+    border: 1px solid rgb(234, 233, 233);
+    padding: 20px 40px;
+    height: 250px;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+
+.body .inf-user .inf{
+    text-align: center;
+}
+
+.body .inf-user .inf img{
+    height: 100px;
+    width: 100px;
+}
+
+.body .inf-user .inf p{
+    font-weight: 600;
+}
+
+.body .inf-user button{
+    display: flex;
+    padding: 0 20px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    background: #fff;
+    font-weight: 600;
+    align-items: center;
+    margin-top: 20px;
+    transition: all ease .5s;
+}
+
+.body .inf-user button.tel{
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.body .inf-user button.tel:hover,
+.body .inf-user button.zalo:hover{
+    cursor: pointer;
+    color: grey;
+    background: var(--second-color);
+    border: 1px solid var(--second-color);
+}
+
+.body .inf-user button p{
+    margin-left: 5px;
+    width: 100px;
+}

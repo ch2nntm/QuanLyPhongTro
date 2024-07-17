@@ -1,0 +1,32 @@
+<section fxLayout="column" fxFlexAlign="stretch">
+    <div fxFlexAlign="center">
+    <p>Welcome to the Material Angular OwnerAccount Application</p>
+    </div>
+    <p>In this application we are going to work with:</p>
+    <mat-tab-group>
+    <mat-tab label="Material Components">
+    <p>We are going to use different material components to create nice looking angular app.</p>
+    </mat-tab>
+    <mat-tab label="Consume .NET Core Web API">
+    <p>We will consume our .NET Core application. Basically, we will create complete CRUD client app.</p>
+    </mat-tab>
+    <mat-tab label="Fully responsive navigation menu">
+    <p>By using material components, we are going to create fully responsive navigation menu, with its side-bar as well.</p>
+    </mat-tab>
+    </mat-tab-group>
+</section>
+
+<mat-slider min="100" max="500" step="10" discrete="formatLabel">
+    <input value="100" matSliderStartThumb [(ngModel)]="startValue">
+    <input value="500" matSliderEndThumb [(ngModel)]="endValue">
+</mat-slider>
+<div class="giachung">
+    <p class="gia"><strong>Gia toi thieu: </strong> 
+        {{startValue}} <i>đ</i>
+    </p>
+    <p class="gia"><strong>Gia toi da: </strong> 
+        {{endValue}} <i>đ</i>
+    </p>
+</div>
+
+<mat-progress-bar mode="indeterminate" class="bar"></mat-progress-bar>

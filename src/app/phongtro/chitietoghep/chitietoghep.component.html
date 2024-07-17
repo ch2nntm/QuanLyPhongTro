@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="public/logo.png"/>
+            <strong>CoDat</strong>
+        </div>
+        <div class="link">
+            <a href="#!">Trang chủ</a>
+            <a href="#!">Cho thuê phòng trọ</a>
+            <a href="#!">Tìm người ở ghép</a>
+            <a href="#!">Tin tức</a>
+        </div>
+        <div class="button">
+            <div class="like">
+                <img src="public/heart_black.png"/>
+                <p>4</p>
+            </div>
+            <div class="notification">
+                <img src="public/notification_black.png"/>
+                <p>12</p>
+            </div>
+            <div class="account">
+                <img src="public/Avatar.png"/>
+                <p>Thanh Trâm</p>
+                <img src="public/down.png"/>
+                <div class="display">
+                    <div class="register">
+                        <h3>Đăng kí làm người cho thuê</h3>
+                        <div class="register-inf">
+                            <div class="inf">
+                                <p>Để được đăng tin cho thuê bất động sản</p>
+                                <a href="../register-login/register-login.component.html" class="a-register">Đăng kí ngay</a>
+                            </div>
+                            <img src="public/house.png"/>
+                        </div>
+                    </div>
+                    <button class="inf-group">
+                        <img src="public/list_register.png"/>
+                        <p>Quản lý tin đăng</p>
+                    </button>
+                    <button class="inf-group">
+                        <img src="public/inf_register.png"/>
+                        <p>Thay đổi thông tin cá nhân</p>
+                    </button>
+                    <button class="inf-group">
+                        <img src="public/password_register.png"/>
+                        <p>Thay đổi mật khẩu</p>
+                    </button>
+                    <button class="logout">
+                        <p>Đăng xuất</p>
+                        <img src="public/logout.png"/>
+                    </button>
+                </div>
+            </div>
+            <button class="upload">Đăng tin</button>
+        </div>
+    </nav>
+
+    <div class="body">
+        <div class="inf-room">
+            <div class="img">
+                <div class="main">
+                    <img src={{img_main}}/>
+                    <button class="left" (click)="ChangeImgLeft()">
+                        <img src="public/left-arrow.png"/>
+                    </button>
+                    <button (click)="ChangeImgRight()">
+                        <img src="public/right-arrow.png"/>
+                    </button>
+                </div>
+                <div class="extra">
+                    <div *ngFor="let img of images.slice(0, 4)">
+                        <img src="{{img}}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="intro">
+                <strong>Cần 2 bạn nam ở ghép, đầy đủ nội  Chỉ hơn 1 triệu/tháng. Giải pháp tối ưu cho tài chính của bạn</strong>
+            </div>
+            <div class="address">
+                <img src="public/placeholder.png"/>
+                <p>Cầu Giấy, Hà Nội</p>
+            </div>
+            <div class="detail">
+                <div class="detail-content">
+                    <div class="price">
+                        <img src="public/best-price.png"/>
+                        <p>10 triệu/tháng</p>
+                    </div>
+                    <div class="acreage">
+                        <img src="public/area.png"/>
+                        <p>40m2</p>
+                    </div>
+                    <div class="bedroom">
+                        <img src="public/bed.png"/>
+                        <p>3PN</p>
+                    </div>
+                </div>
+                <div class="detail-icon">
+                    <button (click)="Share()">
+                        <img src="public/share.png"/>
+                    </button>
+                    <button (click)="isLike()">
+                        <img [src]="like ? yes : no" />
+                    </button>
+                </div>
+            </div>
+            <div class="description">
+                <strong>Thông tin mô tả</strong>
+                <p id="des">Căn 3 phòng ngủ diện tích rộng từ 96m². Kết cấu căn 3 phòng ngủ, 2 wc, 1 phòng khách, 1 lô gia, 1 ban công, 1 khu vực bếp. Có nội thất.</p>
+            </div>
+            <div class="features">
+                <strong>Đặc điểm bất động sản</strong>
+                <div class="item">
+                    <img src="public/area.png"/>
+                    <p>Diện tích</p>
+                    <p>40m2</p>
+                </div>
+                <div class="item">
+                    <img src="public/bed.png"/>
+                    <p>Số phòng ngủ</p>
+                    <p>3 phòng</p>
+                </div>
+                <div class="item">
+                    <img src="public/best-price.png"/>
+                    <p>Mức giá</p>
+                    <p>10 triệu/tháng</p>
+                </div>
+            </div>
+            <div class="time-type">
+                <div class="item">
+                    <p>Ngày đăng</p>
+                    <strong>04/06/2024</strong>
+                </div>
+                <div class="item">
+                    <p>Loại bất động sản</p>
+                    <strong>Phòng trọ</strong>
+                </div>
+                <div class="item">
+                    <p>Mã tin</p>
+                    <strong>#058435</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="inf-user">
+            <div class="inf">
+                <img src="public/Avatar.png"/>
+                <p>Trần Văn Dụ</p>
+            </div>
+            <button class="tel" (click)="callPhoneNumber('0912375836')">
+                <img src="public/telephone.png"/>
+                <p>0912375836</p>
+            </button>
+            <button class="zalo" (click)="openZaloMessage('0912375836')">
+                <img src="public/zalo-logo.png"/>
+                <p>Chat qua Zalo</p>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+section div p{
+    color: #3f51b5;
+    font-size: 30px;
+    text-shadow: 2px 3px 5px grey;
+    margin: 30px 0;
+}
+section div + p{
+    color: #3f51b5;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+mat-slider {
+    width: 300px;
+}
+
+.giachung{
+    display: flex;
+    gap: 30px;
+}
+
+.gia{
+    border: 1px solid blue;
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.gia i{
+    margin-left: 50px;
+    text-decoration: underline;
+}
+
+.bar{
+    margin-top: 25%;
+}

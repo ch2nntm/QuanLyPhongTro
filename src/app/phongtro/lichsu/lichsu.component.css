@@ -1,0 +1,299 @@
+body {
+    max-width: 100%;
+}
+
+header .head {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+header .head .list,
+header .head .list .logo,
+header .head .icon {
+    display: flex;
+    align-items: center;
+}
+
+header .head .list .link {
+    margin-left: 30px;
+}
+
+header .head .list .link a {
+    text-decoration: none;
+    margin-left: 20px;
+    position: relative;
+    color: #000;
+    font-weight: bolder;
+    transition: color ease 1s;
+}
+
+header .head .list .link a::after {
+    content: '';
+    position: absolute;
+    transform: scale(0);
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: rgb(160, 217, 244);
+    border-radius: 5px;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+header .head .list .link a:hover::after {
+    transform-origin: left;
+    transform: scale(1);
+}
+
+header .head .icon {
+    gap: 20px;
+}
+
+header .head .icon img:hover{
+    cursor: pointer;
+}
+
+.infor{
+    display: flex;
+    margin-top: 20px;
+    max-width: 100%;
+    border-top: 1.5px solid rgb(205, 203, 203);
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+.infor .img{
+    position: relative;
+    overflow: hidden;
+}
+
+.infor .img>img{
+    width: 600px;
+    height: 400px;
+}
+
+.infor .img p{
+    position: absolute;
+    background-color: red;
+    top: 5%; 
+    left: 90%; 
+    padding: 0px 60px;
+    font-size: 30px;
+    transform: translate(-50%, -50%) rotate(45deg); 
+    color: white;
+    white-space: nowrap; 
+    overflow: hidden; 
+}
+
+.infor .img .all img{
+    width: 200px;
+    height: 150px;
+}
+
+.infor .detail{
+    padding-left: 20px;
+}
+
+.infor .detail .address{
+    margin-top: -10px;
+    font-size: 20px;
+}
+
+.infor .detail .infor_room{
+    display: flex;
+    align-items: center;
+}
+
+.infor .detail .infor_room .inf{
+    width: 140px;
+    text-align: center;
+}
+
+.infor .detail .infor_room .inf a{
+    padding-top: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+.infor .detail .infor_room .inf p:last-child{
+    font-weight: bold;
+}
+
+.infor .detail .description{
+    display: flex;
+}
+
+.infor .detail .description .left .text{
+    border: 1px solid rgb(207, 205, 205);
+    padding: 0px 10px;
+    border-radius: 5px;
+}
+
+.infor .detail .description .left .text p:first-child{
+    font-weight: bold;
+}
+
+.infor .detail .description .left .button{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.infor .detail .description .left .button button{
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #55B3D9;
+    background-color: #fff;
+    transition: all ease 1s;
+}
+
+.infor .detail .description .left .button button:hover{
+    cursor: pointer;
+    color: #fff;
+    background-color: #55B3D9;
+}
+
+.infor .detail .description .left .button button:first-child{
+    color: #fff;
+    background-color: #55B3D9;
+}
+
+.infor .detail .description .left .button button:first-child:hover{
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #55B3D9;
+}
+
+.infor .detail .description .contact{
+    border: 1px solid rgb(207, 205, 205);
+    border-radius: 5px;
+    height: 230px;
+    margin-left: 20px;
+    width: 200px;
+}
+
+
+.infor .detail .description .contact .name{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.infor .detail .description .contact .name .img{
+    width: 40px;
+}
+
+.infor .detail .description .contact .name img:first-child{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+
+
+.infor .detail .description .contact .name img:last-child{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 22px;
+    left: 20px;
+}
+
+
+.infor .detail .description .contact .name .text{
+   margin-left: 20px;
+}
+
+.infor .detail .description .contact .name .text p:last-child{
+    color: grey;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.infor .detail .description .contact .button{
+    text-align: center;
+}
+
+.infor .detail .description .contact .button button{
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #55B3D9;
+    background-color: #fff;
+    margin-top: 10px;
+    transition: all ease 1s;
+}
+
+.infor .detail .description .contact .button button:hover{
+    cursor: pointer;
+    color: #fff;
+    background-color: #55B3D9;
+}
+
+.infor .detail .description .contact .button button:first-child{
+    color: #fff;
+    background-color: #55B3D9;
+}
+
+.infor .detail .description .contact .button button:first-child:hover{
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #55B3D9;
+}
+
+.evaluate{
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.evaluate .all_detail{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+}
+
+.evaluate .detail{
+    border: 1px solid grey;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.evaluate .detail .status{
+    font-weight: bold;
+}
+
+.evaluate .detail .text{
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 1;        
+    overflow: hidden;             
+    text-overflow: ellipsis;
+}
+
+.evaluate .detail .inf{
+    display: flex;
+    align-items: center;
+}
+
+.evaluate .detail .inf .name{
+    margin-left: 10px;
+}
+
+.evaluate .detail .inf .name p:last-child{
+    margin-top: -15px;
+    color: grey;
+    font-size: 14px;
+}
+
+.evaluate .detail .plus{
+    text-align: center;
+    margin-top: 20%;
+}
