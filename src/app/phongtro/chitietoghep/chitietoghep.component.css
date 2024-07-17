@@ -345,6 +345,9 @@
     align-items: center;
 }
 
+.body .inf-room .detail .detail-content p{
+    color: var(--primary-color);
+}
 
 .body .inf-room .detail .detail-icon img{
     width: 20px;
