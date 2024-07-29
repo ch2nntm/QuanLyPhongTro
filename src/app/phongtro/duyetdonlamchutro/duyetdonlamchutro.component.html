@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="logo container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="public/logo.png"/>
+                <strong>CoDat</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="link collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-nav" href="#!">Danh sách người dùng</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="notification me-3">
+                        <img src="public/notification_black.png" alt="Notification" style="width: 24px;">
+                        <span class="badge bg-danger">18</span>
+                    </div>
+                    <div class="account d-flex align-items-center">
+                        <p class="mb-0 me-2">Admin</p>
+                        <img src="public/down.png" alt="Dropdown" style="width: 24px;">
+                    </div>
+                </div>
+        </div>
+        </div>
+    </nav>
+
+    <div class="body">
+        <div class="navbar menu navbar-expand-lg navbar-light bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" mat-button [matMenuTriggerFor]="menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <div class="d-flex align-items-center content-menu">
+                        <mat-menu #menu="matMenu" class="custom-mat-menu">
+                                <div class="user d-lg me-3">
+                                    <img src="public/Avatar.png" class="avta" alt="Avatar"/>
+                                    <span class="ms-2">Admin</span>
+                                </div>
+                                <div class="list">
+                                    <p class="a2"><img src="public/list_register.png" alt="List Register"> Quản lý tin đăng</p>
+                                    <a class="a1" href="#">Danh sách bài đăng</a>
+                                    <p class="a2"><img src="public/user.png" alt="User"> Quản lý tài khoản</p>
+                                    <a class="a1 list-post" href="#"><span>Danh sách duyệt chủ trọ</span></a> 
+                                    <a class="a1" href="#">Danh sách người dùng</a>
+                                </div>
+                        </mat-menu>
+                        <div class="user-menu">
+                            <div class="user d-lg me-3">
+                                <img src="public/Avatar.png" class="avta" alt="Avatar"/>
+                                <span class="ms-2">Admin</span>
+                            </div>
+                            <div class="list">
+                                <p class="a2"><img src="public/list_register.png" alt="List Register"> Quản lý tin đăng</p>
+                                <a class="a1" href="#">Danh sách bài đăng</a>
+                                <p class="a2"><img src="public/user.png" alt="User"> Quản lý tài khoản</p>
+                                <a class="a1 list-post" href="#"><span>Danh sách duyệt chủ trọ</span></a> 
+                                <a class="a1" href="#">Danh sách người dùng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Danh sách duyệt</h1>
+            <table>
+                <tr>
+                    <td>
+                        Avatar
+                    </td>
+                    <td>
+                        Họ Tên
+                    </td>
+                    <td>
+                        Ngày đăng kí
+                    </td>
+                </tr>
+                <tr class="inf-seperate" *ngFor="let inf of infs" (click)="DetailInf(inf)">
+                    <td>
+                        <img src="public/{{inf.avt}}"/>
+                    </td>
+                    <td class="name">
+                        {{inf.name}}
+                    </td>
+                    <td>
+                        {{inf.date}}
+                    </td>
+                </tr>
+            </table>
+            <div class="detail" *ngIf="isClick">
+                <button class="close" (click)="CloseDetail()">
+                    <img src="public/close.png"/>
+                </button>
+                <h1>Thông tin chi tiết</h1>
+                <div class="contact">
+                    <div class="img-contact">
+                        <p>Ảnh chân dung</p>
+                        <img src="public/{{inf_child.avt}}"/>
+                    </div>
+                    <div class="text-contact">
+                        <div class="text-child">
+                            <label>Họ và tên </label>
+                            <input type="text" value="{{inf_child.name}}" readonly/>
+                        </div>
+                        <div class="text-child">
+                            <label>Số điện thoai </label>
+                            <input type="tel" value="{{inf_child.phone}}" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="id-user">
+                    <p>Ảnh chụp CCCD và chân dung cầm thẻ CCCD </p>
+                    <div class="img-cccd">
+                        <div *ngFor="let img of images.slice(0, 3)">
+                            <img src="public/{{img}}"/>
+                        </div>
+                    </div>
+                    <button *ngIf="quatity_img > 3" class="img-next" (click)="ChangeImg()">
+                        <img class="next" src="public/right-arrow-grey.png"/>
+                    </button>
+                </div>
+                <div class="button-nav">
+                    <button class="refuse" (click)="Refuse()">
+                        <p>Từ chối</p>
+                        <img src="public/down-white.png"/>
+                    </button>
+                    <button class="broswer">
+                        <p>Duyệt</p>
+                    </button>
+                </div>
+                <div *ngIf="isRefuse" class="detail-refuse">
+                    <button>Hình ảnh không đạt chất lượng</button>
+                    <button>Hình ảnh, thông tin không đúng</button>
+                    <button>Lý do khác vui lòng liên hệ 0374653656 để được tư vấn</button>
+                </div>
+            </div>
+        </div>
+    </div>

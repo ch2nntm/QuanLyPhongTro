@@ -7,16 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Document</title>
-</head>
-<body>
-<div class="header">
+    <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="logo container-fluid">
                 <a class="navbar-brand" href="#">
@@ -52,7 +43,7 @@
                                 <span class="badge bg-danger">18</span>
                             </div>
                             <div class="name">
-                                <img src="public/Avatar.png"/>
+                                <img src="public/Avatar.png" style="width: 24px;"/>
                                 <p class="">Thanh Trâm</p>
                                     <div class="display">
                                         <div class="register">
@@ -322,276 +313,76 @@
         </div>
     </div>
     
-    <div class="filter">
 
-    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-expanded="false" aria-label="Toggle navigation">
-        <img src="public/list.png"/>
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <!-- <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5> -->
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="standard">
-            <div class="price">
-                <p>Xem theo giá</p>
-                <button>
-                    <p>Dưới 1 triệu</p>
-                </button>
-                <button>
-                    <p>Từ 1 - 2 triệu</p>
-                </button>
-                <button>
-                    <p>Từ 2 - 3 triệu</p>
-                </button>
-                <button>
-                    <p>Từ 3 - 5 triệu</p>
-                </button>
-                <button>
-                    <p>Từ 5 - 7 triệu</p>
-                </button>
-                <button>
-                    <p>Từ 7 - 10 triệu</p>
-                </button>
-                <button>
-                    <p>Từ 10 - 15 triệu</p>
-                </button>
-                <button>
-                    <p>Trên 15 triệu</p>
-                </button>
-            </div>
-            <div class="acreage">
-                <p>Xem theo diện tích</p>
-                <button>
-                    <p>Dưới 20m2</p>
-                </button>
-                <button>
-                    <p>Từ 20m2 - 30m2</p>
-                </button>
-                <button>
-                    <p>Từ 30m2 - 50m2</p>
-                </button>
-                <button>
-                    <p>Từ 50m2 - 70m2</p>
-                </button>
-                <button>
-                    <p>Từ 70m2 - 90m2</p>
-                </button>
-                <button>
-                    <p>Trên 90m2</p>
-                </button>
-            </div>
-            <div class="category">
-                <p>Danh mục cho thuê</p>
-                <button>
-                    <p>Phòng trọ. Nhà trọ</p>
-                </button>
-                <button>
-                    <p>Nhà nguyên căn</p>
-                </button>
-                <button>
-                    <p>Căn hộ mini</p>
-                </button>
-            </div>
-            <div class="posts">
-                <p>Bài viết được quan tâm</p>
-                <div class="item">
-                    <button>
-                        <img src="public/right-arrow-grey.png"/>
-                        <p>Thủ tục thuê phòng trọ chính xác dành cho người nước ngoài</p>
-                    </button>
-                </div>
-                <div class="item">
-                    <button>
-                        <img src="public/right-arrow-grey.png"/>
-                        <p>Sinh viên Hà Nội nên ở trọ hay ký túc xá? Cần lưu ý điều gì khi thuê trọ?</p>
-                    </button>
-                </div>
-                <div class="item">
-                    <button>
-                        <img src="public/right-arrow-grey.png"/>
-                        <p>Cập Nhật Giá Thuê Phòng Trọ Đống Đa Tháng 6/2024</p>
-                    </button>
-                </div>
-                <div class="item">
-                    <button>
-                        <img src="public/right-arrow-grey.png"/>
-                        <p>Lộ diện top 5 khu vực "hot" nhất để thuê phòng trọ tại TPHCM</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
-    <div class="inf">
+    <div class="container">
         <div class="filter">
-            <p>Cho thuê/</p>
-            <p>{{searchTypeHome}}</p>
+            <h2>Tin đã lưu</h2>
+            <p>Tổng tin đã lưu (4)</p>
         </div>
-        <h1>Cho thuê nhà đất trên toàn quốc</h1>
-        <div class="quatity">
-            <p>Hiện có 17.435 tin</p>
-            <select>
-                <option>Tất cả</option>
-                <option>Bài đăng xác thực</option>
-                <option>Tin mới nhất</option>
-            </select>
-        </div>
-        <div class="body">
-            <div class="detail">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-12 mb-4" *ngFor="let inf of infs">
-                        <div class="item">
-                            <div class="img">
-                                <div class="img-child">
-                                    <img src="public/pic_rent1.png"/>
-                                </div>
-                                <div class="img-child">
-                                    <img src="public/pic_rent2.png"/>
-                                    <img src="public/pic_rent3.png"/>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <div class="intro">
-                                    <h3>
-                                        {{inf.des}}
-                                    </h3>
-                                    <div class="intro-inf d-flex flex-wrap">
-                                        <p class="fee">{{inf.fee}} triệu/ tháng</p>
-                                        <p class="acreage">{{inf.acreage}}m<sup>2</sup>  </p>
-                                        <p class="address">{{inf.address}}</p>
-                                    </div>
-                                </div>
-                                <div class="contact d-flex flex-wrap">
-                                    <div class="contact-profile">
-                                        <div class="avt">
-                                            <img src="public/Avatar.png"/>
-                                        </div>
-                                        <div class="col-6 col-sm-6 d-flex flex-wrap name">
-                                            <p class="full-name">{{inf.name}}</p>
-                                            <p class="time">{{inf.time}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-profile d-flex flex-wrap">
-                                        <button class="phone">
-                                            <img src="public/telephone.png"/>
-                                            <p>{{inf.phone}}</p>
-                                        </button>
-                                        <button class="zalo">
-                                            <img src="public/zalo-logo.png"/>
-                                            <p>Liên hệ Zalo</p>
-                                        </button>
-                                        <div class="icon">
-                                            <button class="share">
-                                                <img src="public/share.png"/>
-                                            </button>
-                                            <button class="like" (click)="LikeInf(inf.id)">
-                                                <i class="bi bi-suit-heart" *ngIf="inf.islike==false"></i>
-                                                <i class="bi bi-suit-heart-fill" *ngIf="inf.islike==true" style="color: #55B3D9"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="">
+            <div class="card mb-3" >
+            <div class="row g-0">
+                <div class="col-md-4">
+                <img src="public/pic_rent2.png" class="img-fluid rounded-start img" alt="...">
+                <div class="quatity">
+                    <img src="public/image.png"/>
+                    <p>10</p>
+                </div>
+            </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">Quỹ căn cho thuê từ 1PN - 4PN giá rẻ chỉ 2PN giá chỉ 13 tr/tháng</h1>
+                    <div class="card-text">
+                        <img src="public/placeholder.png"/>
+                        <p>Cầu giấy, Hà Nội</p>
+                    </div>
+                    <div class="card-text ">
+                        <p>10 triệu/ tháng</p>
+                        <p> 40m<sup>2</sup> </p>
+                    </div>
+                    <div class="card-text">
+                        <p>Đăng 1 ngày trước</p>
+                        <button (click)="isLike()">
+                            <i class="bi bi-heart-fill"></i>
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="card mb-3" >
+            <div class="row g-0">
+            <div class="col-md-4">
+                <img src="public/pic_rent2.png" class="img-fluid rounded-start img" alt="...">
+                <div class="quatity">
+                    <img src="public/image.png"/>
+                    <p>10</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">Quỹ căn cho thuê từ 1PN - 4PN giá rẻ chỉ 2PN giá chỉ 13 tr/tháng</h1>
+                    <div class="card-text">
+                        <img src="public/placeholder.png"/>
+                        <p>Cầu giấy, Hà Nội</p>
+                    </div>
+                    <div class="card-text ">
+                        <p>10 triệu/ tháng</p>
+                        <p> 40m<sup>2</sup> </p>
+                    </div>
+                    <div class="card-text">
+                        <p>Đăng 1 ngày trước</p>
+                        <button (click)="isLike()">
+                            <i class="bi bi-heart-fill"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="standard">
-                <div class="price">
-                    <p>Xem theo giá</p>
-                    <button>
-                        <p>Dưới 1 triệu</p>
-                    </button>
-                    <button>
-                        <p>Từ 1 - 2 triệu</p>
-                    </button>
-                    <button>
-                        <p>Từ 2 - 3 triệu</p>
-                    </button>
-                    <button>
-                        <p>Từ 3 - 5 triệu</p>
-                    </button>
-                    <button>
-                        <p>Từ 5 - 7 triệu</p>
-                    </button>
-                    <button>
-                        <p>Từ 7 - 10 triệu</p>
-                    </button>
-                    <button>
-                        <p>Từ 10 - 15 triệu</p>
-                    </button>
-                    <button>
-                        <p>Trên 15 triệu</p>
-                    </button>
-                </div>
-                <div class="acreage">
-                    <p>Xem theo diện tích</p>
-                    <button>
-                        <p>Dưới 20m2</p>
-                    </button>
-                    <button>
-                        <p>Từ 20m2 - 30m2</p>
-                    </button>
-                    <button>
-                        <p>Từ 30m2 - 50m2</p>
-                    </button>
-                    <button>
-                        <p>Từ 50m2 - 70m2</p>
-                    </button>
-                    <button>
-                        <p>Từ 70m2 - 90m2</p>
-                    </button>
-                    <button>
-                        <p>Trên 90m2</p>
-                    </button>
-                </div>
-                <div class="category">
-                    <p>Danh mục cho thuê</p>
-                    <button>
-                        <p>Phòng trọ. Nhà trọ</p>
-                    </button>
-                    <button>
-                        <p>Nhà nguyên căn</p>
-                    </button>
-                    <button>
-                        <p>Căn hộ mini</p>
-                    </button>
-                </div>
-                <div class="posts">
-                    <p>Bài viết được quan tâm</p>
-                    <div class="item">
-                        <button>
-                            <img src="public/right-arrow-grey.png"/>
-                            <p>Thủ tục thuê phòng trọ chính xác dành cho người nước ngoài</p>
-                        </button>
-                    </div>
-                    <div class="item">
-                        <button>
-                            <img src="public/right-arrow-grey.png"/>
-                            <p>Sinh viên Hà Nội nên ở trọ hay ký túc xá? Cần lưu ý điều gì khi thuê trọ?</p>
-                        </button>
-                    </div>
-                    <div class="item">
-                        <button>
-                            <img src="public/right-arrow-grey.png"/>
-                            <p>Cập Nhật Giá Thuê Phòng Trọ Đống Đa Tháng 6/2024</p>
-                        </button>
-                    </div>
-                    <div class="item">
-                        <button>
-                            <img src="public/right-arrow-grey.png"/>
-                            <p>Lộ diện top 5 khu vực "hot" nhất để thuê phòng trọ tại TPHCM</p>
-                        </button>
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
     </div>
+    
 
     <footer>
         <a href="#">

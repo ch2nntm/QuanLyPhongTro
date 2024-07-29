@@ -7,62 +7,82 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="public/logo.png"/>
-            <strong>CoDat</strong>
-        </div>
-        <div class="link">
-            <a href="#!">Trang chủ</a>
-            <a href="#!">Cho thuê phòng trọ</a>
-            <a href="#!">Tìm người ở ghép</a>
-            <a href="#!">Tin tức</a>
-        </div>
-        <div class="button">
-            <div class="like">
-                <img src="public/heart_black.png"/>
-                <p>4</p>
-            </div>
-            <div class="notification">
-                <img src="public/notification_black.png"/>
-                <p>12</p>
-            </div>
-            <div class="account">
-                <img src="public/Avatar.png"/>
-                <p>Thanh Trâm</p>
-                <img src="public/down.png"/>
-                <div class="display">
-                    <div class="register">
-                        <h3>Đăng kí làm người cho thuê</h3>
-                        <div class="register-inf">
-                            <div class="inf">
-                                <p>Để được đăng tin cho thuê bất động sản</p>
-                                <a href="../register-login/register-login.component.html" class="a-register">Đăng kí ngay</a>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="public/logo.png"/>
+                    <strong>CoDat</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cho thuê phòng trọ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tìm người ở ghép</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tin tức</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <div class="me-3 icon">
+                            <div class="item">
+                                <i class="bi bi-heart"></i>
+                                <span class="badge bg-danger">4</span>
                             </div>
-                            <img src="public/house.png"/>
+                            <div class="item">
+                                <i class="bi bi-bell"></i>
+                                <span class="badge bg-danger">18</span>
+                            </div>
+                            <div class="name">
+                                <img src="public/Avatar.png"/>
+                                <p class="">Thanh Trâm</p>
+                                    <div class="display">
+                                        <div class="register">
+                                            <h3>Đăng kí làm người cho thuê</h3>
+                                            <div class="register-inf">
+                                                <div class="inf">
+                                                    <p>Để được đăng tin cho thuê bất động sản</p>
+                                                    <button class="btn btn-primary">Đăng kí ngay</button>
+                                                </div>
+                                                <img src="public/house.png"/>
+                                            </div>
+                                        </div>
+                                        <button class="inf-group">
+                                            <img src="public/list_register.png"/>
+                                            <p>Quản lý tin đăng</p>
+                                        </button>
+                                        <button class="inf-group">
+                                            <img src="public/inf_register.png"/>
+                                            <p>Thay đổi thông tin cá nhân</p>
+                                        </button>
+                                        <button class="inf-group">
+                                            <img src="public/password_register.png"/>
+                                            <p>Thay đổi mật khẩu</p>
+                                        </button>
+                                        <button class="btn btn-primary logout">
+                                            <p>Đăng xuất</p>
+                                            <img src="public/logout.png"/>
+                                        </button>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="account d-flex align-items-center">
+                            <button class="btn btn-primary">Đăng tin</button>
                         </div>
                     </div>
-                    <button class="inf-group">
-                        <img src="public/list_register.png"/>
-                        <p>Quản lý tin đăng</p>
-                    </button>
-                    <button class="inf-group">
-                        <img src="public/inf_register.png"/>
-                        <p>Thay đổi thông tin cá nhân</p>
-                    </button>
-                    <button class="inf-group">
-                        <img src="public/password_register.png"/>
-                        <p>Thay đổi mật khẩu</p>
-                    </button>
-                    <button class="logout">
-                        <p>Đăng xuất</p>
-                        <img src="public/logout.png"/>
-                    </button>
-                </div>
             </div>
-            <button class="upload">Đăng tin</button>
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
 
     <div class="body">
         <div class="inf-room">

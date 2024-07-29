@@ -335,7 +335,7 @@
 .body .inf-room .detail .detail-content{
     display: flex;
     margin-left: 10px;
-    gap: 40px;
+    gap: 100px;
 }
 
 .body .inf-room .detail .detail-content .price,
@@ -347,31 +347,17 @@
 
 .body .inf-room .detail .detail-content p{
     color: var(--primary-color);
+    margin-left: 10px;
 }
 
-.body .inf-room .detail .detail-icon img{
+.body .inf-room .detail .detail-content img{
     width: 20px;
     height: 20px;
 }
 
-.body .inf-room .detail .detail-icon>button{
-    width: 20px;
-    height: 20px;
-    background: #FFF;
-    border: none;
-}
-
-.body .inf-room .detail .detail-icon>button:first-child{
-    margin-right: 30px;
-}
-
-.body .inf-room .detail .detail-icon img{
-    margin-left: -7px;
-    margin-top: -3px;
-}
-
-.body .inf-room .detail .detail-icon img:hover{
-    cursor: pointer;
+.body .inf-room .detail .detail-content img:last-child{
+    width: 30px;
+    height: 30px;
 }
 
 .body .inf-room .description{

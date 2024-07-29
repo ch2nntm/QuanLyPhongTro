@@ -105,8 +105,8 @@ i{
 .icon .name .register-inf img{
     width: 130px;
     height: 130px;
-    margin-left: -12px;
-    margin-top: 55px;
+    margin-left: 10px;
+    margin-top: 40px;
 }
 
 .icon .name .register-inf .inf p{
@@ -584,273 +584,65 @@ a{
 }
 
 .filter{
-    display: none;
-    margin-left: 90%;
-    margin-top: 250px;
-}
-
-.filter img{
-    float: right;
-    width: 30px;
-    height: 30px;
-}
-
-.inf{
     margin-left: 5%;
-    margin-right: 5%;
+    margin-top: 5%;
 }
 
-.inf .filter{
-    display: flex;
-    margin-left: 0;
-    width: 150px;
-}
-
-.inf .filter p:first-child{
-    color: #747474;
-}
-
-.inf h1{
-    margin-top: -10px;
-}
-
-.inf .quatity{
-    display: flex;
-    margin-top: -10px;
-    gap: 40%;
-}
-
-.inf .quatity p{
-    width: 150px;
-}
-
-.inf .quatity select{
-    width: 250px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #D9D9D9;
-}
-
-.inf .body{
-    display: flex;
-}
-
-.inf .body .detail .item{
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 10px;
-    box-shadow: 5px 5px 10px #D9D9D9;
-    z-index: 0;
-    padding-bottom: 20px;
-}
-
-.inf .body .detail .item .img{
-    display: flex;
-}
-
-.inf .body .detail .item .img img{
-    /* width: 300px; */
-    width: 100%;
-    height: 20vh;
-}
-
-.inf .body .detail .item .img .img-child:first-child img{
-    /* width: 550px; */
-    width: 100%;
-    height: 41vh;
-}
-
-.inf .body .detail .item .img .img-child:last-child{
-    margin-left: 10px;
-}
-
-.inf .body .detail .item .img .img-child:last-child img:last-child{
-    margin-top: 10px;
-}
-
-.inf .body .detail .item .content{
+.card{
+    width: 90%;
     margin-left: 5%;
-    margin-right: 5%;
 }
 
-.inf .body .detail .item .content .intro .intro-inf{
+.card .img{
     display: flex;
-    gap: 30px;
-    row-gap: 0;
+    width: 95%;
+    height: 95%;
+    padding-left: 4%;
+    padding-top: 2.5%;
+    border-radius: 10px;
 }
 
-.inf .body .detail .item .content .intro .intro-inf .fee,
-.inf .body .detail .item .content .intro .intro-inf .acreage{
-    color: #55B3D9;
-}
-
-.inf .body .detail .item .content .contact img{
+.card .quatity{
+    position: relative;
     width: 20px;
     height: 20px;
-}
-
-.inf .body .detail .item .content .contact{
     display: flex;
-    justify-content: space-between;
-    margin-right: 20px;
+    margin-top: -25px;
+    margin-left: 80%;
+    gap: 5px;
 }
 
-.inf .body .detail .item .content .contact .contact-profile{
+.card-text{
     display: flex;
     align-items: center;
-    gap: 15px;
 }
 
-.inf .body .detail .item .content .contact .contact-profile:last-child{
-    margin-top: 10px;
+.card-text img{
+    width: 15px;
+    height: 15px;
+    margin-top: -20px;
 }
 
-.inf .body .detail .item .content .contact .contact-profile .name{
-    margin-left: -20px;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .avt img{
-    width: 40px;
-    height: 40px;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .phone,
-.inf .body .detail .item .content .contact .contact-profile .zalo{
-    display: flex;
-    gap: 10px;
-    border: 1px solid #55B3D9;
-    background: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    width: 150px;
-    height: 40px;
-    color: #55B3D9;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .icon{
-    width: 10%;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .phone,
-.inf .body .detail .item .content .contact .contact-profile .zalo:hover{
-    cursor: pointer;
-    color: #fff;
-    background-color: #55B3D9;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .phone:hover{
-    cursor: pointer;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .zalo:hover img{
-    display: block;
-    background: #fff;
-    border-radius: 5px;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .share,
-.inf .body .detail .item .content .contact .contact-profile .like{
-    width: 25px;
-    height: 25px;
+.card-text button{
     border: none;
-    background: #fff;
+    background: none;
 }
 
-.inf .body .detail .item .content .contact .contact-profile .share:hover,
-.inf .body .detail .item .content .contact .contact-profile .like:hover{
-    cursor: pointer;
-}
-
-.inf .body .detail .item .content .contact .contact-profile .share img,
-.inf .body .detail .item .content .contact .contact-profile .like img{
-    margin-left: -5px;
-}
-
-.standard{
-    margin-left: 30px;
-}
-
-.standard .price,
-.standard .acreage,
-.standard .category,
-.standard .posts{
-    padding: 10px;
-    margin-top: 10px;
-    padding-left: 30px;
-    width: 250px;
-    box-shadow: 2px 2px 4px rgb(215, 212, 212);
-    border-radius: 5px;
-    border: 1px solid rgb(215, 212, 212);
-}
-
-.standard .price button,
-.standard .acreage button,
-.standard .category button{
-    display: block;
-    margin-top: 10px;
-    width: 200px;
-    height: 30px;
-    position: relative;
-    background: #fff;
-    border: none;
-}
-
-
-.standard .price>p,
-.standard .acreage>p,
-.standard .category>p,
-.standard .posts>p{
-    font-weight: bold;
-}
-
-.standard .price button p,
-.standard .acreage button p,
-.standard .category button p{
-    position: absolute;
-    margin-top: -5px;
-    transition: color ease 0.3s;
-}
-
-.standard .price button:hover,
-.standard .acreage button:hover,
-.standard .category button:hover,
-.standard .posts button:hover{
-    cursor: pointer;
-}
-
-.standard .price button:hover p,
-.standard .acreage button:hover p,
-.standard .category button:hover p,
-.standard .posts button:hover p{
+.card-text:nth-child(3){
+    gap: 100px;
     color: var(--primary-color);
 }
 
-.standard .posts img{
-    height: 15px;
-    width: 15px;
+.card-text:last-child{
+    justify-content: space-between;
 }
 
-.standard .posts .item button{
-    display: flex;
-    margin-top: 20px;
-    margin-left: -20px;
-    align-items: center;
-    background: #fff;
-    height: 70px;
-    border: none;
-}
-
-.standard .posts .item button p{
-    margin-left: 5px;
-    text-align: justify;
-    transition: color ease 0.3s;
+.card-text:last-child p{
     margin-top: 10px;
 }
 
-footer img{
-    float: right;
-    width: 15%;
-    margin-right: 30px;
+.card-text i{
+    color: red;
 }
 
 @media (max-width: 991px){
@@ -865,20 +657,6 @@ footer img{
 
     .card .quatity{
         margin-left: 70%;
-    }
-
-    .body .standard{
-        display: none;
-    }
-
-    .filter{
-        display: block;
-    }
-
-    .inf{
-        margin-top: -280px;
-        margin-left: 5%;
-        margin-right: 5%;
     }
 }
 

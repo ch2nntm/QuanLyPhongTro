@@ -1,0 +1,576 @@
+:root{
+    --primary-color: #55B3D9;
+    --second-color: rgb(160, 217, 244);
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 2px solid rgb(186, 182, 182);
+}
+
+.navbar .logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .link {
+    position: relative;
+    margin-left: 5%;
+}
+
+.navbar .link a {
+    position: relative;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    position: relative;
+    color: #000;
+    font-weight: bolder;
+    transition: color ease 1s;
+}
+
+.navbar .link .border-nav{
+    position: relative;
+}
+
+.navbar .link .border-nav::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+}
+
+
+.navbar .link a:not(.border-nav)::after {
+    content: '';
+    position: absolute;
+    transform: scale(0);
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.navbar .link a:hover::after {
+    transform-origin: left;
+    transform: scale(1);
+}
+
+.navbar .button{
+    display: flex;
+    gap: 30px;
+}
+
+.navbar .button .notification,
+.navbar .button .account{
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar .notification img{
+    position: relative;
+}
+
+
+.navbar .notification span{
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -5px;
+    background: var(--second-color);
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    text-align: center;
+    padding: 3px;
+    color: #FFF;
+}
+
+.navbar .button .account{
+    gap: 5px;
+    position: relative;
+}
+
+.navbar .button img{
+    width: 25px;
+    height: 25px;
+}
+
+.body{
+    display: flex;
+}
+
+.menu{
+    display: block;
+}
+
+.content-menu{
+    float: left;
+    margin-left: -41px;
+}
+
+.body .menu-child {
+    /* position: absolute; */
+    height: 70%;
+    width: 99.61%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 0px 5px 5px 0px;
+    background-color: #fff;
+}
+
+.body .menu-child a {
+    color: #000;
+    text-decoration: none   
+}
+
+.menu-checkbox {
+    display: none;
+}
+
+.body .user li {
+    font-weight: 600;
+}
+
+.body .user .avta {
+    /* width: 2.6vw;
+    height: 5vh;
+    border-radius: 50%;
+    background-color: #48ca74; */
+    width: 50px;
+    height: 50px;
+}
+
+.body .user {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    top: 4.6%;
+    right: 28.52%;
+    bottom: 86.21%;
+    left: 10%;
+}
+
+.body .list {
+    display: flex;           
+    flex-direction: column;
+    position: absolute;
+    height: 73.74%;
+    width: 100%;
+    top: 18.38%;
+    bottom: 7.88%;
+    gap: 20px;              
+}
+.body .list p{
+    padding-left: 5%;
+}
+  
+.body .list a{
+    text-decoration: none;  
+    color: black;           
+    padding: 10px;
+    padding-left: 15%;
+    margin-top: -5%;
+}
+  
+.body .list a:hover {
+    background-color: lightgray;          
+}
+
+.body .list .list-post{
+    background: lightgray;
+}
+
+.body .list p{
+    font-weight: 600;
+    display: flex;
+    margin: 0;
+    align-items:center;
+}
+
+.body .list p img{
+    /* position: relative; */
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    padding-right: 5px;
+    margin-top: 3px;
+    /* height: 16px; */
+    object-fit: cover;
+}
+
+.body .menu {
+    width: 100%;
+    position: relative;
+    height: 450px;
+    width: 20%;
+    text-align: left;
+    font-size: 16px;
+    color: #000;
+    font-family: Inter;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+::ng-deep .custom-mat-menu {
+    background-color: #f8f9fa; /* Màu nền của menu */
+    border: 1px solid #dee2e6; /* Viền menu */
+    border-radius: 4px; /* Bo góc menu */
+}
+
+/* Tùy chỉnh nội dung bên trong menu */
+::ng-deep .custom-mat-menu .user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+    padding-left: 30px;
+}
+
+::ng-deep .custom-mat-menu .user .avta {
+    height: 40px;
+    /* width: 40px; */
+    border-radius: 50%; /* Bo tròn hình avatar */
+    margin-right: 10px;
+}
+
+::ng-deep .custom-mat-menu .list {
+    padding: 0;
+    width: 100%;
+    left: 0;
+}
+
+::ng-deep .custom-mat-menu .list p.a2,
+::ng-deep .custom-mat-menu .list a.a1 {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    width: 100%;
+}
+
+::ng-deep .custom-mat-menu .list p.a2{
+    margin-bottom: -10px;
+    font-weight: bold;
+}
+
+::ng-deep .custom-mat-menu .list p.a2 img,
+::ng-deep .custom-mat-menu .list a.a1 img {
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+::ng-deep .custom-mat-menu .list a.a1 {
+    padding-left: 30px;
+}
+
+::ng-deep .custom-mat-menu .list .list-post{
+    background-color: #dee2e6;
+}
+
+.body .search-box{
+    margin-left: 45vw;
+    margin-top: 10px;
+}
+
+.body .search-box input{
+    position: absolute;
+    background-color: rgba(217, 217, 217, 0.48);
+    width: 25%;
+    height: 30px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 10px;
+    padding-left: 40px;
+}
+
+.body .search-box button{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    left: 10px;
+    top: 10px;
+    border: none;
+}
+
+.body .search-box button img{
+    position: absolute;
+    left: 0;
+    top: -10px;
+}
+
+.body .content h1{
+    margin-left: 5%;
+}
+
+.body .content .name-kind{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.body .content .name-kind input{
+    width: 20px;
+    height: 20px;
+}
+
+.body .content .name-kind .inf-all{
+    min-height: 50vh;
+    max-width: 73vw;
+    /* border: 1px solid grey; */
+}
+
+
+
+.body .content .name-kind .kind{
+    display: flex;
+    gap: 5%;
+}
+
+.body .content .name-kind .kind p {
+    cursor: pointer;
+  }
+  
+.body .content .name-kind .kind p.selected {
+    font-weight: bold;
+}
+
+.body .content .name-kind .inf{
+    display: flex;
+    margin-top: 15px;
+    position: relative;
+    height: 30vh;
+}
+
+.body .content .name-kind .inf .item-inf{
+    width: 75vw;
+    box-shadow: 2px 2px 4px grey;
+    display: flex;
+    margin-left: 3%;
+}
+
+.body .content .name-kind .inf .item-inf h3{
+    margin-left: 20px;
+    margin-top: 5px;
+    /* padding-right: 50px; */
+    width: 42vw;
+    height: 6.5vh;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.body .content .name-kind .inf .item-inf img{
+    width: 20px;
+    height: 20px;
+}
+
+.body .content .name-kind .inf .item-inf .img_main{
+    /* position: absolute; */
+    width: 20vw;
+    height: 30vh;
+    background-size: cover;
+}
+
+.body .content .name-kind .inf .item-inf .quantity{
+    position: relative;
+    display: flex;
+    gap: 5px;
+    float: right;
+    margin-right: 15%;
+    top: -15%;
+    z-index: 10;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro{
+    margin-left: -5%;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro h3{
+    font-size: 20px;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .address{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 0%;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .price-acreage{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    color: var(--primary-color);
+    margin-left: 20px;
+    margin-top: -1%;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .common{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -2%;
+    margin-left: 20px;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .common p.active {
+    color: green;
+}
+  
+.body .content .name-kind .inf .item-inf .content-intro .intro .common p.ban {
+    color: red;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .text{
+    display: flex;
+    gap: 10%;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .text .text-child{
+    height: 80px;
+    width: 100px;
+}
+
+.body .content .name-kind .inf .item-inf .content-intro .intro .common .delete{
+    margin-top: 5%;
+    margin-right: 10%;
+    border: none;
+    background: none;
+}
+
+.body .content .deleteAll{
+    background: #F00;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+@media (max-width: 991.98px) {
+    .user-menu{
+        display: none;
+    }
+
+    .mat-menu{
+        display: block;
+    }
+
+    .body .navbar{
+        height: 70vh;
+        width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        /* margin-left: -40px; */
+        background-color: #FFF;
+    }
+
+    .navbar .link {
+        margin-left: 0;
+    }
+
+    .navbar .link a {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar .link .border-nav::after,
+    .navbar .link a:not(.border-nav)::after {
+        bottom: 0;
+        width: 150px;
+    }
+    
+    .navbar .link a:not(.border-nav)::after{
+        width: 80px;
+    }
+
+    .menu .user{
+       margin-top: 70px;
+    }
+
+    .menu .list{
+        margin-top: 70px;
+    }
+
+    .body .content{
+        margin-left: 150px;
+    }
+
+    .body .user li {
+        font-weight: 600;
+    }
+    
+    .body .user .avta {
+        /* width: 2.6vw;
+        height: 5vh;
+        border-radius: 50%;
+        background-color: #48ca74; */
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px){
+
+    .inf{
+        display: block;
+        text-align: center;
+        width: 200px;
+    }
+
+    .inf .item-inf .delete{
+        display: none;
+    }
+
+    .inf .text-child:nth-child(2){
+        display: none;
+    }
+
+    .intro{
+        padding-left: 5%;
+    }
+}
+
+@media (max-width: 600px){
+    h1{
+        width: 300px;
+    }
+
+    .menu{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .body .content .search-box{
+        display: block;
+        margin-left: 5%;
+    }
+
+    .body .content .search-box input{
+        width: 50%;
+    }
+}

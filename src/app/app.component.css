@@ -1,0 +1,206 @@
+:root{
+    --primary-color: #55B3D9;
+    --second-color: rgb(160, 217, 244);
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 2px solid rgb(186, 182, 182);
+}
+
+.navbar .logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .link {
+    width: 100%;
+    margin-left: 5%;
+}
+
+.navbar .link a {
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    position: relative;
+    color: #000;
+    font-weight: bolder;
+    transition: color ease 1s;
+}
+
+.navbar .link a:last-child:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+}
+
+
+.navbar .link a:not(:last-child):after {
+    content: '';
+    position: absolute;
+    transform: scale(0);
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.navbar .link a:hover::after {
+    transform-origin: left;
+    transform: scale(1);
+}
+
+.navbar .button{
+    display: flex;
+    gap: 30px;
+}
+
+.navbar .button .notification,
+.navbar .button .account{
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar .button .notification img{
+    position: relative;
+}
+
+
+.navbar .button .notification p{
+    position: absolute;
+    margin-left: 13px;
+    margin-top: -5px;
+    background: var(--second-color);
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    text-align: center;
+    padding: 3px;
+    color: #FFF;
+}
+
+.navbar .button .account{
+    gap: 5px;
+    position: relative;
+}
+
+.navbar .button img{
+    width: 25px;
+    height: 25px;
+}
+
+.body{
+    display: flex;
+    padding-bottom: 500px;
+}
+
+.body .menu-child {
+    /* position: absolute; */
+    height: 70%;
+    width: 99.61%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 0px 5px 5px 0px;
+    background-color: #fff;
+}
+
+.body .menu-child a {
+    color: #000;
+    text-decoration: none
+    
+}
+
+.body .user li {
+    font-weight: 600;
+}
+
+.body .user .avta {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #48ca74;
+}
+
+.body .user {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    top: 4.6%;
+    right: 28.52%;
+    bottom: 86.21%;
+    left: 14.45%;
+    gap: 10px;
+}
+
+.body .list {
+    display: flex;           
+    flex-direction: column;
+    position: absolute;
+    height: 73.74%;
+    width: 100%;
+    top: 18.38%;
+    bottom: 7.88%;
+    gap: 20px;              
+}
+.body .list p{
+    padding-left: 5%;
+}
+  
+.body .list a{
+    text-decoration: none;  
+    color: black;           
+    padding: 10px;
+    padding-left: 15%;
+    margin-top: -5%;
+}
+  
+.body .list a:hover {
+    background-color: lightgray;          
+}
+
+.body .list .list-post{
+    background: lightgray;
+}
+
+.body .list p{
+    font-weight: 600;
+    display: flex;
+    margin: 0;
+    align-items:center;
+}
+
+.body .list p img{
+    /* position: relative; */
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    padding-right: 5px;
+    margin-top: 3px;
+    /* height: 16px; */
+    object-fit: cover;
+}
+
+.body .menu {
+    width: 100%;
+    position: relative;
+    height: 450px;
+    width: 20%;
+    text-align: left;
+    font-size: 16px;
+    color: #000;
+    font-family: Inter;
+}

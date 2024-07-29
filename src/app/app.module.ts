@@ -19,6 +19,18 @@ import { LoginComponent } from './phongtro/login/login.component';
 import { ChitietphongtroComponent } from './phongtro/chitietphongtro/chitietphongtro.component';
 import { TimoghepComponent } from './phongtro/timoghep/timoghep.component';
 import { ChitietoghepComponent } from './phongtro/chitietoghep/chitietoghep.component';
+import { TintucComponent } from './phongtro/tintuc/tintuc.component';
+import { DanhsachyeuthichComponent } from './phongtro/danhsachyeuthich/danhsachyeuthich.component';
+import { QuanlybaidangComponent } from './phongtro/quanlybaidang/quanlybaidang.component';
+import { RegisterComponent } from './phongtro/register/register.component';
+import { DuyetdonlamchutroComponent } from './phongtro/duyetdonlamchutro/duyetdonlamchutro.component';
+import { DanhsachnguoidungComponent } from './phongtro/danhsachnguoidung/danhsachnguoidung.component';
+import { RouterModule } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormField, MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsModule
+
+
 
 @NgModule({
   declarations: [
@@ -33,7 +45,13 @@ import { ChitietoghepComponent } from './phongtro/chitietoghep/chitietoghep.comp
     LoginComponent,
     ChitietphongtroComponent,
     TimoghepComponent,
-    ChitietoghepComponent
+    ChitietoghepComponent,
+    TintucComponent,
+    DanhsachyeuthichComponent,
+    QuanlybaidangComponent,
+    RegisterComponent,
+    DuyetdonlamchutroComponent,
+    DanhsachnguoidungComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +60,12 @@ import { ChitietoghepComponent } from './phongtro/chitietoghep/chitietoghep.comp
     MaterialModule,
     FlexLayoutModule,
     MatSliderModule,
-    FormsModule
+    MatMenuModule,
+    FormsModule,
+    RouterModule,
+    MatInputModule,
+    MatFormField,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()

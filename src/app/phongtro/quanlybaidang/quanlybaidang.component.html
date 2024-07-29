@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="logo container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="public/logo.png"/>
+                <strong>CoDat</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="link collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-nav" href="#!">Danh sách bài đăng</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="notification me-3">
+                        <img src="public/notification_black.png" alt="Notification" style="width: 24px;">
+                        <span class="badge bg-danger">18</span>
+                    </div>
+                    <div class="account d-flex align-items-center">
+                        <p class="mb-0 me-2">Admin</p>
+                        <img src="public/down.png" alt="Dropdown" style="width: 24px;">
+                    </div>
+                </div>
+        </div>
+        </div>
+    </nav>
+
+    <div class="body">
+        <div class="navbar menu navbar-expand-lg navbar-light bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" mat-button [matMenuTriggerFor]="menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <div class="d-flex align-items-center content-menu">
+                        <mat-menu #menu="matMenu" class="custom-mat-menu">
+                                <div class="user d-lg me-3">
+                                    <img src="public/Avatar.png" class="avta" alt="Avatar"/>
+                                    <span class="ms-2">Admin</span>
+                                </div>
+                                <div class="list">
+                                    <p class="a2"><img src="public/list_register.png" alt="List Register"> Quản lý tin đăng</p>
+                                    <a class="a1 list-post" href="#">Danh sách bài đăng</a>
+                                    <p class="a2"><img src="public/user.png" alt="User"> Quản lý tài khoản</p>
+                                    <a class="a1" href="#">Danh sách duyệt chủ trọ</a> 
+                                    <a class="a1" href="#">Danh sách người dùng</a>
+                                </div>
+                        </mat-menu>
+                        <div class="user-menu">
+                            <div class="user d-lg me-3">
+                                <img src="public/Avatar.png" class="avta" alt="Avatar"/>
+                                <span class="ms-2">Admin</span>
+                            </div>
+                            <div class="list">
+                                <p class="a2"><img src="public/list_register.png" alt="List Register"> Quản lý tin đăng</p>
+                                <a class="a1 list-post" href="#">Danh sách bài đăng</a>
+                                <p class="a2"><img src="public/user.png" alt="User"> Quản lý tài khoản</p>
+                                <a class="a1" href="#">Danh sách duyệt chủ trọ</a> 
+                                <a class="a1" href="#">Danh sách người dùng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Danh sách bài đăng</h1>
+            <div class="search-box">
+                <input type="text" name="searchId" [(ngModel)]="searchId"/>
+                <button (click)="searchID()">
+                    <img src="public/search.png"/>
+                </button>
+            </div>
+            <div class="name-kind">
+                <div class="kind">
+                    <p *ngFor="let item of items" (click)="filterItems(item)" [class.selected]="item === selectedItem">
+                        {{ item.label }}
+                    </p>
+                </div>
+                <div class="inf-all">
+                    <div class="inf flex-row mb-3" *ngFor="let item of filteredPosts">
+                        <div class="checkbox">
+                        <input type="checkbox" [(ngModel)]="item.checked" (change)="onCheckboxChange()"/>
+                        </div>
+                        <div class="item-inf">
+                            <div class="img">
+                                <img class="img_main" [src]="item.imgSrc"/>
+                                <div class="quantity">
+                                    <img src="public/image.png"/>
+                                    <p>{{ item.quantity }}</p>
+                                </div>
+                            </div>
+                        <div class="content-intro">
+                            <div class="intro">
+                                <h3 class="name">{{ item.title }}</h3>
+                                <div class="address">
+                                    <img src="public/placeholder.png"/>
+                                    <p>{{ item.address }}</p>
+                                </div>
+                                <div class="price-acreage">
+                                    <p>{{ item.price }}</p>
+                                    <p>{{ item.area }}m<sup>2</sup></p>
+                                </div>
+                                <div class="common">
+                                    <div class="text">
+                                    <div class="text-child">
+                                        <p>Mã tin</p>
+                                        <p>{{ item.id }}</p>
+                                    </div>
+                                    <div class="text-child">
+                                        <p>Ngày đăng</p>
+                                        <p>{{ item.date }}</p>
+                                    </div>
+                                    <div class="text-child">
+                                        <p>Trạng thái</p>
+                                        <p [ngClass]="item.status === 'active' ? 'active' : 'ban'">
+                                        {{ item.status === 'active' ? 'Hoạt động' : 'Bị cấm' }}
+                                        </p>
+                                    </div>
+                                    </div>
+                                    <button class="delete">
+                                    <img src="public/bin.png"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="deleteAll">
+                Xoá({{ selectedCount }})
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="script.js"></script>

@@ -1,0 +1,551 @@
+:root{
+    --primary-color: #55B3D9;
+    --second-color: rgb(160, 217, 244);
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 2px solid rgb(186, 182, 182);
+}
+
+.navbar .logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .link {
+    position: relative;
+    margin-left: 5%;
+}
+
+.navbar .link a {
+    position: relative;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    position: relative;
+    color: #000;
+    font-weight: bolder;
+    transition: color ease 1s;
+}
+
+.navbar .link .border-nav{
+    position: relative;
+}
+
+.navbar .link .border-nav::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+}
+
+
+.navbar .link a:not(.border-nav)::after {
+    content: '';
+    position: absolute;
+    transform: scale(0);
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.navbar .link a:hover::after {
+    transform-origin: left;
+    transform: scale(1);
+}
+
+.navbar .button{
+    display: flex;
+    gap: 30px;
+}
+
+.navbar .button .notification,
+.navbar .button .account{
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar .notification img{
+    position: relative;
+}
+
+
+.navbar .notification span{
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -5px;
+    background: var(--second-color);
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    text-align: center;
+    padding: 3px;
+    color: #FFF;
+}
+
+.navbar .button .account{
+    gap: 5px;
+    position: relative;
+}
+
+.navbar .button img{
+    width: 25px;
+    height: 25px;
+}
+
+.body{
+    display: flex;
+}
+
+.menu{
+    display: block;
+}
+
+.content-menu{
+    float: left;
+    margin-left: -41px;
+}
+
+.body .menu-child {
+    /* position: absolute; */
+    height: 70%;
+    width: 99.61%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 0px 5px 5px 0px;
+    background-color: #fff;
+}
+
+.body .menu-child a {
+    color: #000;
+    text-decoration: none   
+}
+
+.menu-checkbox {
+    display: none;
+}
+
+.body .user li {
+    font-weight: 600;
+}
+
+.body .user .avta {
+    /* width: 2.6vw;
+    height: 5vh;
+    border-radius: 50%;
+    background-color: #48ca74; */
+    width: 50px;
+    height: 50px;
+}
+
+.body .user {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    top: 4.6%;
+    right: 28.52%;
+    bottom: 86.21%;
+    left: 10%;
+}
+
+.body .list {
+    display: flex;           
+    flex-direction: column;
+    position: absolute;
+    height: 73.74%;
+    width: 100%;
+    top: 18.38%;
+    bottom: 7.88%;
+    gap: 20px;              
+}
+.body .list p{
+    padding-left: 5%;
+}
+  
+.body .list a{
+    text-decoration: none;  
+    color: black;           
+    padding: 10px;
+    padding-left: 15%;
+    margin-top: -5%;
+}
+  
+.body .list a:hover {
+    background-color: lightgray;          
+}
+
+.body .list .list-post{
+    background: lightgray;
+}
+
+.body .list p{
+    font-weight: 600;
+    display: flex;
+    margin: 0;
+    align-items:center;
+}
+
+.body .list p img{
+    /* position: relative; */
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    padding-right: 5px;
+    margin-top: 3px;
+    /* height: 16px; */
+    object-fit: cover;
+}
+
+.body .menu {
+    width: 100%;
+    position: relative;
+    height: 450px;
+    width: 20%;
+    text-align: left;
+    font-size: 16px;
+    color: #000;
+    font-family: Inter;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+::ng-deep .custom-mat-menu {
+    background-color: #f8f9fa; /* Màu nền của menu */
+    border: 1px solid #dee2e6; /* Viền menu */
+    border-radius: 4px; /* Bo góc menu */
+}
+
+/* Tùy chỉnh nội dung bên trong menu */
+::ng-deep .custom-mat-menu .user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+    padding-left: 30px;
+}
+
+::ng-deep .custom-mat-menu .user .avta {
+    height: 40px;
+    /* width: 40px; */
+    border-radius: 50%; /* Bo tròn hình avatar */
+    margin-right: 10px;
+}
+
+::ng-deep .custom-mat-menu .list {
+    padding: 0;
+    width: 100%;
+    left: 0;
+}
+
+::ng-deep .custom-mat-menu .list p.a2,
+::ng-deep .custom-mat-menu .list a.a1 {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    width: 100%;
+}
+
+::ng-deep .custom-mat-menu .list p.a2{
+    margin-bottom: -10px;
+}
+
+::ng-deep .custom-mat-menu .list p.a2 img,
+::ng-deep .custom-mat-menu .list a.a1 img {
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+::ng-deep .custom-mat-menu .list a.a1 {
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+::ng-deep .custom-mat-menu .list .list-post{
+    background-color: #dee2e6;
+}
+
+.body .content{
+    position: relative;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-top: 20px;
+    width: 40vw;
+    box-shadow: 2px 2px 4px grey;
+}
+
+.body .content h1{
+    padding-left: 20px;
+}
+
+.body .content table img{
+    width: 30px;
+    height: 30px;
+}
+
+.body .content table tr{
+    height: 40px;
+    align-items: center;
+}
+
+.body .content table td{
+    width: 20vw;
+    padding-left: 40px;
+}
+
+.body .content table tr:nth-child(even){
+    background: rgb(241, 240, 240);
+}
+
+.body .detail{
+    position: absolute;
+    z-index: 1;
+    width: 40vw;
+    height: 75vh;
+    background: #fff;
+    box-shadow: 2px 2px 4px grey;
+    margin-left: 20px;
+}
+
+.body .detail .close{
+    background: none;
+    float: right;
+}
+
+.body .detail .close>img{
+    width: 15px;
+    height: 15px;
+}
+
+.body .detail .contact{
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(189, 187, 187);
+}
+
+.body .detail .contact .img-contact img{
+    width: 12vw;
+    height: 20vh;
+    border: 1px solid grey;
+}
+
+.body .detail .contact .text-contact{
+    margin-left: 50px;
+}
+
+.body .detail .contact .text-contact input{
+    display: block;
+    width: 16vw;
+}
+
+.body .detail .contact .text-contact .text-child{
+    margin-top: 10px;
+}
+
+.body .detail .id-user{
+    padding-left: 20px;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(189, 187, 187);
+}
+
+.body .detail .id-user .img-cccd{
+    display: flex;
+    gap: 10px;
+    height: 100px;
+    width: 400px;
+}
+
+.body .detail .id-user .img-cccd img{
+    width: 11vw;
+    height: 100px;
+    border: 1px solid grey;
+}
+
+.body .detail .id-user .img-next{
+    width: 20px;
+    height: 20px;
+    background: rgb(243, 242, 242);
+    position: absolute;
+    border: none;
+    border-radius: 2px;
+    margin-top: -60px;
+    margin-left: 32.7vw;
+}
+
+.body .detail .id-user .img-next>img{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    left: -3px;
+    top: -4px;
+}
+
+.body .detail .button-nav{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.body .detail .button-nav button{
+    height: 30px;
+    display: flex;
+    /* align-items: center; */
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    justify-content: center;
+}
+
+.body .detail .refuse{
+    background: #f00;
+    color: #FFF;
+}
+
+.body .detail .refuse img{
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.body .detail .broswer{
+    color: #FFF;
+    background-color: var(--primary-color);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.body .detail .detail-refuse button{
+    display: block;
+    border: none;
+    background: none;
+    text-align: left;
+    padding: 0 10px;
+    width: 15vw;
+    margin-top: 10px;
+}
+
+.body .detail .detail-refuse{
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #fff;
+    box-shadow: 2px 2px 4px grey;
+    border-radius: 5px;
+    width: 15vw;
+    margin-left: 100px;
+}
+
+@media (max-width: 991.98px) {
+    .user-menu{
+        display: none;
+    }
+
+    .mat-menu{
+        display: block;
+    }
+
+    .body .content .item-inf{
+        width: 70vw;
+    }
+
+    .body .navbar{
+        height: 70vh;
+        width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        /* margin-left: -40px; */
+        background-color: #FFF;
+    }
+
+    .navbar .link {
+        margin-left: 0;
+    }
+
+    .navbar .link a {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar .link .border-nav::after,
+    .navbar .link a:not(.border-nav)::after {
+        bottom: 0;
+        width: 170px;
+    }
+    
+    .navbar .link a:not(.border-nav)::after{
+        width: 80px;
+    }
+
+    .menu .user{
+       margin-top: 70px;
+    }
+
+    .menu .list{
+        margin-top: 70px;
+    }
+
+    .body .content{
+        margin-left: 150px;
+    }
+
+    .body .user li {
+        font-weight: 600;
+    }
+
+    .body .user .avta {
+        width: 50px;
+        height: 50px;
+    }
+
+    .body .content{
+        width: 100vw;
+    }
+
+    .body .detail{
+        width: 400px;
+    }
+
+    .body .detail .img-cccd img{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px){
+    .body .detail{
+        margin-left: -100px;
+        width: 80vw;
+    }
+}

@@ -3,179 +3,122 @@
     --second-color: rgb(160, 217, 244);
 }
 
+i{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header{
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+}
+
+.header-contain{
+    top: 0;
+    margin-top: -25px;
+    height: 150px;
+    background: #fff;
+}
+
 .navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-bottom: 2px solid rgb(186, 182, 182);
-}
-
-.navbar .logo{
-    display: flex;
-    align-items: center;
-}
-
-.navbar .link {
-    margin-left: -400px;
-}
-
-.navbar .link a {
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 16px;
-    position: relative;
-    color: #000;
-    font-weight: bolder;
-    transition: color ease 1s;
-}
-
-.navbar .link a:nth-child(2):after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
+    top: 0;
     width: 100%;
-    height: 5px;
-    background: var(--second-color);
-    border-radius: 5px;
-}
-
-
-.navbar .link a:not(:nth-child(2)):after {
-    content: '';
-    position: absolute;
-    transform: scale(0);
-    left: 0;
-    bottom: -5px;
-    width: 100%;
-    height: 5px;
-    background: var(--second-color);
-    border-radius: 5px;
-    transform-origin: right;
-    transition: transform 0.5s;
-}
-
-.navbar .link a:hover::after {
-    transform-origin: left;
-    transform: scale(1);
-}
-
-.navbar .button{
     display: flex;
-    gap: 30px;
 }
 
-.navbar .button .like,
-.navbar .button .notification,
-.navbar .button .account{
+.icon{
     display: flex;
+    gap: 20px;
     align-items: center;
 }
 
-.navbar .button .like img,
-.navbar .button .notification img{
-    position: relative;
+.icon .item i{
+    position: absolute;
 }
 
-.navbar .button .like p,
-.navbar .button .notification p{
-    position: absolute;
-    margin-left: 13px;
-    margin-top: -5px;
-    background: var(--second-color);
+.icon .item>span{
+    position: relative;
+    top: -12px;
+    left: 12px;
+    background: var(--primary-color);
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+}
+
+.icon .name{
+    display: flex;
+    align-items: center;
+}
+
+.icon .name>p{
+    margin-top: 12px;
+}
+
+.icon .name a{
     text-align: center;
 }
 
-.navbar .button .like p{
-    margin-left: 15px;
-}
-
-.navbar .button .account{
-    gap: 5px;
-    position: relative;
-}
-
-.navbar .button .account:hover .display{
-    display: block;
-}
-
-.navbar .button .account .display{
+.icon .display{
     display: none;
     position: absolute;
-    width: 280px;
-    top: 50px;
-    margin-left: -100px;
+    width: 300px;
+    top: 70px;
+    margin-left: -120px;
     z-index: 2;
     background: #FFF;
     border: 1px solid rgb(233, 232, 232);
     border-radius: 20px;
-    height: 360px;
+    height: 350px;
 }
 
-.navbar .button .account .display .register{
+.icon .name:hover .display{
+    display: block;
+}
+
+.icon .name .register{
     background: linear-gradient(180deg, #74C6DB 4.35%, #3E6A75 85.96%);
     margin-top: -20px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-.navbar .button .account .display .register h3{
+.icon .name .register h3{
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    font-size: 20px;
     color: #fff;
 }
 
-.navbar .button .account .display .register .register-inf{
+.icon .name .register-inf{
     display: flex;
     margin-left: 0px;
-    margin-top: -20px;
+    margin-top: -40px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.navbar .button .account .display .register .register-inf .a-register{
-    border: none;
-    color: #FFF;
-    border-radius: 5px;
-    background: var(--primary-color);
-    padding: 10px;
-    transition: all ease 1s;
-    text-decoration: none;
-}
-
-.navbar .button .account .display .register .register-inf .a-register:hover{
-    cursor: pointer;
-    background: var(--second-color);
-    color:#000;
-}
-
-.navbar .button .account .display .register .register-inf img{
+.icon .name .register-inf img{
     width: 130px;
     height: 130px;
-    margin-left: -5px;
-    margin-top: 20px;
+    margin-left: -12px;
+    margin-top: 55px;
 }
 
-.navbar .button .account .display .register .register-inf .inf p{
+.icon .name .register-inf .inf p{
     width: 140px;
     color: #fff;
+    margin-top: 40px;
 }
-
-.navbar .button .account .display .register .register-inf .inf button{
-    font-weight: bold;
-}
-
-.navbar .button .account .display .inf-group{
+.icon .name .inf-group{
     display: flex;
     align-items: center;
     height: 30px;
-    width: 230px;
+    width: 250px;
     margin-left: 20px;
     margin-top: 10px;
     background: #fff;
@@ -184,72 +127,29 @@
     border-bottom: 1px solid rgb(233, 232, 232);
     padding-bottom: 10px;
 }
+.icon .name .inf-group p{
+    margin-top: 13px;
+    margin-left: 5px;
+}
 
-.navbar .button .account .display .inf-group:hover{
+.icon .name .inf-group:hover{
     cursor: pointer;
     color: var(--primary-color);
 }
 
-.navbar .button .account .display .inf-group p{
-    margin-left: 5px;
-}
-
-.navbar .button .account .display .logout:hover{
-    cursor: pointer;
-    background: var(--second-color);
-    color:#000
-}
-
-.navbar .button .account .display .logout{
+.icon .name .logout{
     display: flex;
-    align-items: center;
-    height: 30px;
-    border: none;
-    background: var(--primary-color);
-    color: #FFF;
-    border-radius: 5px;
-    float: right;
-    margin-right: 20px;
+    gap: 10px;
+    height: 40px;
     margin-top: 10px;
-    transition: all ease 1s;
-}
-
-.navbar .button .account .display .logout img{
-    margin-left: 10px;
-    width: 15px;
-    height: 15px;
-}
-
-.navbar .button img{
-    width: 25px;
-    height: 25px;
-}
-
-.navbar .button .upload:last-child{
-    border: none;
-    color: #fff;
-    background-color: var(--primary-color);
-    padding: 0 15px;
-    border-radius: 10px;
-    margin-top: 5px;
-    height: 35px;
-    transition: all ease 1s;
-}
-
-.navbar .button .upload:hover{
-    cursor: pointer;
-}
-
-.navbar .button .upload:last-child:hover{
-    background-color: var(--second-color);
-    color: grey;
+    margin-left: 120px;
 }
 
 .body{
     display: flex;
-    margin-left: 150px;
-    margin-right: 150px;
-    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 100px;
 }
 
 .body img{
@@ -270,7 +170,7 @@
     height: 30px;
     position: absolute;
     top: 45%;
-    left: 700px;
+    left: 90%;
     background: none;
     border-radius: 5px;
     border: .5px solid rgb(234, 233, 233);
@@ -280,7 +180,7 @@
 .body .inf-room .img .main button>img{
     width: 20px;
     height: 20px;
-    margin-top: 2px;
+    margin-top: -2px;
 }
 
 .body .inf-room .img .main button:hover{
@@ -289,7 +189,7 @@
 }
 
 .body .inf-room .img .main img{
-    width: 750px;
+    width: 100%;
     height: 450px;
 }
 
@@ -300,7 +200,7 @@
 
 .body .inf-room .img .extra img{
     display: block;
-    width: 180px;
+    width: 95%;
     height: 130px;
     margin-left: 10px;
 }
@@ -314,9 +214,13 @@
 
 .body .inf-room .address{
     display: flex;
-    align-items: center;
     margin-left: 10px;
+    margin-top: 10px;
     border-bottom: 1px solid rgb(234, 233, 233);
+}
+
+.body .inf-room .address img{
+    margin-top: 5px;
 }
 
 .body .inf-room .detail{
@@ -440,7 +344,6 @@
     border: 1px solid var(--primary-color);
     background: #fff;
     font-weight: 600;
-    align-items: center;
     margin-top: 20px;
     transition: all ease .5s;
 }
@@ -458,7 +361,11 @@
     border: 1px solid var(--second-color);
 }
 
+.body .inf-user button img{
+    margin-top: 5px;
+}
+
 .body .inf-user button p{
     margin-left: 5px;
-    width: 100px;
+    width: 120px;
 }
