@@ -8,6 +8,12 @@ i{
     font-weight: 600;
 }
 
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 .header{
     width: 100%;
     top: 0;
@@ -196,11 +202,12 @@ i{
 .body .inf-room .img .extra{
     display: flex;
     margin-left: -10px;
+    gap:1%;
 }
 
 .body .inf-room .img .extra img{
     display: block;
-    width: 95%;
+    width: 100%;
     height: 130px;
     margin-left: 10px;
 }
@@ -212,11 +219,18 @@ i{
     width: 700px;
 }
 
+.body .inf-room .intro h3{
+    width: 50vw;
+}
+
 .body .inf-room .address{
     display: flex;
     margin-left: 10px;
-    margin-top: 10px;
     border-bottom: 1px solid rgb(234, 233, 233);
+}
+
+.body .inf-room .address p{
+    margin-top: 25px;
 }
 
 .body .inf-room .address img{
@@ -276,6 +290,7 @@ i{
 
 .body .inf-room .description p{
     margin-top: 5px;
+    width: 50vw;
 }
 
 .body .inf-room .features{
@@ -293,7 +308,8 @@ i{
 }
 
 .body .inf-room .features .item p{
-    width: 150px;
+    width: 100px;
+    margin-top: 15px;
 }
 
 .body .inf-room .features .item:first-child p{
@@ -313,6 +329,10 @@ i{
 
 .body .inf-room .time-type .item{
     text-align: center;
+}
+
+.body .inf-room .time-type .item strong{
+    width: 200px;
 }
 
 .body .inf-user{
@@ -368,4 +388,110 @@ i{
 .body .inf-user button p{
     margin-left: 5px;
     width: 120px;
+}
+
+@media (max-width: 991px){
+    .inf-user {
+        position: fixed;
+        bottom: 0;
+        width: 80%;
+        gap: 5%;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        z-index: 1000;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-around;
+        text-align: left;
+        height: 100px !important;
+        /* margin-left: 100px; */
+    }
+
+    .inf-user .inf img{
+        max-width: 30px;
+        max-height: 30px;
+        height: 30px;
+    }
+
+    .inf-user .button{
+        margin-top: -20px;
+        display: flex;
+        gap:5%;
+        text-align: center;
+    }
+
+    .inf-user .button button{
+        width: 160px;
+    }
+
+    .inf-user .button button img{
+        margin-left: -10px;
+    }
+
+    .body{
+        width: 100%;
+        margin-left: 5%;
+        padding-bottom: 100px;
+    }
+
+    .body .inf-room .time-type{
+        display: block;
+        float: left;
+        margin-left: 0;
+        width: 90vw;
+    }
+
+    .body .inf-room .time-type .item{
+        display: flex;
+        gap: 30px;
+    }
+
+    .body .inf-room .time-type .item p{
+        width: 150px;
+        text-align: left;
+    }
+
+    .body .inf-room{
+        width: 90vw;
+    }
+
+    .body .inf-room .description p{
+        width: 80vw;
+    }
+
+    .body .inf-room .intro h3{
+        width: 80vw;
+    }
+}
+
+@media (max-width: 600px){
+    .inf-user {
+        position: fixed;
+        bottom: 0;
+        width: 80%;
+        gap: 5%;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        z-index: 1000;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        display: block;
+        justify-content: space-around;
+        text-align: center;
+        height: 130px !important;
+    }
+
+    .inf-user .button{
+        margin-top: -20px;
+        display: flex;
+        gap:5%;
+        text-align: center;
+    }
+
+    .inf-user .button button{
+        width: 170px;
+    }
+
+    .body{
+        padding-bottom: 130px;
+    }
 }
