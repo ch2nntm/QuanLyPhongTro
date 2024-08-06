@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PostBaiDangService } from '../../services/post-bai-dang.service';
 
 @Component({
   selector: 'app-quanlybaidang',
   templateUrl: './quanlybaidang.component.html',
   styleUrl: './quanlybaidang.component.css'
 })
-export class QuanlybaidangComponent {
-  quatityAll=0;
-  quatityActive=0;
-  quatityBan=0;
+export class QuanlybaidangComponent implements OnInit{
+  quantityAll=0;
+  quantityActive=0;
+  quantityBan=0;
+
 
   items = [
     { label: 'Tất cả', status: 'all' },
@@ -64,13 +66,6 @@ export class QuanlybaidangComponent {
   }
 
   searchId='';
-  // searchID(): void {
-  //   if (this.searchId.trim() !== '') {
-  //       this.filteredPosts = this.posts.filter(post => post.id === this.searchId);
-  //   } else {
-  //       this.filteredPosts = this.posts; 
-  //   }
-  // }
 
   itemClick='all';
   
@@ -118,36 +113,65 @@ export class QuanlybaidangComponent {
     this.selectedCount = this.posts.filter(post => post.checked).length;
   }
 
-  constructor() {
-    for(var i=0; i<this.posts.length; i++){
-      if(this.posts[i].checked===true)
-        this.selectedCount+=1;
+  SoLuong() {
+    this.selectedCount = 0;
+    this.quantityActive = 0;
+    this.quantityAll = 0;
+    this.quantityBan = 0;
+    for (let post of this.posts) {
+        if (post.checked === true) {
+            this.selectedCount += 1;
+        }
+        if (post.status === 'active') {
+            this.quantityActive += 1;
+        } else if (post.status === 'ban') {
+            this.quantityBan += 1;
+        }
+        this.quantityAll += 1;
     }
-
-    for(var i=0; i<this.posts.length; i++){
-      if(this.posts[i].status=='active'){
-        this.quatityActive+=1;
-        this.quatityAll+=1;
-      }
-      else{
-        this.quatityAll+=1;
-        this.quatityBan+=1;
-      }
-    }
-    this.items=[
-      { label: 'Tất cả'+ '(' + this.quatityAll + ')', status: 'all' },
-      { label: 'Hoạt động'+ '(' + this.quatityActive + ')', status: 'active' },
-      { label: 'Bị cấm'+ '(' + this.quatityBan + ')', status: 'ban' }
+    this.items = [
+        { label: 'Tất cả (' + this.quantityAll + ')', status: 'all' },
+        { label: 'Hoạt động (' + this.quantityActive + ')', status: 'active' },
+        { label: 'Bị cấm (' + this.quantityBan + ')', status: 'ban' }
     ];
-
-    this.selectedItem=this.items[0];
+    this.selectedItem = this.items[0];
   }
 
-  paginatedItems: any[] = [];
-  currentPage: number = 1;
-  totalPages: number = 1;
+  constructor(private postService: PostBaiDangService) {
+    this.SoLuong();
+  }
 
-  
+  isMenuExpanded = false;
 
-  ngOnInit() {}
+  toggleMenu() {
+    this.isMenuExpanded = !this.isMenuExpanded;
+  }
+
+  ngOnInit(): void {
+    this.postService.getListPosts().subscribe(console.log);
+  }
+
+  Delete(item: string) {
+    const confirmed = window.confirm('Bạn có chắc chắn muốn xoá bài đăng này không?');
+    if(confirmed){
+      const index = this.posts.findIndex(post => post.id === item);
+      if (index !== -1) {
+          this.posts.splice(index, 1);
+      }
+      this.SoLuong();
+    }
+  }
+
+  DeleteAll() {
+    const confirmed = window.confirm('Bạn có chắc chắn muốn xoá những bài đăng này không?');
+    if(confirmed){
+      for (let i = this.posts.length - 1; i >= 0; i--) {
+        if (this.posts[i].checked) {
+            this.posts.splice(i, 1);
+        }
+      }
+      this.SoLuong();
+    }
+  }
+
 }

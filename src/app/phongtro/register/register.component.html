@@ -59,7 +59,7 @@
                         <input type="tel" placeholder="Số điện thoại" required/>
                         <input type="text" placeholder="Địa chỉ" required/>
                         <input type="password" placeholder="Mật khẩu" required/>
-                        <button>ĐĂNG KÝ</button>
+                        <button type="button">ĐĂNG KÝ</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
@@ -75,14 +75,13 @@
                         <label for="email" [ngClass]="{ 'empty': email==='',
                         'isemail': isEmail}">Email</label>
                         <input id="email" type="email" (focus)="onFocusEmail()" [(ngModel)]="email" />
-   
                     </div>
                     <div class="item">
                         <label for="password" [ngClass]="{ 'ispassword': isPassword && password==''}">Password</label>
                         <input id="password" type="password" (focus)="onFocusPassword()" [(ngModel)]="password"/>
                     </div>
                     <a href="#!">Quên mật khẩu?</a>
-                    <button>ĐĂNG NHẬP</button>
+                    <button type="button">ĐĂNG NHẬP</button>
                 </form>
             </div>
             <div class="overlay-container">

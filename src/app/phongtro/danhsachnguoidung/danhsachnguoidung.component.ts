@@ -42,6 +42,16 @@ export class DanhsachnguoidungComponent {
       gmail: 'HuynhLe00@gmail.com',
       role: 'client',
       status: 'block',
+    },
+    {
+      id: '493',
+      avt: 'profile.png',
+      name: 'Trần Thị Thu',
+      phone: '0839473899',
+      address: 'Quận Gò Vấp, Thành phố Hồ Chí Minh',
+      gmail: 'ThuTran21@gmail.com',
+      role: 'client',
+      status: 'block',
     }
   ]
 
@@ -64,7 +74,10 @@ export class DanhsachnguoidungComponent {
     }
   }
 
-  constructor(){
+  SoLuong(){
+    this.quatityAll=0;
+    this.quatityActive=0;
+    this.quatityBlock=0;
     for(var i=0; i<this.posts.length; i++){
       if(this.posts[i].status=='active'){
         this.quatityActive+=1;
@@ -84,4 +97,24 @@ export class DanhsachnguoidungComponent {
     this.selectedItem=this.items[0];
   }
 
+  constructor(){
+    this.SoLuong();
+  }
+
+  isMenuExpanded = false;
+
+  toggleMenu() {
+    this.isMenuExpanded = !this.isMenuExpanded;
+  }
+
+  ChangeStatus(item: string){
+    const index = this.posts.findIndex(post => post.id === item);
+    if (index !== -1) {
+      if(this.posts[index].status=='active')
+        this.posts[index].status='block';
+      else
+        this.posts[index].status='active';
+    }
+    this.SoLuong();
+  }
 }

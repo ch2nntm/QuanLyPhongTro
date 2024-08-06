@@ -14,8 +14,6 @@ import { LichsuComponent } from './phongtro/lichsu/lichsu.component';
 import { HomepageComponent } from './phongtro/homepage/homepage.component';
 import { HomepagemainComponent } from './phongtro/homepagemain/homepagemain.component';
 import { ThuephongComponent } from './phongtro/thuephong/thuephong.component';
-import { RegisterLoginComponent } from './phongtro/register-login/register-login.component';
-import { LoginComponent } from './phongtro/login/login.component';
 import { ChitietphongtroComponent } from './phongtro/chitietphongtro/chitietphongtro.component';
 import { TimoghepComponent } from './phongtro/timoghep/timoghep.component';
 import { ChitietoghepComponent } from './phongtro/chitietoghep/chitietoghep.component';
@@ -29,7 +27,12 @@ import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsModule
-
+import { MatIconModule } from '@angular/material/icon';
+import { MenuComponent } from './phongtro/menu/menu.component';
+import { NavbarUserComponent } from './phongtro/navbar-user/navbar-user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UIUserComponent } from './phongtro/uiuser/uiuser.component';
+import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
 
 
 @NgModule({
@@ -41,8 +44,6 @@ import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsMo
     HomepageComponent,
     HomepagemainComponent,
     ThuephongComponent,
-    RegisterLoginComponent,
-    LoginComponent,
     ChitietphongtroComponent,
     TimoghepComponent,
     ChitietoghepComponent,
@@ -51,7 +52,11 @@ import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsMo
     QuanlybaidangComponent,
     RegisterComponent,
     DuyetdonlamchutroComponent,
-    DanhsachnguoidungComponent
+    DanhsachnguoidungComponent,
+    MenuComponent,
+    NavbarUserComponent,
+    UIUserComponent,
+    UIAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,9 @@ import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsMo
     RouterModule,
     MatInputModule,
     MatFormField,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()

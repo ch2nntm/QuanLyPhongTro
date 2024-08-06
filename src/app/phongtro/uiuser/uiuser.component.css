@@ -42,7 +42,7 @@ i{
     position: relative;
     top: -12px;
     left: 12px;
-    background: var(--primary-color);
+    background: #55B3D9;
     border-radius: 50%;
     text-align: center;
     width: 25px;
@@ -134,7 +134,7 @@ i{
 
 .icon .name .inf-group:hover{
     cursor: pointer;
-    color: var(--primary-color);
+    color: #55B3D9;
 }
 
 .icon .name .logout{
@@ -471,12 +471,23 @@ body{
     width: 100%;
 }
 
-.navlink1.active-link{
+/* .navlink1.active-link{
     background: #dee2e6;
     padding-left: 50px;
     margin-left: -40px;
     padding-right: 40px;
     width: 115%;
+} */
+
+.active-link::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background: var(--second-color);
+    border-radius: 5px;
 }
 
 @media (max-width: 991.98px) {

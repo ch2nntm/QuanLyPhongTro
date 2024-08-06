@@ -285,9 +285,9 @@ button:hover{
 
 .body .content{
     position: relative;
-    margin-left: 20vw;
+    margin-left: 30vw;
     margin-right: 20vw;
-    margin-top: 20px;
+    margin-top: 150px;
     width: 40vw;
     box-shadow: 2px 2px 4px grey;
 }
@@ -437,7 +437,7 @@ button:hover{
 
 .body .detail .broswer{
     color: #FFF;
-    background-color: var(--primary-color);
+    background-color: #55B3D9;
 }
 
 button:hover{
