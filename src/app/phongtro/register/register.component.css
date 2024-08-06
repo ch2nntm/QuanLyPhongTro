@@ -8,6 +8,18 @@
     box-sizing: border-box;
 }
 
+.example-form {
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-icon {
+    cursor: pointer;
+  }
+
 .navbar{
     display: flex;
     align-items: center;
@@ -239,35 +251,54 @@ input {
 }
 
 .item{
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    text-align:left;
-}
-
-.item input{
+    margin-bottom: 30px;
     position: relative;
 }
 
-.item label,
-.empty{
+.item input{
+    width: 100%;
     position: absolute;
-    margin-top: 20px;
-    margin-left: 20px;
-    z-index: 10;
+    text-align: left;
 }
 
-.isemail{
-    top: 40.5%;
-    left: 35px;
+.item label{
+    margin-bottom: 5px;
+    z-index: 10;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.isemail,
+.isphone,
+.isaddress,
+.isname{
     font-size: 12px;
 }
 
-.isemail::after{
+mat-error {
+    margin-top: 25px !important;
+    margin-bottom: -30px;
+    color: red;
+    z-index: 100;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.isemail::after,
+.isphone::after,
+.isaddress::after,
+.isname::after{
     content: '*';
     color: red;
+    z-index: 100;
 }
 
 .ispassword{
-    top:52%;
+    top:75%;
     left: 35px;
     font-size: 12px;
 }
@@ -275,6 +306,11 @@ input {
 .ispassword::after{
     content: '*';
     color: red;
+}
+
+.form{
+    margin-top: 20px;
+    width: 100%;
 }
 
 .form-container {

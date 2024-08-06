@@ -33,6 +33,7 @@ import { NavbarUserComponent } from './phongtro/navbar-user/navbar-user.componen
 import { HttpClientModule } from '@angular/common/http';
 import { UIUserComponent } from './phongtro/uiuser/uiuser.component';
 import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
     MatFormField,
     ReactiveFormsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule
   ],
   providers: [
     provideClientHydration()

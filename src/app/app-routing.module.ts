@@ -7,15 +7,21 @@ import { ThuephongComponent } from './phongtro/thuephong/thuephong.component';
 import { TimoghepComponent } from './phongtro/timoghep/timoghep.component';
 import { TintucComponent } from './phongtro/tintuc/tintuc.component';
 import { HomepagemainComponent } from './phongtro/homepagemain/homepagemain.component';
+import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
+import { UIUserComponent } from './phongtro/uiuser/uiuser.component';
 
 const routes: Routes = [
-  { path: 'danhsachnguoidung', component: DanhsachnguoidungComponent },
-  { path: 'quanlybaidang', component: QuanlybaidangComponent},
-  { path: 'danhsachduyetchutro', component: DuyetdonlamchutroComponent},
-  { path: 'thuephong', component: ThuephongComponent},
-  { path: 'timoghep', component: TimoghepComponent},
-  { path: 'tintuc', component: TintucComponent},
-  { path: 'homepage', component: HomepagemainComponent}
+  { path: 'uiuser', component: UIUserComponent, children:[
+    { path: 'thuephong', component: ThuephongComponent},
+    { path: 'timoghep', component: TimoghepComponent},
+    { path: 'tintuc', component: TintucComponent},
+    { path: 'homepage', component: HomepagemainComponent}
+  ]},
+  { path: 'uiadmin', component: UIAdminComponent, children:[
+    { path: 'danhsachnguoidung', component: DanhsachnguoidungComponent },
+    { path: 'quanlybaidang', component: QuanlybaidangComponent},
+    { path: 'danhsachduyetchutro', component: DuyetdonlamchutroComponent}
+  ]}
 ];
 
 @NgModule({

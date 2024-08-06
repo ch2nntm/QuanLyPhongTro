@@ -296,6 +296,10 @@ button:hover{
     padding-left: 20px;
 }
 
+.body .content table{
+    width: 100%;
+}
+
 .body .content table img{
     width: 30px;
     height: 30px;
@@ -307,8 +311,8 @@ button:hover{
 }
 
 .body .content table td{
-    width: 20vw;
     padding-left: 40px;
+    padding-right: 20px;
 }
 
 .body .content table tr:nth-child(even){
@@ -316,13 +320,13 @@ button:hover{
 }
 
 .body .detail{
+    display: block;
     position: absolute;
     z-index: 1;
     width: 40vw;
     height: 75vh;
     background: #fff;
     box-shadow: 2px 2px 4px grey;
-    margin-left: 20px;
 }
 
 .body .detail .close{
@@ -331,6 +335,7 @@ button:hover{
 }
 
 .body .detail .close>img{
+    position: relative;
     width: 15px;
     height: 15px;
 }
@@ -545,7 +550,11 @@ button:hover{
 
 @media (max-width: 600px){
     .body .detail{
-        margin-left: -100px;
+        margin-left: 30px;
         width: 80vw;
+    }
+
+    .body .content{
+        margin-left: 10vw;
     }
 }

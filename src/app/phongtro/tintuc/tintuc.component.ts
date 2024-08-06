@@ -172,5 +172,7 @@ export class TintucComponent {
     this.selectedCity = '';
     this.selectedDistrict = '';
     this.selectedWard = '';
+    this.districts=[];
+    this.wards=[];
   }
 }
