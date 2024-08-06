@@ -245,6 +245,9 @@ export class ThuephongComponent {
     this.selectedCity = '';
     this.selectedDistrict = '';
     this.selectedWard = '';
+    this.districts=[];
+    this.wards=[];
+
   }
   
 }

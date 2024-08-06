@@ -221,5 +221,7 @@ export class TimoghepComponent {
     this.selectedCity = '';
     this.selectedDistrict = '';
     this.selectedWard = '';
+    this.districts=[];
+    this.wards=[];
   }
 }

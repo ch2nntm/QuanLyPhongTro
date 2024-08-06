@@ -1,12 +1,21 @@
 import {Component} from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-
+import {FormControl, FormGroupDirective, NgForm, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 export class RegisterComponent {
   isEmail=false;
@@ -33,5 +42,8 @@ export class RegisterComponent {
       container?.classList.remove('right-panel-active');
     });
   }
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  matcher = new MyErrorStateMatcher();
   
 }
