@@ -1,12 +1,5 @@
 import {Component} from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 
 @Component({
@@ -26,8 +19,6 @@ export class RegisterComponent {
   onFocusPassword(){
     this.isPassword = true;
   }
-  
-  constructor() { }
 
   ngOnInit(): void {
     const signUpButton = document.getElementById('signUp');
@@ -42,4 +33,5 @@ export class RegisterComponent {
       container?.classList.remove('right-panel-active');
     });
   }
+  
 }

@@ -41,7 +41,6 @@ export class DuyetdonlamchutroComponent {
     }
   ]
 
-
   inf_child={
     id:'',
     phone: '',
@@ -83,6 +82,15 @@ export class DuyetdonlamchutroComponent {
 
   Refuse(){
     this.isRefuse=!this.isRefuse;
+  }
+
+  refuse(item: string){
+    const index = this.infs.findIndex(inf => inf.id === item);
+    if (index !== -1) {
+        this.infs.splice(index, 1);
+    }
+    this.DetailInf('');
+    // window.location.reload();
   }
 
   CloseDetail(){

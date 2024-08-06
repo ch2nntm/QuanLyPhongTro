@@ -1,0 +1,226 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav{
+    display: block;
+    margin: auto;
+}
+/*               */
+.user li {
+    font-weight: 600;
+}
+
+.user .avta {
+    width: 50px;
+    height: 50px;
+}
+
+.user {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    top: 4.6%;
+    right: 28.52%;
+    bottom: 86.21%;
+    left: 10%;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 73.74%;
+    width: 100%;
+    top: 18.38%;
+    left: 0;
+    bottom: 7.88%;
+    gap: 20px;
+}
+
+.list a {
+    text-decoration: none;
+    color: black;
+}
+
+.list p {
+    font-weight: 600;
+    display: flex;
+    margin: 0;
+    align-items: center;
+}
+
+.list p img {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    padding-right: 5px;
+    margin-top: 3px;
+    object-fit: cover;
+}
+
+.menu {
+    z-index: 9999;
+    position: fixed;
+    top: -15px;
+    /* width: 250px;
+    height: 390px; */
+    width: 300px;
+    height: 390px;
+    text-align: left;
+    font-size: 16px;
+    color: #000;
+}
+
+.avta {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.a2 {
+    display: flex;
+    gap: 5px;
+    padding-top: 10px;
+}
+
+.a1 {
+    display: block;
+    padding-top: 5px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.list .active {
+    background: #dee2e6;
+}
+
+@media (max-width: 991.98px) {
+    .menu {
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background: none;
+        position: fixed;
+    }
+
+    .menu.expanded {
+        width: 300px;
+        height: 450px;
+        left: 0;
+        top: -15px;
+        background: #dee2e6;
+    }
+
+    .menu.expanded .list {
+        left: 0;
+    }
+
+    .menu.expanded .a2 {
+        display: flex;
+        gap: 5px;
+    }
+
+    .menu.expanded .a1 {
+        display: block;
+        width: 100%;
+        margin-left: -10px;
+        padding-left: 40px;
+    }
+
+    .menu.expanded .button-nav {
+        left: 230px;
+        top: 0;
+    }
+
+    .menu .user {
+        /* margin-top: 70px; */
+    }
+
+    .menu .list {
+        /* margin-top: 70px; */
+    }
+
+
+    .button-nav {
+        /* top: 11%; */
+        left: 0;
+        position: fixed;
+        transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+    }
+
+    .list {
+        margin-left: 10px;
+    }
+
+    .a2 {
+        margin-left: 10px;
+        width: 200px;
+        padding: 0;
+    }
+
+    .a1 {
+        width: 200px;
+        margin-left: 30px;
+    }
+
+    .user-menu {
+        display: none;
+    }
+
+    .mat-menu {
+        display: block;
+    }
+
+    .navbar .link {
+        margin-left: 0;
+    }
+
+    .navbar .link a {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar .link .border-nav::after,
+    .navbar .link a:not(.border-nav)::after {
+        bottom: 0;
+        width: 150px;
+    }
+
+    .navbar .link a:not(.border-nav)::after {
+        width: 80px;
+    }
+
+    .menu .user {
+        margin-top: 70px;
+    }
+
+    .menu .list {
+        margin-top: 70px;
+    }
+
+    .body .content {
+        margin-left: 120px !important;
+    }
+
+    .body .user li {
+        font-weight: 600;
+    }
+
+    .body .user .avta {
+        width: 50px;
+        height: 50px;
+    }
+}

@@ -123,10 +123,13 @@
                 </div>
                 <div class="detail-icon">
                     <button (click)="Share()">
-                        <img src="public/share.png"/>
+                        <!-- <img src="public/share.png"/> -->
+                        <i class="bi bi-share"></i>
                     </button>
                     <button (click)="isLike()">
-                        <img [src]="like ? yes : no" />
+                        <!-- <img [src]="like ? yes : no" /> -->
+                        <i *ngIf="!like" class="bi bi-suit-heart"></i>
+                        <i *ngIf="like" class="bi bi-suit-heart-fill" style="color: #55B3D9;"></i>
                     </button>
                 </div>
             </div>
@@ -138,17 +141,17 @@
                 <strong>Đặc điểm bất động sản</strong>
                 <div class="item">
                     <img src="public/area.png"/>
-                    <p>Diện tích</p>
+                    <p class="text">Diện tích</p>
                     <p>40m<sup>2</sup></p>
                 </div>
                 <div class="item">
                     <img src="public/bed.png"/>
-                    <p>Số phòng ngủ</p>
+                    <p class="text">Số phòng ngủ</p>
                     <p>3 phòng</p>
                 </div>
                 <div class="item">
                     <img src="public/best-price.png"/>
-                    <p>Mức giá</p>
+                    <p class="text">Mức giá</p>
                     <p>10 triệu/tháng</p>
                 </div>
             </div>

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-navbar-user',
+  templateUrl: './navbar-user.component.html',
+  styleUrl: './navbar-user.component.css'
 })
-export class AppComponent {
-  title = 'VD_material';
+export class NavbarUserComponent {
   start_price=0;
   end_price=50000000;
   start_acreage=0;
@@ -98,21 +97,6 @@ export class AppComponent {
   setAcreageRange(start: number, end: number) {
     this.start_acreage = start;
     this.end_acreage = end;
-  }
-
-  // Amdin
-  isMenuExpanded = false;
-  toggleMenu() {
-    this.isMenuExpanded = !this.isMenuExpanded;
-  }
-
-
-  name_page='';
-  click_page=false;
-  getLinkContent(event: Event) {
-    const target = event.target as HTMLElement;
-    this.name_page = target.textContent?.trim() || '';
-    this.click_page=true;
   }
 
   constructor(){

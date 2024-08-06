@@ -7,77 +7,75 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="logo container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="public/logo.png"/>
-                <strong>CoDat</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="link collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link border-nav" href="#!">Danh sách người dùng</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <div class="notification me-3">
-                        <img src="public/notification_black.png" alt="Notification" style="width: 24px;">
-                        <span class="badge bg-danger">18</span>
-                    </div>
-                    <div class="account d-flex align-items-center">
-                        <p class="mb-0 me-2">Admin</p>
-                        <img src="public/down.png" alt="Dropdown" style="width: 24px;">
-                    </div>
-                </div>
-        </div>
-        </div>
-    </nav>
-
-    <div class="body">
-        <div class="navbar menu navbar-expand-lg navbar-light bg-body-tertiary">
-            <div class="container-fluid">
-                <button class="navbar-toggler" mat-button [matMenuTriggerFor]="menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="public/logo.png"/>
+                    <strong>CoDat</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
-                <div class="collapse navbar-collapse" id="navbarMenu">
-                    <div class="d-flex align-items-center content-menu">
-                        <mat-menu #menu="matMenu" class="custom-mat-menu">
-                                <div class="user d-lg me-3">
-                                    <img src="public/Avatar.png" class="avta" alt="Avatar"/>
-                                    <span class="ms-2">Admin</span>
-                                </div>
-                                <div class="list">
-                                    <p class="a2"><img src="public/list_register.png" alt="List Register"> Quản lý tin đăng</p>
-                                    <a class="a1" href="#">Danh sách bài đăng</a>
-                                    <p class="a2"><img src="public/user.png" alt="User"> Quản lý tài khoản</p>
-                                    <a class="a1" href="#"><span>Danh sách duyệt chủ trọ</span></a> 
-                                    <a class="a1 list-post" href="#">Danh sách người dùng</a>
-                                </div>
-                        </mat-menu>
-                        <div class="user-menu">
-                            <div class="user d-lg me-3">
-                                <img src="public/Avatar.png" class="avta" alt="Avatar"/>
-                                <span class="ms-2">Admin</span>
-                            </div>
-                            <div class="list">
-                                <p class="a2"><img src="public/list_register.png" alt="List Register"> Quản lý tin đăng</p>
-                                <a class="a1" href="#">Danh sách bài đăng</a>
-                                <p class="a2"><img src="public/user.png" alt="User"> Quản lý tài khoản</p>
-                                <a class="a1" href="#"><span>Danh sách duyệt chủ trọ</span></a> 
-                                <a class="a1 list-post" href="#">Danh sách người dùng</a>
-                            </div>
+                <div class="link collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border-nav" href="#!">Danh sách người dùng</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <div class="notification me-3">
+                            <img src="public/notification_black.png" alt="Notification" style="width: 24px;">
+                            <span class="badge bg-danger">18</span>
+                        </div>
+                        <div class="account d-flex align-items-center">
+                            <p class="mb-0 me-2">Admin</p>
+                            <img src="public/down.png" alt="Dropdown" style="width: 24px;">
                         </div>
                     </div>
-                </div>
             </div>
-        </div>
+            </div>
+        </nav>
+    </div> -->
+
+    <div class="body">
+        <!-- <menu class="navbar navbar-expand-lg navbar-light bg-light menu" [class.expanded]="isMenuExpanded">
+            <button class="navbar-toggler button-nav" type="button" (click)="toggleMenu()" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav mr-auto">
+                <a class="user navbar-brand" href="#">
+                    <img src="public/Avatar.png" class="avta" alt="Avatar"/>
+                    <span class="ms-2">Admin</span>
+                </a>
+                <div class="list">
+                    <li class="a2 nav-item">
+                        <a class="nav-link" href="#">
+                        <img src="public/list_register.png" alt="List Register"> Quản lý tin đăng
+                        </a>
+                    </li>
+                    <li class="a1 nav-item">
+                        <a class="nav-link" href="#">Danh sách bài đăng</a>
+                    </li>
+                    <li class="a2 nav-item">
+                        <a class="nav-link" href="#">
+                        <img src="public/user.png" alt="User"> Quản lý tài khoản
+                        </a>
+                    </li>
+                    <li class="a1 nav-item">
+                        <a class="nav-link" href="#">Danh sách duyệt chủ trọ</a>
+                    </li>
+                    <li class="a1 nav-item active">
+                        <a class="nav-link" href="#">Danh sách người dùng</a>
+                    </li>
+                </div>
+            </ul>
+            </div>
+        </menu> -->
         <div class="content">
             <h1>Danh sách người dùng</h1>
             <div class="name-kind">
@@ -87,37 +85,44 @@
                     </p>
                 </div>
             </div>
-            <div class="item-inf" *ngFor="let inf of filteredPosts">
-                <div class="img">
-                    <img src="public/{{inf.avt}}"/>
-                    <p class="status-inf">Trạng thái</p>
-                    <p [ngClass]="inf.status=='active' ? 'active' : 'block'">{{inf.status === 'active' ? 'Đang hoạt động' : 'Đã khoá tài khoản'}}</p>
-                </div>
-                <div class="text">
-                    <div class="item-text">
-                        <img src="public/user-border.png"/>
-                        <p>{{inf.name}}</p>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-12 mb-4" *ngFor="let inf of filteredPosts">
+                    <div class="item-inf">
+                        <div class="img">
+                            <img src="public/{{inf.avt}}"/>
+                            <p class="status-inf">Trạng thái</p>
+                            <p [ngClass]="inf.status=='active' ? 'active' : 'block'">{{inf.status === 'active' ? 'Đang hoạt động' : 'Đã khoá tài khoản'}}</p>
+                        </div>
+                        <div class="text">
+                            <div class="item-text">
+                                <img src="public/user-border.png"/>
+                                <p>{{inf.name}}</p>
+                            </div>
+                            <div class="item-text">
+                                <img src="public/telephone-black.png"/>
+                                <p>{{inf.phone}}</p>
+                            </div>
+                            <div class="item-text">
+                                <img src="public/placeholder.png"/>
+                                <p>{{inf.address}}</p>
+                            </div>
+                            <div class="item-text">
+                                <img src="public/email.png"/>
+                                <p>{{inf.gmail}}</p>
+                            </div>
+                            <button *ngIf="inf.status==='active'" (click)="ChangeStatus(inf.id)">
+                                <p>Khoá tài khoản</p>
+                                <img src="public/padlock.png"/>
+                            </button>
+                            <button *ngIf="inf.status!=='active'" (click)="ChangeStatus(inf.id)">
+                                <p>Mở tài khoản</p>
+                                <img src="public/recycle.png"/>
+                            </button>
+                        </div>
                     </div>
-                    <div class="item-text">
-                        <img src="public/telephone-black.png"/>
-                        <p>{{inf.phone}}</p>
-                    </div>
-                    <div class="item-text">
-                        <img src="public/placeholder.png"/>
-                        <p>{{inf.address}}</p>
-                    </div>
-                    <div class="item-text">
-                        <img src="public/email.png"/>
-                        <p>{{inf.gmail}}</p>
-                    </div>
-                    <button *ngIf="inf.status==='active'">
-                        <p>Khoá tài khoản</p>
-                        <img src="public/padlock.png"/>
-                    </button>
-                    <button *ngIf="inf.status!=='active'">
-                        <p>Mở tài khoản</p>
-                        <img src="public/recycle.png"/>
-                    </button>
                 </div>
             </div>
         </div>
+    </div>
+</body>
+</html>

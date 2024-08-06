@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-uiadmin',
+  templateUrl: './uiadmin.component.html',
+  styleUrl: './uiadmin.component.css'
 })
-export class AppComponent {
+export class UIAdminComponent {
   title = 'VD_material';
   start_price=0;
   end_price=50000000;
