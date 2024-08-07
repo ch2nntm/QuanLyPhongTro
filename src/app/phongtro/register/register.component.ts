@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login/login.service';
+import { RegisterService } from '../../services/register/register.service';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './register.component.css'
 })
 
-export class RegisterComponent {
+export class RegisterComponent{
   isLoggedIn=false;
 
   isEmail=false;
@@ -27,7 +29,7 @@ export class RegisterComponent {
   emaillogin='';
   passwordlogin='';
 
-  constructor(private router: Router){}
+  constructor(private _login: LoginService, private _register: RegisterService, private _router: Router){}
 
   onFocusEmail(){
     this.isEmail = true;
@@ -51,7 +53,7 @@ export class RegisterComponent {
     this.isName = true;
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit (): void {
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
@@ -80,17 +82,62 @@ export class RegisterComponent {
     this.hide = !this.hide;
   }
 
-  buttonLogin(){
-    if(this.emaillogin == 'admin@gmail.com' && this.passwordlogin == '111111'){
-      this.router.navigate(['/uiadmin']);
-      this.isLoggedIn=true;
-    }
-    else if(this.emaillogin == 'user@gmail.com' && this.passwordlogin == '111111'){
-      this.router.navigate(['/uiuser']);
-      this.isLoggedIn=true;
-    }
-    else {
-      alert('Thông tin đăng nhập không chính xác');
+  onSubmit(): void {
+    if (this.emaillogin === '' || this.passwordlogin === '') {
+      alert('Vui lòng điền đầy đủ các trường');
+    } else {
+      this._login.login({ email: this.emaillogin, password: this.passwordlogin })
+        .subscribe(
+          (actor) => {
+            if (actor.roles === 'user') {
+              alert('Bạn đang đăng nhập với tư cách là người dùng');
+              this._router.navigate(['/uiuser'], { queryParams: { name: actor.phone } }); // Điều hướng tới trang User
+              this.isLoggedIn=true;
+            } else if (actor.roles === 'admin') {
+              alert('Bạn đang đăng nhập với tư cách là người quản trị');
+              this._router.navigate(['/uiadmin']); // Điều hướng tới trang Admin
+              this.isLoggedIn=true;
+            } else {
+              alert('Vai trò người dùng không hợp lệ');
+            }
+          },
+          (error) => {
+            console.error('Lỗi đăng nhập:', error);
+            alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin và thử lại.');
+          }
+        );
     }
   }
+  
+  onRegister(): void {
+    if (this.name === '' || this.email === '' || this.phone === '' || this.address === '' || this.password === '') {
+      alert('Vui lòng điền đầy đủ các trường');
+    } else {
+      this._register.register({
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        address: this.address,
+        password: this.password
+      }).subscribe(
+        (actor: { roles: string; }) => {
+          if (actor.roles === 'user') {
+            alert('Đăng ký thành công');
+            this._router.navigate(['/uiuser']); // Điều hướng tới trang User
+          } else if (actor.roles === 'admin') {
+            alert('Đăng ký thành công');
+            this._router.navigate(['/uiadmin']); // Điều hướng tới trang Admin
+          } else {
+            alert('Vai trò người dùng không hợp lệ');
+          }
+        },
+        (error: any) => {
+          console.error('Lỗi đăng ký:', error);
+          alert('Đăng ký thất bại. Vui lòng kiểm tra thông tin và thử lại.');
+        }
+      );
+    }
+  }
+  
+  
 }

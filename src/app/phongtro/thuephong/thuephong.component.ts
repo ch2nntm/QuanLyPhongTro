@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { max } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Post } from '../../models/post/post';
+import { PostsService } from '../../services/post/posts.service';
 
 interface Location {
   Id: string;
@@ -24,7 +26,7 @@ interface Ward {
   templateUrl: './thuephong.component.html',
   styleUrl: './thuephong.component.css'
 })
-export class ThuephongComponent {
+export class ThuephongComponent implements OnInit{
   start_price=0;
   end_price=50000000;
   start_acreage=0;
@@ -38,55 +40,8 @@ export class ThuephongComponent {
   isclick_btnPrice=false;
   isclick_btnFilter=false;
   activeItem: string | null = null;
-  infs=[
-    {
-      'id': 1,
-      'avt': 'Avatar.png',
-      'name':'Trần Văn Dụ',
-      'des':'Quỹ căn cho thuê từ 1PN - 4PN giá rẻ chỉ 2PN giá chỉ 13 tr/tháng LH 0702 272634',
-      'fee': 10,
-      'acreage': 40,
-      'address': 'Cầu giấy, Hà Nội',
-      'img':'pic_rent1.png, pic_rent2.png, pic_rent3.png',
-      'time': '04/03/2024',
-      'phone': '0493948594',
-      'islike': false,
-    },
-    {
-      'id': 2,
-      'avt': 'Avatar.png',
-      'name':'Trần Văn Dụ',
-      'des':'Quỹ căn cho thuê từ 1PN - 4PN giá rẻ chỉ 2PN giá chỉ 13 tr/tháng LH 0702 272634',
-      'fee': 10,
-      'acreage': 40,
-      'address': 'Cầu giấy, Hà Nội',
-      'img':'pic_rent1.png, pic_rent2.png, pic_rent3.png',
-      'time': '02/01/2024',
-      'phone': '0493948594',
-      'islike': true,
-    },
-    {
-      'id': 3,
-      'avt': 'Avatar.png',
-      'name':'Trần Lan',
-      'des':'Quỹ căn cho thuê từ 1PN - 4PN giá rẻ chỉ 2PN giá chỉ 13 tr/tháng LH 0702 272634',
-      'fee': 10,
-      'acreage': 40,
-      'address': 'Cầu giấy, Hà Nội',
-      'img':'pic_rent1.png, pic_rent2.png, pic_rent3.png',
-      'time': '02/01/2025',
-      'phone': '0493948594',
-      'islike': true,
-    }
-  ]
 
-  LikeInf(id: number) {
-    const item = this.infs.find(inf => inf.id === id);
-    if (item) {
-      item.islike = !item.islike;
-    }
-    // console.log("Id " + item?.id + " with like is: " + item?.islike);
-  }
+  infs: Post[] = [];
 
   toggleArrowKind(item: string) {
     const button = document.getElementById('dropdownMenuButton1');
@@ -150,11 +105,13 @@ export class ThuephongComponent {
   setAllPrice(){
     this.start_price=0;
     this.end_price=50000000;
+    this.SearchPrice(this.start_price, this.end_price);
   }
 
   setPriceRange(start: number, end: number) {
     this.start_price = start;
     this.end_price = end;
+    this.SearchPrice(this.start_price, this.end_price);
   }
 
   setAllAcreage(){
@@ -179,16 +136,6 @@ export class ThuephongComponent {
     window.open(`zalo://chat?to=${phoneNumber}`, '_self');
   }
 
-  FilterDate(){
-    this.infs = [...this.infs].sort((a, b) => {
-      const [dayA, monthA, yearA] = a.time.split('/').map(Number);
-      const [dayB, monthB, yearB] = b.time.split('/').map(Number);
-      const dateA = new Date(yearA, monthA - 1, dayA);
-      const dateB = new Date(yearB, monthB - 1, dayB);
-      return dateB.getTime() - dateA.getTime();
-    });
-    console.log(this.infs);
-  }
 
   cities: Location[] = [];
   districts: District[] = [];
@@ -199,10 +146,33 @@ export class ThuephongComponent {
 
   private apiUrl = 'https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private postService: PostsService) {
+    this.listPosts();
+   }
+
+  listPosts(): void {
+    const requestBody = { key: 'value' }; 
+    this.postService.ListPost(requestBody).subscribe(
+      response => {
+        console.log('Response:', response);
+        this.infs=response;
+        const filteredItems = this.infs.filter(item => item.category.name !== 'Tìm người ở chung');
+        this.infs=filteredItems;
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  getFullAddress(address: any): string {
+    const { province, district, ward, detail } = address;
+    return `${district} - ${province}`;
+  }
 
   ngOnInit(): void {
     this.fetchCities();
+    this.listPosts();
   }
 
   fetchCities(): void {
@@ -247,7 +217,29 @@ export class ThuephongComponent {
     this.selectedWard = '';
     this.districts=[];
     this.wards=[];
-
   }
+
+  SearchPrice(start: number, end: number): void {
+    // Tạo requestBody với khoảng giá
+    const requestBody = { startPrice: start, endPrice: end };
+  
+    this.postService.ListPost(requestBody).subscribe(
+      (response: Post[]) => { // Chỉ định kiểu dữ liệu cho response
+        console.log('Response:', response);
+        
+        // Lọc các bài viết theo khoảng giá
+        this.infs = response.filter(item => item.price >= start && item.price <= end);
+  
+        // Nếu cần lọc theo danh mục
+        this.infs = this.infs.filter(item => item.category.name !== 'Tìm người ở chung');
+  
+        // Bạn có thể xử lý thêm dữ liệu ở đây nếu cần
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
+  }
+  
   
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PostBaiDangService } from '../../services/post-bai-dang.service';
 
 @Component({
   selector: 'app-quanlybaidang',
@@ -137,7 +136,7 @@ export class QuanlybaidangComponent implements OnInit{
     this.selectedItem = this.items[0];
   }
 
-  constructor(private postService: PostBaiDangService) {
+  constructor() {
     this.SoLuong();
   }
 
@@ -147,9 +146,7 @@ export class QuanlybaidangComponent implements OnInit{
     this.isMenuExpanded = !this.isMenuExpanded;
   }
 
-  ngOnInit(): void {
-    this.postService.getListPosts().subscribe(console.log);
-  }
+  ngOnInit(): void { }
 
   Delete(item: string) {
     const confirmed = window.confirm('Bạn có chắc chắn muốn xoá bài đăng này không?');

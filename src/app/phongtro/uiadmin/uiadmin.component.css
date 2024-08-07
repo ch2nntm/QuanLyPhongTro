@@ -516,11 +516,11 @@ body{
 
     .menu.expanded .button-nav {
         left: 230px;
-        top: 11%;
+        top: 13%;
     }
 
     .button-nav {
-        top: 11%;
+        top: 13%;
         left: 0;
         position: fixed;
         transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;

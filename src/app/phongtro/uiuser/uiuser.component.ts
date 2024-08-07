@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-uiuser',
   templateUrl: './uiuser.component.html',
   styleUrl: './uiuser.component.css'
 })
-export class UIUserComponent {
+export class UIUserComponent implements OnInit{
   title = 'VD_material';
   start_price=0;
   end_price=50000000;
@@ -20,6 +21,17 @@ export class UIUserComponent {
   isclick_btnPrice=false;
   isclick_btnFilter=false;
   activeItem: string | null = null;
+  name: string='';
+
+  constructor(private route: ActivatedRoute){}
+
+  ngOnInit(): void {
+    var namefull='';
+    this.route.queryParams.subscribe(params => {
+      namefull = params['name'];
+    });
+    this.name = namefull;
+  }
 
   toggleArrowKind(item: string) {
     const button = document.getElementById('dropdownMenuButton1');
@@ -115,6 +127,5 @@ export class UIUserComponent {
     this.click_page=true;
   }
 
-  constructor(){
-  }
+ 
 }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PostBaiDangService } from './post-bai-dang.service';
+import { TokenStoreService } from './token-store.service';
 
-describe('PostBaiDangService', () => {
-  let service: PostBaiDangService;
+describe('TokenStoreService', () => {
+  let service: TokenStoreService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PostBaiDangService);
+    service = TestBed.inject(TokenStoreService);
   });
 
   it('should be created', () => {

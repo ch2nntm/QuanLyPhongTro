@@ -534,6 +534,21 @@ a{
     display: flex;
 }
 
+.content-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.detail {
+flex: 1;
+margin-right: 20px;
+}
+
+.standard {
+width: 300px;
+flex-shrink: 0;
+}
+
 .inf .body .detail .item{
     width: 100%;
     border-radius: 5px;
@@ -664,10 +679,6 @@ a{
 .inf .body .detail .item .content .contact .contact-profile .share img,
 .inf .body .detail .item .content .contact .contact-profile .like img{
     margin-left: -5px;
-}
-
-.standard{
-    margin-left: 30px;
 }
 
 .standard .price,

@@ -6,7 +6,7 @@
 .search {
     width: 60%;
     display: flex;
-    justify-content: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; 
     text-align: center;
 }
 
@@ -104,7 +104,6 @@ a{
 .item:last-child .name{
     display: flex;
     gap:0;
-    text-align: center ;
     padding-left: 20px;
 }
 
@@ -331,7 +330,6 @@ a{
 
 .type .item-value:hover .display-value{
     z-index: 1;
-    height: 310px;
 }
 
 .type .display-value{
@@ -344,6 +342,7 @@ a{
     border: 1px solid #d9d9d9;
     z-index: 1;
     width: 300px;
+    height: 310px;
     position: absolute;
 }
 
@@ -456,22 +455,6 @@ a{
 }
 
 .body-content{
-    margin-top: 200px;
-}
-
-.filter{
-    display: none;
-    margin-left: 90%;
-    margin-top: 250px;
-}
-
-.filter img{
-    float: right;
-    width: 30px;
-    height: 30px;
-}
-
-.body-content{
     margin-top: 480px;
 }
 
@@ -485,6 +468,27 @@ a{
     padding-bottom: 20px;
 }
 
+.custom-label1{
+    width: 100px;
+    margin-left: -80px;
+}
+
+.custom-label2{
+    width: 200px;
+    margin-left: -20px;
+}
+
+.filter{
+    display: none;
+    margin-left: 90%;
+}
+
+.filter img{
+    float: right;
+    width: 30px;
+    height: 30px;
+}
+
 .inf{
     margin-left: 5%;
     margin-right: 5%;
@@ -494,7 +498,6 @@ a{
 .inf .filter{
     display: flex;
     margin-left: 0;
-    /* width: 150px; */
 }
 
 .inf .filter p{
@@ -503,6 +506,7 @@ a{
 
 .inf .filter p:first-child{
     color: #747474;
+    width: 80px;
 }
 
 .inf h1{
@@ -528,6 +532,21 @@ a{
 
 .inf .body{
     display: flex;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.detail {
+flex: 1;
+margin-right: 20px;
+}
+
+.standard {
+width: 300px;
+flex-shrink: 0;
 }
 
 .inf .body .detail .item{
@@ -565,7 +584,7 @@ a{
 
 .inf .body .detail .item .content{
     margin-left: 5%;
-    margin-right: 2%;
+    margin-right: 5%;
 }
 
 .inf .body .detail .item .content .intro .intro-inf{
@@ -587,13 +606,13 @@ a{
 .inf .body .detail .item .content .contact{
     display: flex;
     justify-content: space-between;
-    /* margin-right: 20px; */
+    margin-right: 20px;
 }
 
 .inf .body .detail .item .content .contact .contact-profile{
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
 }
 
 .inf .body .detail .item .content .contact .contact-profile:last-child{
@@ -601,7 +620,7 @@ a{
 }
 
 .inf .body .detail .item .content .contact .contact-profile .name{
-    margin-left: 5px;
+    margin-left: 0px;
 }
 
 .inf .body .detail .item .content .contact .contact-profile .avt img{
@@ -626,7 +645,6 @@ a{
     width: 10%;
     display: flex;
 }
-
 
 .inf .body .detail .item .content .contact .contact-profile .phone,
 .inf .body .detail .item .content .contact .contact-profile .zalo:hover{
@@ -661,10 +679,6 @@ a{
 .inf .body .detail .item .content .contact .contact-profile .share img,
 .inf .body .detail .item .content .contact .contact-profile .like img{
     margin-left: -5px;
-}
-
-.standard{
-    margin-left: 30px;
 }
 
 .standard .price,
@@ -754,7 +768,7 @@ footer img{
     .body-content{
         margin-top: 0;
     }
-    
+
     .icon .name:hover .display{
         display: none;
     }
