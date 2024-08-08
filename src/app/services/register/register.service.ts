@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { ApiService } from '../api.service';
 import { TokenStoreService } from '../token-store.service';
 
@@ -25,6 +25,7 @@ export class RegisterService {
       address: credential.address
     }).pipe(
       map((response: any) => {
+        console.log('API Response:', response); // Kiểm tra phản hồi từ API
         if (response && response.token && response.user) {
           const actor = response.user; // Lấy thông tin người dùng từ phản hồi
           if (actor.roles === 'user' || actor.roles === 'admin') {
@@ -38,9 +39,14 @@ export class RegisterService {
         } else {
           throw new Error('Thông tin đăng ký không hợp lệ');
         }
+      }),
+      catchError(error => {
+        console.error('Registration Error:', error);
+        return throwError(error);
       })
     );
   }
+  
   
   
 }

@@ -99,6 +99,7 @@ export class TimoghepComponent {
     
     if (this.searchTypeHome === "Tất cả") {
       this.listPosts();
+      
     } else {
       this.postService.ListPost(requestBody).subscribe(
         (response: Post[]) => {
@@ -108,7 +109,7 @@ export class TimoghepComponent {
           this.infs = response.filter(item => item.category.name === this.searchTypeHome);
 
           // Lọc các bài viết theo danh mục
-          this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
+          //this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
         },
         error => {
           console.error('Error:', error);
@@ -117,8 +118,9 @@ export class TimoghepComponent {
     }
   }
 
-  Reset_TypeHome(){
+  ResetTypeHome(){
     this.searchTypeHome='Tất cả';
+    this.listPosts();
   }
 
   setAllPrice(){
@@ -247,14 +249,8 @@ export class TimoghepComponent {
     this.postService.ListPost(requestBody).subscribe(
       (response: Post[]) => { // Chỉ định kiểu dữ liệu cho response
         console.log('Response:', response);
-        
-        // Lọc các bài viết theo khoảng giá
         this.infs = response.filter(item => item.price >= start && item.price <= end);
-  
-        // Nếu cần lọc theo danh mục
-        this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
-  
-        // Bạn có thể xử lý thêm dữ liệu ở đây nếu cần
+        //this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
       },
       error => {
         console.error('Error:', error);
@@ -267,16 +263,10 @@ export class TimoghepComponent {
     const requestBody = { startAcreage: start, endAcreage: end };
   
     this.postService.ListPost(requestBody).subscribe(
-      (response: Post[]) => { // Chỉ định kiểu dữ liệu cho response
+      (response: Post[]) => { 
         console.log('Response:', response);
-        
-        // Lọc các bài viết theo khoảng giá
         this.infs = response.filter(item => item.acreage >= start && item.acreage <= end);
-  
-        // Nếu cần lọc theo danh mục
-        this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
-  
-        // Bạn có thể xử lý thêm dữ liệu ở đây nếu cần
+        //this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
       },
       error => {
         console.error('Error:', error);

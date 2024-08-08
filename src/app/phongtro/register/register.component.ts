@@ -29,7 +29,7 @@ export class RegisterComponent{
   emaillogin='';
   passwordlogin='';
 
-  constructor(private _login: LoginService, private _register: RegisterService, private _router: Router){}
+  constructor(private fb: FormBuilder, private _login: LoginService, private _register: RegisterService, private _router: Router){}
 
   onFocusEmail(){
     this.isEmail = true;
@@ -91,7 +91,7 @@ export class RegisterComponent{
           (actor) => {
             if (actor.roles === 'user') {
               alert('Bạn đang đăng nhập với tư cách là người dùng');
-              this._router.navigate(['/uiuser'], { queryParams: { name: actor.phone } }); // Điều hướng tới trang User
+              this._router.navigate(['/uiuser'], { queryParams: { name: actor.name } }); // Điều hướng tới trang User
               this.isLoggedIn=true;
             } else if (actor.roles === 'admin') {
               alert('Bạn đang đăng nhập với tư cách là người quản trị');
@@ -109,35 +109,25 @@ export class RegisterComponent{
     }
   }
   
-  onRegister(): void {
-    if (this.name === '' || this.email === '' || this.phone === '' || this.address === '' || this.password === '') {
-      alert('Vui lòng điền đầy đủ các trường');
-    } else {
-      this._register.register({
-        name: this.name,
-        email: this.email,
-        phone: this.phone,
-        address: this.address,
-        password: this.password
-      }).subscribe(
-        (actor: { roles: string; }) => {
-          if (actor.roles === 'user') {
-            alert('Đăng ký thành công');
-            this._router.navigate(['/uiuser']); // Điều hướng tới trang User
-          } else if (actor.roles === 'admin') {
-            alert('Đăng ký thành công');
-            this._router.navigate(['/uiadmin']); // Điều hướng tới trang Admin
-          } else {
-            alert('Vai trò người dùng không hợp lệ');
-          }
+  registerForm: FormGroup | undefined;
+  onRegister() {
+    this.registerForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10,11}$/)]],
+      address: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+    if (this.registerForm.valid) {
+      this._register.register(this.registerForm.value).subscribe(
+        response => {
+          console.log('Register successful', response);
         },
-        (error: any) => {
-          console.error('Lỗi đăng ký:', error);
-          alert('Đăng ký thất bại. Vui lòng kiểm tra thông tin và thử lại.');
+        error => {
+          console.error('Register error', error);
         }
       );
     }
   }
-  
   
 }

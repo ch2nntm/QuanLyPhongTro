@@ -34,6 +34,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UIUserComponent } from './phongtro/uiuser/uiuser.component';
 import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ChangePasswordContentComponent } from './phongtro/change-password-content/change-password-content.component';
+import { EditPostComponent } from './phongtro/edit-post/edit-post.component';
+import { EditProfileContentComponent } from './phongtro/edit-profile-content/edit-profile-content.component';
+import { FindRoommateComponent } from './phongtro/find-roommate/find-roommate.component';
+import { NavbarComponent } from './phongtro/navbar/navbar.component';
+import { NewListContentComponent } from './phongtro/new-list-content/new-list-content.component';
+import { NewsComponent } from './phongtro/news/news.component';
+import { EditUserComponent } from './phongtro/edit-user/edit-user.component';
+import { RegisterOwnerContentComponent } from './phongtro/register-owner-content/register-owner-content.component';
 
 
 @NgModule({
@@ -57,7 +66,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MenuComponent,
     NavbarUserComponent,
     UIUserComponent,
-    UIAdminComponent
+    UIAdminComponent,
+    ChangePasswordContentComponent,
+    EditPostComponent,
+    EditProfileContentComponent,
+    FindRoommateComponent,
+    NavbarComponent,
+    NewListContentComponent,
+    NewsComponent,
+    EditUserComponent,
+    RegisterOwnerContentComponent
   ],
   imports: [
     BrowserModule,

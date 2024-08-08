@@ -1,267 +1,83 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="public/logo.png"/>
-            <strong>CoDat</strong>
-        </div>
-        <div class="link">
-            <a href="#!">Trang chủ</a>
-            <a href="#!">Cho thuê phòng trọ</a>
-            <a href="#!">Tìm người ở ghép</a>
-        </div>
-        <div class="button">
-            <button>Đăng nhập</button>
-            <button>Đăng ký</button>
-            <button class="upload">Đăng tin</button>
-        </div>
-    </nav> -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <title>Document</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="logo container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="public/logo.png"/>
-                    <strong>CoDat</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="link collapse navbar-collapse" id="navbar">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link border-nav" href="#!">Trang chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!">Cho thuê phòng trọ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!">Tìm người ở ghép</a>
-                        </li>
-                    </ul>
-                    <div class="button">
-                        <button>Đăng nhập</button>
-                        <button>Đăng ký</button>
-                        <button class="upload">Đăng tin</button>
-                        <!-- <div class="notification me-3">
-                            <img src="public/notification_black.png" alt="Notification" style="width: 24px;">
-                            <span class="badge bg-danger">18</span>
-                        </div>
-                        <div class="account d-flex align-items-center">
-                            <p class="mb-0 me-2">Admin</p>
-                            <img src="public/down.png" alt="Dropdown" style="width: 24px;">
-                        </div> -->
-                    </div>
-            </div>
-            </div>
-        </nav>
-    <div class="background">
-        <img src="public/social.png"/>
-        <div class="bg-button">
-            <p class="des">“Mạng xã hội” phòng trọ lớn nhất Việt Nam</p>
-            <p class="search">Tìm trọ nhanh chóng, đơn giản, an toàn, không phát sinh chi phí</p>
-            <button>Tham gia ngay</button>
+<app-navbar></app-navbar>
+<div class="body">
+    <div class="image-container">
+        <img src="public/bg.jpg" class="img-fluid full-screen-image" alt="...">
+        <div class="overlay"></div>
+        <div class="centered-content">
+        <h1>“Mạng xã hội” phòng trọ lớn nhất Việt Nam</h1>
+        <h3>Tìm trọ nhanh chóng, đơn giản, an toàn, không phát sinh chi phí</h3>
+        <button type="button" class="btn btn-secondary btn1">Tham gia ngay</button>
         </div>
     </div>
-
-    <div class="room">
-        <p>Phòng trọ dành cho bạn</p>
-        <div class="detail">
-            <div class="item">
-                <img src="public/room.png"/>
-                <p class="des">CHO THUÊ CĂN HỘ VINHOMES 4 PHÒNG NGỦ</p>
-                <div class="price">
-                    <p>18 triệu/tháng </p>
-                    <p>86m<sup>2</sup></p>
-                </div>
-                <div class="address">
-                    <img src="public/placeholder.png"/>
-                    <p>Bình Thạnh, Hồ Chí Minh</p>
-                </div>
-                <div class="time">
-                    <p>Hôm nay</p>
-                    <img src="public/heart_black.png"/>
-                </div>
+    <div class="u-room">
+        <h2> Phòng trọ dành cho bạn</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let card of cards">
+        <div class="card h-100 w-100">
+            <img [src]="card.imageUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{ card.title }}</h5>
+            <div class="row g-2">
+                <h6 class="col-5 col-md-7 card-text text_custom">{{ card.price }}</h6>
+                <h6 class="col-3 col-md-3 card-text text_custom">{{ card.size }}</h6>
             </div>
-            <div class="item">
-                <img src="public/room.png"/>
-                <p class="des">CHO THUÊ CĂN HỘ VINHOMES 4 PHÒNG NGỦ</p>
-                <div class="price">
-                    <p>18 triệu/tháng </p>
-                    <p>86m<sup>2</sup></p>
-                </div>
-                <div class="address">
-                    <img src="public/placeholder.png"/>
-                    <p>Bình Thạnh, Hồ Chí Minh</p>
-                </div>
-                <div class="time">
-                    <p>Hôm nay</p>
-                    <img src="public/heart_black.png"/>
-                </div>
+            <p class="card-text"><i class="bi bi-geo-alt"></i> {{card.address}}</p>
+            <div class="row g-2 ">
+            <small class="text-body-secondary col-5 col-md-10">{{ card.lastUpdated }}</small>
+            <i class="bi bi-heart col-5 col-md-2 d-flex justify-content-end "></i>
             </div>
-            <div class="item">
-                <img src="public/room.png"/>
-                <p class="des">CHO THUÊ CĂN HỘ VINHOMES 4 PHÒNG NGỦ</p>
-                <div class="price">
-                    <p>18 triệu/tháng </p>
-                    <p>86m<sup>2</sup></p>
-                </div>
-                <div class="address">
-                    <img src="public/placeholder.png"/>
-                    <p>Bình Thạnh, Hồ Chí Minh</p>
-                </div>
-                <div class="time">
-                    <p>Hôm nay</p>
-                    <img src="public/heart_black.png"/>
-                </div>
-            </div>
-            <div class="item">
-                <img src="public/room.png"/>
-                <p class="des">CHO THUÊ CĂN HỘ VINHOMES 4 PHÒNG NGỦ</p>
-                <div class="price">
-                    <p>18 triệu/tháng </p>
-                    <p>86m<sup>2</sup></p>
-                </div>
-                <div class="address">
-                    <img src="public/placeholder.png"/>
-                    <p>Bình Thạnh, Hồ Chí Minh</p>
-                </div>
-                <div class="time">
-                    <p>Hôm nay</p>
-                    <img src="public/heart_black.png"/>
-                </div>
-            </div>
-            <div class="item">
-                <img src="public/room.png"/>
-                <p class="des">CHO THUÊ CĂN HỘ VINHOMES 4 PHÒNG NGỦ</p>
-                <div class="price">
-                    <p>18 triệu/tháng </p>
-                    <p>86m<sup>2</sup></p>
-                </div>
-                <div class="address">
-                    <img src="public/placeholder.png"/>
-                    <p>Bình Thạnh, Hồ Chí Minh</p>
-                </div>
-                <div class="time">
-                    <p>Hôm nay</p>
-                    <img src="public/heart_black.png"/>
-                </div>
-            </div>
-            <div class="item">
-                <img src="public/room.png"/>
-                <p class="des">CHO THUÊ CĂN HỘ VINHOMES 4 PHÒNG NGỦ</p>
-                <div class="price">
-                    <p>18 triệu/tháng </p>
-                    <p>86m<sup>2</sup></p>
-                </div>
-                <div class="address">
-                    <img src="public/placeholder.png"/>
-                    <p>Bình Thạnh, Hồ Chí Minh</p>
-                </div>
-                <div class="time">
-                    <p>Hôm nay</p>
-                    <img src="public/heart_black.png"/>
-                </div>
             </div>
         </div>
-        <div class="more">
-            <button>
-                <p>Xem thêm</p>
-                <img src="public/down.png"/>
-            </button>
         </div>
     </div>
-
-    <div class="hot-address">
-        <p>Các địa điểm nóng</p>
-        <div class="detail">
-            <div class="item">
-                <img src="public/Danang-1.png"/>
-                <div class="inf">
-                    <p>Đà Nẵng</p>
-                    <p>12.000 tin đăng</p>
-                </div>
-            </div>
-            <div class="item">
-                <img src="public/Danang-2.png"/>
-            </div>
-            <div class="item">
-                <img src="public/Danang-3.png"/>
-            </div>
-        </div>
+    <div class="text-center mt-4">
+        <button type="button" class="btn btn-secondary btn2">Xem thêm <i class="bi bi-chevron-right icon4"></i></button>
     </div>
-
-    <div class="service">
-        <p>Chúng tôi cung cấp các dịch vụ</p>
-        <div class="detail">
-            <div class="item">
-                <div class="img">
-                    <img src="public/rent.png"/>
-                </div>
-                <p>Cập nhật thường xuyên và đầy đủ các loại hình như: thuê phòng trọ, nhà riêng, thuê biệt thư, văn phòng, kho xưởng hay thuê mặt bằng kinh doanh giúp bạn nhanh chóng tìm được bất động sản ưng ý.</p>
-            </div>
-            <div class="item">
-                <div class="img">
-                    <img src="public/match.png"/>
-                </div>
-                <p>Tìm người thuê chung nhanh hơn bằng cách đăng tải bài viết trên chính trang web</p>
-            </div>
-            <div class="item">
-                <div class="img">
-                    <img src="public/appraisal.png"/>
-                </div>
-                <p>Các bình luận đánh giá tổng quan cung cấp góc nhìn khách quan của người đã thuê về nơi thuê bạn quan tâm, giúp bạn đưa ra quyết định đúng đắn cho nơi sắp thuê</p>
-            </div>
-        </div>
     </div>
-
-    <footer class="footer">
-        <div class="inf">
-            <div class="logo">
-                <img src="public/logo.png"/>
-                <p>CoDat</p>
+    <div class="hot-local">
+    <h2>Các địa điểm nóng</h2>
+    <div class="row gr-img">
+        <div class="col-4 col-md-4 position-relative">
+        <img src="public/bg.jpg" class="img-fluid rounded-image" alt="...">
+        <div class="overlay">
+            <p class="text">Đà Nẵng</p>
+            <h2>12.453 tin đăng</h2>
+        </div>
+        </div>
+        <div class="col-4 col-md-4 position-relative">
+        <img src="public/bg.jpg" class="img-fluid rounded-image" alt="...">
+        <div class="overlay ">
+            <p class="text">HCM</p>
+            <h2>12.453 tin đăng</h2>
+        </div>
+        </div>
+        <div class="col-4 col-md-4 position-relative">
+        <img src="public/bg.jpg" class="img-fluid rounded-image" alt="...">
+        <div class="overlay">
+            <p class="text">Hà Nội</p>
+            <h2>12.453 tin đăng</h2>
+        </div>
+        </div>
+    </div> 
+    </div>
+    <div class="row  product ">
+        <h2>Chúng tôi cung cấp các dịch vụ</h2>
+        <div class="container">
+        <div class="row g-4">
+            <div class="card1 col-12 col-md-4 text-center">
+            <img class="custom img-fluid" src="public/rent.png" alt="">
+            <p>Cập nhật thường xuyên và đầy đủ các loại hình như: thuê phòng trọ, nhà nguyên căn, căn hộ mini giúp bạn nhanh chóng tìm được bất động sản ưng ý.</p>
             </div>
-            <p class="name">CÔNG TY CỔ PHẦN PROPERTYGURU VIỆT NAM</p>
-            <p class="address">Tầng 31, Keangnam Hanoi Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội</p>
-            <p class="phone">(024) 3562 5939 - (024) 3562 5940</p>
-            <div class="link">
-                <img src="public/fb_black.png"/>
-                <img src="public/ins_black.png"/>
-                <img src="public/youtube_black.png"/>
-                <img src="public/in_black.png"/>
+            <div class="card1 col-12 col-md-4 text-center">
+            <img class="custom img-fluid" src="public/match.png" alt="">
+            <p>Tìm người thuê chung nhanh hơn bằng cách đăng tải bài viết trên chính trang web. Giúp bạn tiết kiệm giá nhà thuê, mang lại sự tiện lợi khi ở chung.</p>
+            </div>
+            <div class="card1 col-12 col-md-4 text-center">
+            <img class="custom img-fluid" src="public/appraisal.png" alt="">
+            <p>Tìm kiếm nhanh chóng, chính xác với giá thành hợp lý và tiết kiệm nhất. Kết nối trực tiếp với chủ nhà hoặc môi giới thông qua Zalo, hoặc cuộc gọi trực tiếp.</p>
             </div>
         </div>
-        <div class="ins-reg">
-            <div class="instruct">
-                <p>HƯỚNG DẪN</p>
-                <a href="#!">Về chúng tôi</a>
-                <a href="#!">Báo giá & hỗ trợ</a>
-                <a href="#!">Câu hỏi thường gặp</a>
-                <a href="#!">Góp ý báo lỗi</a>
-                <a href="#!">Sitemap</a>
-            </div>
-            <div class="regulation">
-                <p>QUY ĐỊNH</p>
-                <a href="#!">Quy định đăng tin</a>
-                <a href="#!">Quy chế hoạt động</a>
-                <a href="#!">Điều khoản thỏa thuận</a>
-                <a href="#!">Chính sách bảo mật</a>
-                <a href="#!">Giải quyết khiếu nại</a>
-            </div>
         </div>
-    </footer>
-</body>
-</html>
+        
+    </div>
+</div>

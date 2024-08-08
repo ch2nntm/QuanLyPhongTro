@@ -20,7 +20,6 @@ export class ApiService {
 
   getTypeRequest2(endpoint: string, body: any): Observable<any> {
     const url = `${this.baseUrl}${endpoint}`;
-    console.log('Calling URL:', url);
     return this._http.post<any>(url, body);
   }
   

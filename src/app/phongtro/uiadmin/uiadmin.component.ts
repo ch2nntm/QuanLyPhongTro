@@ -115,6 +115,11 @@ export class UIAdminComponent {
     this.click_page=true;
   }
 
+  isclickHome=false;
+  clickHome(){
+    this.isclickHome=true;
+  }
+
   constructor(){
   }
 }
