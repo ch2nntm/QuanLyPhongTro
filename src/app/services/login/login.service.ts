@@ -22,7 +22,7 @@ export class LoginService{
     }).pipe(
       map((response: any) => {
         if (response && response.token && response.user) {
-          const actor = response.user; // Lấy thông tin người dùng từ phản hồi
+          const actor = response.user;
           if (actor.roles === 'user' || actor.roles === 'admin') {
             this._token.setToken(response.token);
             this._token.setUser(actor);

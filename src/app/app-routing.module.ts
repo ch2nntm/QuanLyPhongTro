@@ -15,6 +15,7 @@ import { EditProfileContentComponent } from './phongtro/edit-profile-content/edi
 import { FindRoommateComponent } from './phongtro/find-roommate/find-roommate.component';
 import { NewListContentComponent } from './phongtro/new-list-content/new-list-content.component';
 import { RegisterOwnerContentComponent } from './phongtro/register-owner-content/register-owner-content.component';
+import { HomepageComponent } from './phongtro/homepage/homepage.component';
 
 const routes: Routes = [
   { path: 'uiuser', component: UIUserComponent, children:[
@@ -39,7 +40,13 @@ const routes: Routes = [
     { path: 'quanlybaidang', component: QuanlybaidangComponent},
     { path: 'danhsachduyetchutro', component: DuyetdonlamchutroComponent},
     { path: 'homepage', component: HomepagemainComponent}
-  ]}
+  ]},
+  { path: 'post-for-roommate', component: FindRoommateComponent },
+  { path: 'news-list', component: NewListContentComponent },
+  { path: 'edit-profile', component: EditProfileContentComponent },
+  { path: 'change-password', component: ChangePasswordContentComponent },
+  { path: 'register-owner', component: RegisterOwnerContentComponent },
+  { path: 'home', component: HomepageComponent },
 ];
 
 @NgModule({

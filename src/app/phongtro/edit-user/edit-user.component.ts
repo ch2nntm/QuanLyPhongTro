@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
@@ -9,15 +10,21 @@ import { filter } from 'rxjs';
 })
 export class EditUserComponent {
   showMenu: boolean = true;
+  name: string='';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.checkUrl(event.urlAfterRedirects);
     });
+    var namefull='';
+    this.route.queryParams.subscribe(params => {
+      namefull = params['name'];
+    });
+    this.name = namefull;
   }
 
   checkUrl(url: string) {
