@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+<body>
+    <div class="body">
+        <div class="content">
+            <h1>Danh sách duyệt</h1>
+            <table>
+                <tr>
+                    <td>
+                        Avatar
+                    </td>
+                    <td>
+                        Họ Tên
+                    </td>
+                    <td>
+                        Ngày đăng kí
+                    </td>
+                </tr>
+                <tr class="inf-seperate" *ngFor="let inf of infs" (click)="DetailInf(inf)">
+                    <td>
+                        <img src="public/{{inf.avt}}"/>
+                    </td>
+                    <td class="name">
+                        {{inf.name}}
+                    </td>
+                    <td>
+                        {{inf.date}}
+                    </td>
+                </tr>
+            </table>
+            <div class="detail" *ngIf="isClickItem && infChild.id">
+                <button class="close" (click)="CloseDetail()">
+                    <img src="public/close.png"/>
+                </button>
+                <h1>Thông tin chi tiết</h1>
+                <div class="contact">
+                    <div class="img-contact">
+                        <p>Ảnh chân dung</p>
+                        <img src="public/{{infChild.avt}}"/>
+                    </div>
+                    <div class="text-contact">
+                        <div class="text-child">
+                            <label>Họ và tên </label>
+                            <input type="text" value="{{infChild.name}}" readonly/>
+                        </div>
+                        <div class="text-child">
+                            <label>Số điện thoai </label>
+                            <input type="tel" value="{{infChild.phone}}" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="id-user">
+                    <p>Ảnh chụp CCCD và chân dung cầm thẻ CCCD </p>
+                    <div class="img-cccd">
+                        <div *ngFor="let img of images.slice(0, 3)">
+                            <img src="public/{{img}}"/>
+                        </div>
+                    </div>
+                    <button *ngIf="quatityImg > 3" class="img-next" (click)="ChangeImg()">
+                        <img class="next" src="public/right-arrow-grey.png"/>
+                    </button>
+                </div>
+                <div class="button-nav">
+                    <button class="refuse" (click)="BtnRefuse()">
+                        <p>Từ chối</p>
+                        <img src="public/down-white.png"/>
+                    </button>
+                    <button class="broswer">
+                        <p>Duyệt</p>
+                    </button>
+                </div>
+                <div *ngIf="isRefuse" class="detail-refuse">
+                    <button (click)="RefuseItem(infChild.id)">Hình ảnh không đạt chất lượng</button>
+                    <button (click)="RefuseItem(infChild.id)">Hình ảnh, thông tin không đúng</button>
+                    <button (click)="RefuseItem(infChild.id)">Lý do khác vui lòng liên hệ 0374653656 để được tư vấn</button>
+                </div>
+            </div>
+        </div>
+    </div>

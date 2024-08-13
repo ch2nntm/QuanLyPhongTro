@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header-contain">
+            <div class="search mt-4">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio1" >Cho thuê</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">Tìm người ở ghép</label>
+                </div> 
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" type="button">
+                        <img src="public/search.png"/>
+                    </button>
+                </form> 
+            </div>
+            <div class="type">
+                <div class="item">
+                    <div class="name">
+                        <a class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle1': activeItem == 'kind'}"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrowKind('kind')">
+                            Loại nhà
+                        </a>
+                    </div>
+                    <div *ngIf="isClickBtnKind && activeItem === 'kind'" class="display">
+                        <div class="group">
+                            <img src="public/city-1.png"/>
+                            <p>Tất cả nhà đất</p>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Tất cả" (click)="UpdateTypeHome($event)"/>
+                        </div>
+                        <div class="group">
+                            <img src="public/city-2.png"/>
+                            <p>Phòng trọ, Nhà trọ</p>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Phòng trọ, Nhà trọ" (click)="UpdateTypeHome($event)"/>
+                        </div>
+                        <div class="group">
+                            <img src="public/city-3.png"/>
+                            <p>Nhà thuê nguyên căn</p>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Nhà thuê nguyên căn" (click)="UpdateTypeHome($event)"/>
+                        </div>
+                        <div class="group">
+                            <img src="public/city-4.png"/>
+                            <p>Căn hộ mini</p>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Căn hộ mini" (click)="UpdateTypeHome($event)"/>
+                        </div>
+                        <div class="reset">
+                            <button class="reset-children" (click)="ResetTypeHome()">
+                                <img src="public/recycle.png"/>
+                                <p>Đặt lại</p>
+                            </button>
+                            <button class="reset-children" (click)="SearchTypeHome($event)">
+                                <img src="public/search_white.png"/>
+                                <p>Tìm kiếm</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-address">
+                    <div class="name">
+                        <a class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle2': activeItem == 'address'}" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrowAddress('address')">
+                            Khu vực
+                        </a>
+                    </div>
+                    <div *ngIf="isClickBtnAddress && activeItem === 'address'" class="display-address">
+                        <div class="province">
+                            <img src="public/right-arrow.png"/>
+                            <select [(ngModel)]="selectedCity" (change)="OnCityChange($event)">
+                                <option value="" selected>Chọn tỉnh thành</option>
+                                <option *ngFor="let city of cities" [value]="city.Id">{{ city.Name }}</option>
+                              </select>
+                        </div>
+                        <div class="district">
+                            <img src="public/right-arrow.png"/>
+                            <select [(ngModel)]="selectedDistrict" (change)="OnDistrictChange($event)">
+                                <option value="" selected>Chọn quận huyện</option>
+                                <option *ngFor="let district of districts" [value]="district.Id">{{ district.Name }}</option>
+                              </select>
+                        </div>
+                        <div class="commune">
+                            <img src="public/right-arrow.png"/>
+                            <select [(ngModel)]="selectedWard">
+                                <option value="" selected>Chọn phường xã</option>
+                                <option *ngFor="let ward of wards" [value]="ward.Id">{{ ward.Name }}</option>
+                              </select>
+                        </div>
+                        <div class="reset">
+                            <button class="reset-children" (click)="ResetAddress()">
+                                <img src="public/recycle.png"/>
+                                <p>Đặt lại</p>
+                            </button>
+                            <button class="reset-children">
+                                <img src="public/search_white.png"/>
+                                <p>Tìm kiếm</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-value">
+                    <div class="name">
+                        <a class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle3': activeItem == 'acreage'}" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrowAcreage('acreage')">
+                            Diện tích
+                        </a>
+                    </div>
+                    <div *ngIf="isClickBtnAcreage && activeItem === 'acreage'" class="display-value">
+                        <div class="value">
+                            <div class="start">
+                                <p>{{startAcreage}}</p>
+                            </div>
+                            <div class="img">
+                                <img src="public/arrow-right.png"/>
+                            </div>
+                            <div class="end">
+                                <p>{{endAcreage}}</p>
+                            </div>
+                        </div>
+                        <mat-slider smin="0" max="150" step="5">
+                            <input matSliderStartThumb [(ngModel)]="startAcreage">
+                            <input matSliderEndThumb [(ngModel)]="endAcreage">
+                            </mat-slider>
+                        <div class="all">
+                            <button (click)="SetAllAcreage()">Tất cả diện tích</button>
+                            <button (click)="SetAcreageRange(0, 20)">Dưới 20m<sup>2</sup></button>
+                            <button (click)="SetAcreageRange(20, 30)">Từ 20m<sup>2</sup> - 30m<sup>2</sup></button>
+                            <button (click)="SetAcreageRange(30, 50)">Từ 30m<sup>2</sup> - 50m<sup>2</sup></button>
+                            <button (click)="SetAcreageRange(50, 70)">Từ 50m<sup>2</sup> - 70m<sup>2</sup></button>
+                            <button (click)="SetAcreageRange(70, 100)">Từ 70m<sup>2</sup> - 100m<sup>2</sup></button>
+                            <button (click)="SetAcreageRange(100, 150)">Từ 100m<sup>2</sup> trở lên</button>
+                        </div>
+                        <div class="reset">
+                            <button class="reset-children" (click)="SetAllAcreage()">
+                            <img src="public/recycle.png"/>
+                            <p>Đặt lại</p>
+                            </button>
+                            <div class="reset-children">
+                                <img src="public/search_white.png"/>
+                                <p>Tìm kiếm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-value">
+                    <div class="name">
+                        <a class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle4': activeItem == 'price'}" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrowPrice('price')">
+                            Mức giá
+                        </a>
+                    </div>
+                    <div *ngIf="isClickBtnPrice && activeItem === 'price'" class="display-value">
+                        <div class="value">
+                            <div class="start">
+                                <p>{{startPrice}}</p>
+                            </div>
+                            <div class="img">
+                                <img src="public/arrow-right.png"/>
+                            </div>
+                            <div class="end">
+                                <p>{{endPrice}}</p>
+                            </div>
+                        </div>
+                        <mat-slider smin="0" max="50000000" step="200000">
+                            <input matSliderStartThumb [(ngModel)]="startPrice">
+                            <input matSliderEndThumb [(ngModel)]="endPrice">
+                            </mat-slider>
+                        <div class="all">
+                            <button (click)="SetAllPrice()">Tất cả giá thành</button>
+                            <button (click)="SetPriceRange(0, 1000000)">Dưới 1 triệu</button>
+                            <button (click)="SetPriceRange(1000000, 2000000)">1 triệu - 2 triệu đồng</button>
+                            <button (click)="SetPriceRange(2000000, 3000000)">2 triệu - 3 triệu đồng</button>
+                            <button (click)="SetPriceRange(3000000, 5000000)">3 triệu - 5 triệu đồng</button>
+                            <button (click)="SetPriceRange(5000000, 7000000)">5 triệu - 7 triệu đồng</button>
+                            <button (click)="SetPriceRange(7000000, 10000000)">7 triệu - 10 triệu đồng</button>
+                            <button (click)="SetPriceRange(10000000, 50000000)">Từ 10 triệu trở lên</button>
+                        </div>
+                        <div class="reset">
+                            <button class="reset-children" (click)="SetAllPrice()">
+                                <img src="public/recycle.png"/>
+                                <p>Đặt lại</p>
+                            </button>
+                            <div class="reset-children">
+                                <img src="public/search_white.png"/>
+                                <p>Tìm kiếm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name">
+                        <i class="bi bi-funnel-fill"></i>
+                        <a class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle5': activeItem == 'filter'}" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrowFilter('filter')">
+                            Lọc thêm
+                        </a>
+                    </div>
+                    <div *ngIf="isClickBtnFilter && activeItem === 'filter'" class="display">
+                        <div class="kind">
+                            <p>Loại tin đăng</p>
+                            <button>Đã xác thực</button>
+                        </div>
+                        <div class="bedroom">
+                            <p>Số phòng ngủ</p>
+                            <div class="quatity">
+                                <button>1</button>
+                                <button>2</button>
+                                <button>3</button>
+                                <button>4</button>
+                                <button>5+</button>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p>Nội dung tin có</p>
+                            <div class="button">
+                                <button>Hình ảnh</button>
+                                <button>Video</button>
+                            </div>
+                        </div>
+                        <div class="reset">
+                            <div class="reset-children">
+                                <img src="public/recycle.png"/>
+                                <p>Đặt lại</p>
+                            </div>
+                            <div class="reset-children">
+                                <img src="public/search_white.png"/>
+                                <p>Tìm kiếm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="body-content">
+        <div class="filter">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="public/list.png"/>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="standard">
+                <div class="category">
+                    <p>Danh mục cho thuê</p>
+                    <button>
+                        <p>Phòng trọ. Nhà trọ</p>
+                    </button>
+                    <button>
+                        <p>Nhà nguyên căn</p>
+                    </button>
+                    <button>
+                        <p>Căn hộ mini</p>
+                    </button>
+                </div>
+                <div class="posts">
+                    <p>Bài viết được quan tâm</p>
+                    <div class="item">
+                        <button>
+                            <img src="public/right-arrow-grey.png"/>
+                            <p>Thủ tục thuê phòng trọ chính xác dành cho người nước ngoài</p>
+                        </button>
+                    </div>
+                    <div class="item">
+                        <button>
+                            <img src="public/right-arrow-grey.png"/>
+                            <p>Sinh viên Hà Nội nên ở trọ hay ký túc xá? Cần lưu ý điều gì khi thuê trọ?</p>
+                        </button>
+                    </div>
+                    <div class="item">
+                        <button>
+                            <img src="public/right-arrow-grey.png"/>
+                            <p>Cập Nhật Giá Thuê Phòng Trọ Đống Đa Tháng 6/2024</p>
+                        </button>
+                    </div>
+                    <div class="item">
+                        <button>
+                            <img src="public/right-arrow-grey.png"/>
+                            <p>Lộ diện top 5 khu vực "hot" nhất để thuê phòng trọ tại TPHCM</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="inf">
+            <div class="filter">
+                <p>Tin tức/</p>
+                <p>{{searchTypeHome}}</p>
+            </div>
+            <h1>Tin tức</h1>
+            <div class="quatity">
+                <p>Hiện có 17.435 tin</p>
+                <select>
+                    <option>Tất cả</option>
+                    <option>Bài đăng xác thực</option>
+                    <option>Tin mới nhất</option>
+                </select>
+            </div>
+            <div class="body">
+                <div class="detail">
+                    <div class="card mb-3" >
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                            <img src="public/pic_rent2.png" class="img-fluid rounded-start img" alt="...">
+                            <div class="quatity">
+                            </div>
+                        </div>
+                            <div class="col-md-8">
+                            <div class="card-body">
+                                <h1 class="card-title">Lộ diện top 5 khu vực "hot" nhất để thuê phòng trọ tại TPHCM</h1>
+                                <div class="card-text">
+                                    <p>Trong những năm trở lại đây, nhu cầu thuê và cho thuê phòng trọ TPHCM đã có những thay đổi đáng kể. Chính điều này đã phản ánh sự phát triển kinh tế - xã hội cũng như xu hướng thuê và cho thuê phòng trọ của người dân tại TPHCM.</p>
+                                </div>
+                                <div class="card-text ">
+                                    <p>Ngày đăng </p>
+                                    <p>3/5/2024</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3" >
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                            <img src="public/pic_rent3.png" class="img-fluid rounded-start img" alt="...">
+                            <div class="quatity">
+                            </div>
+                        </div>
+                            <div class="col-md-8">
+                            <div class="card-body">
+                                <h1 class="card-title">Lộ diện top 5 khu vực "hot" nhất để thuê phòng trọ tại TPHCM</h1>
+                                <div class="card-text">
+                                    <p>Trong những năm trở lại đây, nhu cầu thuê và cho thuê phòng trọ TPHCM đã có những thay đổi đáng kể. Chính điều này đã phản ánh sự phát triển kinh tế - xã hội cũng như xu hướng thuê và cho thuê phòng trọ của người dân tại TPHCM.</p>
+                                </div>
+                                <div class="card-text ">
+                                    <p>Ngày đăng </p>
+                                    <p>3/5/2024</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="standard">
+                    <div class="category">
+                        <p>Danh mục cho thuê</p>
+                        <button>
+                            <p>Phòng trọ. Nhà trọ</p>
+                        </button>
+                        <button>
+                            <p>Nhà nguyên căn</p>
+                        </button>
+                        <button>
+                            <p>Căn hộ mini</p>
+                        </button>
+                    </div>
+                    <div class="posts">
+                        <p>Bài viết được quan tâm</p>
+                        <div class="item">
+                            <button>
+                                <img src="public/right-arrow-grey.png"/>
+                                <p>Thủ tục thuê phòng trọ chính xác dành cho người nước ngoài</p>
+                            </button>
+                        </div>
+                        <div class="item">
+                            <button>
+                                <img src="public/right-arrow-grey.png"/>
+                                <p>Sinh viên Hà Nội nên ở trọ hay ký túc xá? Cần lưu ý điều gì khi thuê trọ?</p>
+                            </button>
+                        </div>
+                        <div class="item">
+                            <button>
+                                <img src="public/right-arrow-grey.png"/>
+                                <p>Cập Nhật Giá Thuê Phòng Trọ Đống Đa Tháng 6/2024</p>
+                            </button>
+                        </div>
+                        <div class="item">
+                            <button>
+                                <img src="public/right-arrow-grey.png"/>
+                                <p>Lộ diện top 5 khu vực "hot" nhất để thuê phòng trọ tại TPHCM</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="/tintuc/#">
+            <img src="public/up-arrow.png"/>
+        </a>  
+    </footer>
+
+</body>
+</html>
+

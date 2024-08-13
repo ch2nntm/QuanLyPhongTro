@@ -10,39 +10,37 @@ import { HomeComponent } from './home/home.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
-import { LichsuComponent } from './phongtro/lichsu/lichsu.component';
-import { HomepageComponent } from './phongtro/homepage/homepage.component';
-import { HomepagemainComponent } from './phongtro/homepagemain/homepagemain.component';
-import { ThuephongComponent } from './phongtro/thuephong/thuephong.component';
-import { ChitietphongtroComponent } from './phongtro/chitietphongtro/chitietphongtro.component';
-import { TimoghepComponent } from './phongtro/timoghep/timoghep.component';
-import { ChitietoghepComponent } from './phongtro/chitietoghep/chitietoghep.component';
-import { TintucComponent } from './phongtro/tintuc/tintuc.component';
-import { DanhsachyeuthichComponent } from './phongtro/danhsachyeuthich/danhsachyeuthich.component';
-import { QuanlybaidangComponent } from './phongtro/quanlybaidang/quanlybaidang.component';
-import { RegisterComponent } from './phongtro/register/register.component';
-import { DuyetdonlamchutroComponent } from './phongtro/duyetdonlamchutro/duyetdonlamchutro.component';
-import { DanhsachnguoidungComponent } from './phongtro/danhsachnguoidung/danhsachnguoidung.component';
+import { HistoryComponent } from './components/history/history.component';
+import { HomepagemainComponent } from './components/homepagemain/homepagemain.component';
+import { RentRoomComponent } from './components/rent-room/rent-room.component';
+import { RoomDetailComponent } from './components/room-detail/room-detail.component';
+import { RoommateSearchComponent } from './components/roommate-search/roommate-search.component';
+import { RoommateSearchDetailComponent } from './components/roommate-search-detail/roommate-search-detail.component';
+import { NewsComponent } from './components/news/news.component';
+import { ListFavoritePostComponent } from './components/list-favorite-post/list-favorite-post.component';
+import { PostManagementComponent } from './components/post-management/post-management.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ApproveLandlordApplicationComponent } from './components/approve-landlord-application/approve-landlord-application.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsModule
 import { MatIconModule } from '@angular/material/icon';
-import { MenuComponent } from './phongtro/menu/menu.component';
-import { NavbarUserComponent } from './phongtro/navbar-user/navbar-user.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UIUserComponent } from './phongtro/uiuser/uiuser.component';
-import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
+import { UIUserComponent } from './components/uiuser/uiuser.component';
+import { UIAdminComponent } from './components/uiadmin/uiadmin.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ChangePasswordContentComponent } from './phongtro/change-password-content/change-password-content.component';
-import { EditPostComponent } from './phongtro/edit-post/edit-post.component';
-import { EditProfileContentComponent } from './phongtro/edit-profile-content/edit-profile-content.component';
-import { FindRoommateComponent } from './phongtro/find-roommate/find-roommate.component';
-import { NavbarComponent } from './phongtro/navbar/navbar.component';
-import { NewListContentComponent } from './phongtro/new-list-content/new-list-content.component';
-import { NewsComponent } from './phongtro/news/news.component';
-import { EditUserComponent } from './phongtro/edit-user/edit-user.component';
-import { RegisterOwnerContentComponent } from './phongtro/register-owner-content/register-owner-content.component';
+import { ChangePasswordContentComponent } from './components/change-password-content/change-password-content.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { EditProfileContentComponent } from './components/edit-profile-content/edit-profile-content.component';
+import { FindRoommateComponent } from './components/find-roommate/find-roommate.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NewListContentComponent } from './components/new-list-content/new-list-content.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { RegisterOwnerContentComponent } from './components/register-owner-content/register-owner-content.component';
 
 
 @NgModule({
@@ -50,19 +48,18 @@ import { RegisterOwnerContentComponent } from './phongtro/register-owner-content
     AppComponent,
     LayoutComponent,
     HomeComponent,
-    LichsuComponent,
-    HomepageComponent,
+    HistoryComponent,
     HomepagemainComponent,
-    ThuephongComponent,
-    ChitietphongtroComponent,
-    TimoghepComponent,
-    ChitietoghepComponent,
-    TintucComponent,
-    DanhsachyeuthichComponent,
-    QuanlybaidangComponent,
+    RentRoomComponent,
+    RoomDetailComponent,
+    RoommateSearchComponent,
+    RoommateSearchDetailComponent,
+    NewsComponent,
+    ListFavoritePostComponent,
+    PostManagementComponent,
     RegisterComponent,
-    DuyetdonlamchutroComponent,
-    DanhsachnguoidungComponent,
+    ApproveLandlordApplicationComponent,
+    UserListComponent,
     MenuComponent,
     NavbarUserComponent,
     UIUserComponent,
@@ -75,7 +72,16 @@ import { RegisterOwnerContentComponent } from './phongtro/register-owner-content
     NewListContentComponent,
     NewsComponent,
     EditUserComponent,
-    RegisterOwnerContentComponent
+    RegisterOwnerContentComponent,
+    RoommateSearchDetailComponent,
+    RoomDetailComponent,
+    UserListComponent,
+    ListFavoritePostComponent,
+    ApproveLandlordApplicationComponent,
+    HistoryComponent,
+    PostManagementComponent,
+    RentRoomComponent,
+    RoommateSearchComponent
   ],
   imports: [
     BrowserModule,

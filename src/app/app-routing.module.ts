@@ -1,32 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DanhsachnguoidungComponent } from './phongtro/danhsachnguoidung/danhsachnguoidung.component';
-import { QuanlybaidangComponent } from './phongtro/quanlybaidang/quanlybaidang.component';
-import { DuyetdonlamchutroComponent } from './phongtro/duyetdonlamchutro/duyetdonlamchutro.component';
-import { ThuephongComponent } from './phongtro/thuephong/thuephong.component';
-import { TimoghepComponent } from './phongtro/timoghep/timoghep.component';
-import { TintucComponent } from './phongtro/tintuc/tintuc.component';
-import { HomepagemainComponent } from './phongtro/homepagemain/homepagemain.component';
-import { UIAdminComponent } from './phongtro/uiadmin/uiadmin.component';
-import { UIUserComponent } from './phongtro/uiuser/uiuser.component';
-import { EditUserComponent } from './phongtro/edit-user/edit-user.component';
-import { ChangePasswordContentComponent } from './phongtro/change-password-content/change-password-content.component';
-import { EditProfileContentComponent } from './phongtro/edit-profile-content/edit-profile-content.component';
-import { FindRoommateComponent } from './phongtro/find-roommate/find-roommate.component';
-import { NewListContentComponent } from './phongtro/new-list-content/new-list-content.component';
-import { RegisterOwnerContentComponent } from './phongtro/register-owner-content/register-owner-content.component';
-import { HomepageComponent } from './phongtro/homepage/homepage.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { PostManagementComponent } from './components/post-management/post-management.component';
+import { ApproveLandlordApplicationComponent } from './components/approve-landlord-application/approve-landlord-application.component';
+import { RentRoomComponent } from './components/rent-room/rent-room.component';
+import { RoommateSearchComponent } from './components/roommate-search/roommate-search.component';
+import { NewsComponent } from './components/news/news.component';
+import { HomepagemainComponent } from './components/homepagemain/homepagemain.component';
+import { UIAdminComponent } from './components/uiadmin/uiadmin.component';
+import { UIUserComponent } from './components/uiuser/uiuser.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ChangePasswordContentComponent } from './components/change-password-content/change-password-content.component';
+import { EditProfileContentComponent } from './components/edit-profile-content/edit-profile-content.component';
+import { FindRoommateComponent } from './components/find-roommate/find-roommate.component';
+import { NewListContentComponent } from './components/new-list-content/new-list-content.component';
+import { RegisterOwnerContentComponent } from './components/register-owner-content/register-owner-content.component';
+import { RoommateSearchDetailComponent } from './components/roommate-search-detail/roommate-search-detail.component';
 
 const routes: Routes = [
   { path: 'uiuser', component: UIUserComponent, children:[
-    { path: 'thuephong', component: ThuephongComponent},
-    { path: 'timoghep', component: TimoghepComponent},
-    { path: 'tintuc', component: TintucComponent},
-    { path: 'homepage', component: HomepagemainComponent, children:[
-      { path: 'thuephong_home', component: ThuephongComponent},
-      { path: 'timoghep_home', component: TimoghepComponent},
-      { path: 'tintuc_home', component: TintucComponent}
-    ]},
+    { path: 'rent-room', component: RentRoomComponent},
+    { path: 'roommate-search', component: RoommateSearchComponent},
+    { path: 'news', component: NewsComponent},
+    { path: 'homepage', component: HomepagemainComponent},
     { path: 'edituser', component: EditUserComponent, children:[
       { path: 'post-for-roommate', component: FindRoommateComponent },
       { path: 'edit-profile', component: EditProfileContentComponent },
@@ -35,10 +31,11 @@ const routes: Routes = [
       { path: 'register-owner', component: RegisterOwnerContentComponent },
     ]},
   ]},
+  { path: 'detailroommate/:id', component: RoommateSearchDetailComponent },
   { path: 'uiadmin', component: UIAdminComponent, children:[
-    { path: 'danhsachnguoidung', component: DanhsachnguoidungComponent },
-    { path: 'quanlybaidang', component: QuanlybaidangComponent},
-    { path: 'danhsachduyetchutro', component: DuyetdonlamchutroComponent},
+    { path: 'user-list', component: UserListComponent },
+    { path: 'post-manage', component: PostManagementComponent},
+    { path: 'approve-application', component: ApproveLandlordApplicationComponent},
     { path: 'homepage', component: HomepagemainComponent}
   ]},
   { path: 'post-for-roommate', component: FindRoommateComponent },
@@ -46,7 +43,6 @@ const routes: Routes = [
   { path: 'edit-profile', component: EditProfileContentComponent },
   { path: 'change-password', component: ChangePasswordContentComponent },
   { path: 'register-owner', component: RegisterOwnerContentComponent },
-  { path: 'home', component: HomepageComponent },
 ];
 
 @NgModule({

@@ -7,6 +7,7 @@ export interface Post {
     "contact": string,
     "images": string,
     "address": {
+        includes(itemSearch: string): unknown;
         province: string,
         district: string,
         ward: string,
