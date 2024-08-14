@@ -14,7 +14,6 @@ export class PostManagementComponent implements OnInit{
   posts: Post[] = [];
 
   items = [
-    { label: 'Tất cả', status: 'all' },
     { label: 'Hoạt động', status: 'active' },
     { label: 'Bị cấm', status: 'ban' }
   ];
@@ -28,37 +27,35 @@ export class PostManagementComponent implements OnInit{
   }
 
   searchId='';
-  itemClick='all';
+  itemClick='active';
   selectedCount=0;
 
   SearchID(item: any): void {
     const searchKeyword = item.trim().toLowerCase();
-    console.log('Search item:', searchKeyword);
-
     this.postService.SearchPost({ SearchName: searchKeyword }).subscribe(
       (response: Post[]) => {
-        console.log('Response:', response);
-
         this.posts = response.filter(post =>
           post.title.toLowerCase().includes(searchKeyword)
         );
-
+        console.log("Status: ",this.itemClick);
+        if (this.itemClick === 'active') {
+          this.posts = this.posts.filter(post => post.status === 'active');
+        }
+        else{
+          this.posts = this.posts.filter(post => post.status !== 'active');
+        }
         console.log('Filtered posts:', this.posts);
       },
       error => console.error('Error:', error)
     );
-}
+  }
 
-  
-  
-  
   updateQuantities(): void {
     this.quantityActive = this.posts.filter(post => post.status === 'active').length;
     this.quantityBan = this.posts.filter(post => post.status !== 'active').length;
     this.quantityAll = this.posts.length;
 
     this.items = [
-        { label: 'Tất cả (' + this.quantityAll + ')', status: 'all' },
         { label: 'Hoạt động (' + this.quantityActive + ')', status: 'active' },
         { label: 'Bị cấm (' + this.quantityBan + ')', status: 'ban' }
     ];
@@ -68,39 +65,23 @@ export class PostManagementComponent implements OnInit{
   ItemStatus(item: any) {
     this.selectedItem = item;
     this.ListPosts(item.status);
+    this.itemClick=item.status;
   }
 
   constructor(private postService: PostsService) {
-    this.ListPosts('all');
+    this.ListPosts('active');
   }
-
-  // ListPostStatus(status: string){
-  //   const requestBody = { key: 'value' }; 
-  //   this.postService.ListPost(requestBody).subscribe(
-  //     response => {
-  //       console.log('Response1:', response);
-  //       this.posts=response;
-  //       if (status !== 'all') {
-  //         this.posts = this.posts.filter(post => post.status === status);
-  //     }
-  //     },
-  //     error => {
-  //       console.error('Error:', error);
-  //     }
-  //   );
-  // }
 
   ListPosts(status: string): void {
     const requestBody = { key: 'value' }; 
     this.postService.ListPost(requestBody).subscribe(
       response => {
-        console.log('Response1:', response);
         this.posts=response;
         this.updateQuantities();
-        if (status !== 'all' && status === 'active') {
+        if (status === 'active') {
           this.posts = this.posts.filter(post => post.status === 'active');
         }
-        else if(status !== 'all' && status !== 'active'){
+        else if(status !== 'active'){
           this.posts = this.posts.filter(post => post.status !== 'active');
         }
       },
@@ -129,16 +110,20 @@ export class PostManagementComponent implements OnInit{
 
   ngOnInit(): void {}
 
-  Delete(item: number) {
-    const confirmed = window.confirm('Bạn có chắc chắn muốn xoá bài đăng này không?');
-    if(confirmed){
-      const index = this.posts.findIndex(post => post.id === item);
-      if (index !== -1) {
-          this.posts.splice(index, 1);
-      }
-      this.updateQuantities();
-    }
-  }
+  ChangeToBan(item: any){}
+
+  ChangeToActive(item: any){}
+
+  // Delete(item: number) {
+  //   const confirmed = window.confirm('Bạn có chắc chắn muốn xoá bài đăng này không?');
+  //   if(confirmed){
+  //     const index = this.posts.findIndex(post => post.id === item);
+  //     if (index !== -1) {
+  //         this.posts.splice(index, 1);
+  //     }
+  //     this.updateQuantities();
+  //   }
+  // }
 
   // DeleteAll() {
   //   const confirmed = window.confirm('Bạn có chắc chắn muốn xoá những bài đăng này không?');

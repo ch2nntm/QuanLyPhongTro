@@ -7,7 +7,6 @@ export interface Post {
     "contact": string,
     "images": string,
     "address": {
-        includes(itemSearch: string): unknown;
         province: string,
         district: string,
         ward: string,
@@ -18,5 +17,10 @@ export interface Post {
     },
     "status": string,
     "createDate": Date,
-    "updateDate": Date
+    "updateDate": Date,
+    "user":{
+        "address_user": string,
+        "name": string,
+        "phone": string,
+    }
 }

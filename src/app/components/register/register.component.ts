@@ -121,19 +121,18 @@ export class RegisterComponent implements OnInit{
   
   
   OnRegister(): void {
-    console.log('Form values:', this.user);  // Kiểm tra giá trị của form
-    
-    if (this.user) {
+    if (this.user.name!='' && this.user.email!='' && this.user.address_user!=''
+        && this.user.password!='' && this.user.phone!='') {
       this._api_post.Register_User(this.user).subscribe(
         (response: any) => {
-          console.log('Register successful', response);
+          alert('Register successful');
         },
         (error: any) => {
           console.error('Register error', error);
         }
       );
     } else {
-      console.log('Form is invalid');
+      alert('Form is invalid');
     }
   }
   

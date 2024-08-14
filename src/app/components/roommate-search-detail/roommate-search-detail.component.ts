@@ -9,18 +9,43 @@ import { Post } from '../../models/post/post';
   styleUrl: './roommate-search-detail.component.css'
 })
 export class RoommateSearchDetailComponent {
-  posts: Post[] = [];
+  post: Post={
+    "id": 0,
+    "title": 'Hi',
+    "description": '',
+    "acreage": 0,
+    "price": 0,
+    "contact": '',
+    "images": '',
+    "address": {
+        "province": '',
+        "district": '',
+        "ward": '',
+    },
+    "category": {
+        "id": 0,
+        "name": '',
+    },
+    "status": '',
+    "createDate": new Date(10/10/2022),
+    "updateDate": new Date(10/10/2022),
+    "user":{
+        "address_user": '',
+        "name": '',
+        "phone": '',
+    }
+  };
   currentImageIndex = 0;
   like: boolean=false;
   no="public/heart_border_black.png";
   yes="public/heart_blue.png";
-  images = [
-    'public/pic_rent1.png',
-    'public/pic_rent2.png',
-    'public/pic_rent3.png',
-    'public/pic_rent2.png'
+  images =  [
+    // 'public/pic_rent1.png',
+    // 'public/pic_rent2.png',
+    // 'public/pic_rent3.png',
+    // 'public/pic_rent2.png'
   ];
-  img_main=this.images[0];
+  img_main='';
 
   constructor(private route: ActivatedRoute, private _api_post: PostsService){}
   ChangeImg() {
@@ -29,8 +54,8 @@ export class RoommateSearchDetailComponent {
   }
 
   Share() {
-    const shareUrl = 'https://example.com'; // Đường dẫn chia sẻ của bạn
-    window.open(shareUrl, '_blank'); // Mở cửa sổ mới để chia sẻ
+    const shareUrl = 'https://example.com'; 
+    window.open(shareUrl, '_blank'); 
   }
 
   IsLike(){
@@ -47,51 +72,58 @@ export class RoommateSearchDetailComponent {
   }
 
   CallPhoneNumber(phoneNumber: string) {
-    // Xử lý logic khi người dùng click vào số điện thoại
-    // Ví dụ: Mở số điện thoại để gọi (trên điện thoại di động) hoặc chuyển hướng đến một URL
     window.open(`tel:${phoneNumber}`, '_self');
   }
 
   OpenZaloMessage(phoneNumber: string) {
-    // Xử lý logic khi người dùng click vào nút "Nhắn tin Zalo"
-    // Mở ứng dụng Zalo và chuyển hướng đến giao diện nhắn tin với số điện thoại cụ thể
     window.open(`zalo://chat?to=${phoneNumber}`, '_self');
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log("IDDD: ",id);
-    this._api_post.DetailPost(id).subscribe(
-      (response: any) => { 
-        console.log("ID: ",id);
-        this.posts = response;
-        console.log("PostItem: ",this.posts);
-      });
-    // this.ShowItem(id);
+    this.ShowItem(id);
     this.Break();
   }
 
-  ShowItem(iditem: any){
-    this._api_post.DetailPost(iditem).subscribe(
+  ShowItem(idItem: any){
+    this._api_post.DetailPost(idItem).subscribe(
     (response: any) => { 
-      console.log("ID: ",iditem);
-      this.posts = response;
-      console.log("PostItem: ",this.posts);
+      this.post = response.results;
+      this.img_main=this.post.images[0];
+      console.log("Main: ",this.img_main);
+      // console.log(this.post);
+        // this.images = this.post.images.split(',');
+        // console.log("Img: ", this.images);
+      // console.log("Img: ",this.post.images);
     });
   }
 
+  GetFullAddress(address: any): string {
+    const { province, district, ward, detail } = address;
+    return `${district} - ${province}`;
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return `${('0' + date.getDate()).slice(-2)}/${('0' + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`;
+  }
+
   ChangeImgLeft() {
-    if(this.currentImageIndex==0){
-      this.currentImageIndex=this.images.length;
+    if(this.post.images.length>1){
+      if(this.currentImageIndex==0){
+        this.currentImageIndex=this.images.length;
+      }
+        
+      this.currentImageIndex = (this.currentImageIndex - 1) % this.images.length;
+      this.img_main = this.images[this.currentImageIndex];
     }
-      
-    this.currentImageIndex = (this.currentImageIndex - 1) % this.images.length;
-    this.img_main = this.images[this.currentImageIndex];
   }
 
   ChangeImgRight() {
-    this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    this.img_main = this.images[this.currentImageIndex];
+    if(this.post.images.length>1){
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+      this.img_main = this.images[this.currentImageIndex];
+    }
   }
 
 }

@@ -51,29 +51,29 @@
                         <div class="group">
                             <img src="public/city-1.png"/>
                             <p>Tất cả nhà đất</p>
-                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Tất cả" (click)="UpdateTypeHome($event)"/>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchCategory" value="Tất cả" (click)="UpdateTypeHome($event)"/>
                         </div>
                         <div class="group">
                             <img src="public/city-2.png"/>
                             <p>Phòng trọ, Nhà trọ</p>
-                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Phòng trọ, Nhà trọ" (click)="UpdateTypeHome($event)"/>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchCategory" value="Phòng trọ, Nhà trọ" (click)="UpdateTypeHome($event)"/>
                         </div>
                         <div class="group">
                             <img src="public/city-3.png"/>
                             <p>Nhà thuê nguyên căn</p>
-                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Nhà thuê nguyên căn" (click)="UpdateTypeHome($event)"/>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchCategory" value="Nhà thuê nguyên căn" (click)="UpdateTypeHome($event)"/>
                         </div>
                         <div class="group">
                             <img src="public/city-4.png"/>
                             <p>Căn hộ mini</p>
-                            <input type="radio" name="kind-home" [(ngModel)]="searchTypeHome" value="Căn hộ mini" (click)="UpdateTypeHome($event)"/>
+                            <input type="radio" name="kind-home" [(ngModel)]="searchCategory" value="Căn hộ mini" (click)="UpdateTypeHome($event)"/>
                         </div>
                         <div class="reset">
                             <button class="reset-children" (click)="ResetTypeHome()">
                                 <img src="public/recycle.png"/>
                                 <p>Đặt lại</p>
                             </button>
-                            <button class="reset-children" (click)="SearchTypeHome($event)">
+                            <button class="reset-children" (click)="SearchAll()">
                                 <img src="public/search_white.png"/>
                                 <p>Tìm kiếm</p>
                             </button>
@@ -92,7 +92,7 @@
                             <select [(ngModel)]="selectedCity" (change)="OnCityChange($event)">
                                 <option value="" selected>Chọn tỉnh thành</option>
                                 <option *ngFor="let city of cities" [value]="city.Id">{{ city.Name }}</option>
-                              </select>
+                            </select>
                         </div>
                         <div class="district">
                             <img src="public/right-arrow.png"/>
@@ -156,10 +156,10 @@
                                 <img src="public/recycle.png"/>
                                 <p>Đặt lại</p>
                             </button>
-                            <div class="reset-children">
+                            <button class="reset-children" (click)="SearchAll()">
                                 <img src="public/search_white.png"/>
                                 <p>Tìm kiếm</p>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                                 <img src="public/recycle.png"/>
                                 <p>Đặt lại</p>
                             </button>
-                            <div class="reset-children" (click)="SearchPrice(startPrice, endPrice)">
+                            <div class="reset-children" (click)="SearchAll()">
                                 <img src="public/search_white.png"/>
                                 <p>Tìm kiếm</p>
                             </div>
@@ -360,7 +360,7 @@
         <div class="inf">
             <div class="filter">
                 <p>Cho thuê/</p>
-                <p>{{searchTypeHome}}</p>
+                <p>{{searchCategory}}</p>
             </div>
             <h1>Cho thuê nhà đất trên toàn quốc</h1>
             <div class="quatity">
@@ -378,12 +378,18 @@
                             <div class="col-12 col-md-6 col-lg-12 mb-4" *ngFor="let inf of infs">
                                 <div class="item" (click)="NavigateToDetail(inf.id)">
                                     <div class="img">
-                                        <div class="img-child">
+                                        <!-- <div class="img-child">
                                             <img src="public/pic_rent1.png"/>
                                         </div>
                                         <div class="img-child">
                                             <img src="public/pic_rent2.png"/>
                                             <img src="public/pic_rent3.png"/>
+                                        </div> -->
+                                        <div class="img-child" *ngIf="inf.images.length > 0">
+                                            <img [src]="inf.images[0]"/>
+                                        </div>
+                                        <div class="img-child" *ngIf="inf.images.length > 1">
+                                        <img *ngFor="let img of inf.images.slice(1)" [src]="img"/>
                                         </div>
                                     </div>
                                     <div class="content">
@@ -404,7 +410,7 @@
                                                 </div>
                                                 <div class="col-6 col-sm-6 d-flex flex-wrap name">
                                                     <p class="full-name">Lê An</p>
-                                                    <p class="time">{{inf.createDate}}</p>
+                                                    <p class="time">{{ formatDate(inf.createDate.toString())}}</p>
                                                 </div>
                                             </div>
                                             <div class="contact-profile d-flex flex-wrap">

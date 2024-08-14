@@ -31,12 +31,24 @@ export class PostsService {
     );
   }
 
+  Call_API_Search_Post(params: string): Observable<any>{
+    return this._api.postTypeRequest('home?'+params,params).pipe(
+      map(response => response || throwError('Không tìm thấy kết quả phù hợp')),
+      catchError(error => {
+        console.error('Error in SearchPost:', error);
+        return throwError(error);
+      })
+    );
+  }
+
   Register_User(requestBody: any): Observable<any> {
     return this._api.postTypeRequest('register', requestBody);
   }
 
   DetailPost(param: any){
-    return this._api.getTypeRequest('home/{param}');
+    return this._api.getTypeRequest(`home/${param}`);
   }
 
 }
+
+//Call_API_

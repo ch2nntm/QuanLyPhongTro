@@ -560,12 +560,14 @@ flex-shrink: 0;
 
 .inf .body .detail .item .img{
     display: flex;
+    height: 45vh;
+    border: none;
 }
 
 .inf .body .detail .item .img img{
-    /* width: 300px; */
     width: 100%;
-    height: 20vh;
+    border: none;
+    /* height: 20vh; */
 }
 
 .inf .body .detail .item .img .img-child:first-child img{

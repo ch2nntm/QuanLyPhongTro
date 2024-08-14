@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { max } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { map, max } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Post } from '../../models/post/post';
 import { PostsService } from '../../services/post/posts.service';
 import { Router } from '@angular/router';
@@ -34,8 +34,8 @@ export class RoommateSearchComponent {
   endPrice=50000000;
   startAcreage=0;
   endAcreage=150;
-  selectedTypeHome: string = '';
-  searchTypeHome: string='Tất cả';
+  selectedCategory: string = '';
+  searchCategory: string='Tất cả';
   isClickSearch: boolean=false;
   isClickBtnKind: boolean=false;
   isClickBtnAddress: boolean=false;
@@ -48,7 +48,7 @@ export class RoommateSearchComponent {
 
   constructor(private http: HttpClient, private postService: PostsService, private router: Router) {
     this.ListPosts();
-   }
+  }
 
   ngOnInit(): void {
     this.FetchCities();
@@ -102,52 +102,48 @@ export class RoommateSearchComponent {
 
   UpdateTypeHome(event: Event) {
     const inputElement = event.target as HTMLInputElement;
-    this.selectedTypeHome = inputElement.value;
+    this.selectedCategory = inputElement.value;
   }
 
-  SearchTypeHome(event: Event){
-    this.searchTypeHome=this.selectedTypeHome;
+  SearchCategory(event: Event){
+    this.searchCategory=this.selectedCategory;
     this.isClickSearch = true;
   }
 
   ResetTypeHome(){
-    this.searchTypeHome='Tất cả';
+    this.searchCategory='Tất cả';
   }
 
   SetAllPrice(){
     this.startPrice=0;
     this.endPrice=50000000;
-    this.SearchPrice(this.startPrice, this.endPrice);
+    // this.SearchPrice(this.startPrice, this.endPrice);
   }
 
   SetPriceRange(start: number, end: number) {
     this.startPrice = start;
     this.endPrice = end;
-    this.SearchPrice(this.startPrice, this.endPrice);
+    // this.SearchPrice(this.startPrice, this.endPrice);
   }
 
   SetAllAcreage(){
     this.startAcreage=0;
     this.endAcreage=150;
-    this.SearchAcreage(this.startAcreage, this.endAcreage);
+    // this.SearchAcreage(this.startAcreage, this.endAcreage);
   }
 
   SetAcreageRange(start: number, end: number) {
     this.startAcreage = start;
     this.endAcreage = end;
-    this.SearchAcreage(this.startAcreage, this.endAcreage);
+    // this.SearchAcreage(this.startAcreage, this.endAcreage);
   }
 
 
   CallPhoneNumber(phoneNumber: string) {
-    // Xử lý logic khi người dùng click vào số điện thoại
-    // Ví dụ: Mở số điện thoại để gọi (trên điện thoại di động) hoặc chuyển hướng đến một URL
     window.open(`tel:${phoneNumber}`, '_self');
   }
 
   OpenZaloMessage(phoneNumber: string) {
-    // Xử lý logic khi người dùng click vào nút "Nhắn tin Zalo"
-    // Mở ứng dụng Zalo và chuyển hướng đến giao diện nhắn tin với số điện thoại cụ thể
     window.open(`zalo://chat?to=${phoneNumber}`, '_self');
   }
 
@@ -160,13 +156,14 @@ export class RoommateSearchComponent {
   selectedWard: string = '';
 
   ListPosts(): void {
-    const requestBody = { key: 'value' }; 
-    this.postService.ListPost(requestBody).subscribe(
-      response => {
-        console.log('Response:', response);
-        this.infs=response;
-        const filteredItems = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
-        this.infs=filteredItems;
+    let params = new HttpParams();
+      params = params.set('CategoryName','chung');
+    const queryParams = params.toString();
+    this.postService.Call_API_Search_Post(queryParams).subscribe(
+      (response: any) => { 
+        this.infs = response;
+        console.log("Params: ",queryParams);
+        console.log("All Response: ",response);
       },
       error => {
         console.error('Error:', error);
@@ -177,6 +174,11 @@ export class RoommateSearchComponent {
   GetFullAddress(address: any): string {
     const { province, district, ward, detail } = address;
     return `${district} - ${province}`;
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return `${('0' + date.getDate()).slice(-2)}/${('0' + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`;
   }
 
   FetchCities(): void {
@@ -190,7 +192,7 @@ export class RoommateSearchComponent {
     this.selectedDistrict = '';
     this.selectedWard = '';
     this.districts = [];
-
+    console.log("City: ",this.selectedCity);
     if (this.selectedCity) {
       const selectedCity = this.cities.find(city => city.Id === this.selectedCity);
       if (selectedCity) {
@@ -203,7 +205,6 @@ export class RoommateSearchComponent {
     this.selectedDistrict = event.target.value;
     this.selectedWard = '';
     this.wards = [];
-
     if (this.selectedDistrict) {
       const selectedCity = this.cities.find(city => city.Id === this.selectedCity);
       if (selectedCity) {
@@ -223,37 +224,39 @@ export class RoommateSearchComponent {
     this.wards=[];
   }
 
-  SearchPrice(start: number, end: number): void {
-    // Tạo requestBody với khoảng giá
-    const requestBody = { startPrice: start, endPrice: end };
-  
-    this.postService.ListPost(requestBody).subscribe(
-      (response: Post[]) => { // Chỉ định kiểu dữ liệu cho response
-        console.log('Response:', response);
-        
-        // Lọc các bài viết theo khoảng giá
-        this.infs = response.filter(item => item.price >= start && item.price <= end);
-  
-        // Nếu cần lọc theo danh mục
-        //this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
-  
-        // Bạn có thể xử lý thêm dữ liệu ở đây nếu cần
-      },
-      error => {
-        console.error('Error:', error);
-      }
-    );
-  }
+  searchParams = {
+    region: '', 
+    priceFrom: 0,
+    priceTo: 0,
+    address:''
+  };
 
-  SearchAcreage(start: number, end: number): void {
-    // Tạo requestBody với khoảng giá
-    const requestBody = { startAcreage: start, endAcreage: end };
-  
-    this.postService.ListPost(requestBody).subscribe(
-      (response: Post[]) => { 
-        console.log('Response:', response);
-        this.infs = response.filter(item => item.acreage >= start && item.acreage <= end);
-        //this.infs = this.infs.filter(item => item.category.name === 'Tìm người ở chung');
+  cityNameMap: { [id: number]: string } = {};
+  SearchAll(){
+    // this.searchParams.priceFrom=this.startPrice;
+    // this.searchParams.priceTo=this.endPrice;
+    let params = new HttpParams();
+    if (this.startPrice != 0) {
+        params = params.set('from', this.startPrice.toString());
+    }
+    else{
+        params = params.set('from','0');
+    }
+    if (this.endPrice != 0) {
+        params = params.set('to', this.endPrice.toString());
+    }
+    if (this.selectedCity != '') {
+      params = params.set('Address', this.searchParams.region.toString());
+    }
+      params = params.set('CategoryName','chung');
+    if(this.selectedCity!=''){
+    }
+    const queryParams = params.toString();
+    this.postService.Call_API_Search_Post(queryParams).subscribe(
+      (response: any) => { 
+        this.infs = response;
+        console.log("Params: ",queryParams);
+        console.log("All Response: ",response);
       },
       error => {
         console.error('Error:', error);
@@ -264,5 +267,5 @@ export class RoommateSearchComponent {
   NavigateToDetail(itemId: any): void {
     this.router.navigate(['/detailroommate', itemId]);
   }
-
+    
 }
