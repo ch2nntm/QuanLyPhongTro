@@ -16,9 +16,12 @@ import { FindRoommateComponent } from './components/find-roommate/find-roommate.
 import { NewListContentComponent } from './components/new-list-content/new-list-content.component';
 import { RegisterOwnerContentComponent } from './components/register-owner-content/register-owner-content.component';
 import { RoommateSearchDetailComponent } from './components/roommate-search-detail/roommate-search-detail.component';
+import { AppComponent } from './app.component';
+import { authguardserviceGuard } from './services/authguardservice.guard';
 
 const routes: Routes = [
-  { path: 'uiuser', component: UIUserComponent, children:[
+  { path: '', component: AppComponent},
+  { path: 'uiuser', component: UIUserComponent,canActivate: [authguardserviceGuard], children:[
     { path: 'rent-room', component: RentRoomComponent},
     { path: 'roommate-search', component: RoommateSearchComponent},
     { path: 'news', component: NewsComponent},
@@ -43,6 +46,7 @@ const routes: Routes = [
   { path: 'edit-profile', component: EditProfileContentComponent },
   { path: 'change-password', component: ChangePasswordContentComponent },
   { path: 'register-owner', component: RegisterOwnerContentComponent },
+  // { path: 'uiuser', component: UIUserComponent,canActivate: [AuthguardserviceService]},
 ];
 
 @NgModule({

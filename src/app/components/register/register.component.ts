@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
 import { RegisterService } from '../../services/register/register.service';
 import { PostsService } from '../../services/post/posts.service';
+import { AuthserviceService } from '../../services/authservice.service';
+import { TokenStoreService } from '../../services/token-store.service';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +33,9 @@ export class RegisterComponent implements OnInit{
 
   registerForm: FormGroup | undefined;
 
-  constructor(private fb: FormBuilder, private _login: LoginService, private _api_post: PostsService, private _router: Router){}
+  constructor(private fb: FormBuilder, private _auth: AuthserviceService,
+     private _login: LoginService, private _api_post: PostsService,
+      private _router: Router, private _token: TokenStoreService){}
 
   OnFocusEmail(){
     this.isEmail = true;
@@ -96,10 +100,11 @@ export class RegisterComponent implements OnInit{
     if (this.emaillogin === '' || this.passwordlogin === '') {
       alert('Vui lòng điền đầy đủ các trường');
     } else {
-      this._login.login({ email: this.emaillogin, password: this.passwordlogin })
+      this._auth.login({ email: this.emaillogin, password: this.passwordlogin })
         .subscribe(
           (actor) => {
             if (actor.roles === 'user') {
+              alert("User: "+this._token.getToken());
               alert('Bạn đang đăng nhập với tư cách là người dùng');
               this._router.navigate(['/uiuser'], { queryParams: { name: actor.name } }); // Điều hướng tới trang User
               this.isLoggedIn=true;
@@ -116,7 +121,7 @@ export class RegisterComponent implements OnInit{
             alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin và thử lại.');
           }
         );
-    }
+      }
   }
   
   

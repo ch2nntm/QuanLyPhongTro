@@ -22,9 +22,11 @@ export class LoginService{
     }).pipe(
       map((response: any) => {
         if (response && response.token && response.user) {
+          console.log('Token:', response.token);
           const actor = response.user;
           if (actor.roles === 'user' || actor.roles === 'admin') {
             this._token.setToken(response.token);
+            console.log('Token stored:', this._token.getToken());
             this._token.setUser(actor);
             this.userSubject.next(actor);
             return actor;
@@ -37,5 +39,8 @@ export class LoginService{
       })
     );
   }
-  
+
+  ShowUser(requestBody: any): Observable<any>{
+    return this._api.postTypeRequest('login?'+requestBody, requestBody);
+  }
 }

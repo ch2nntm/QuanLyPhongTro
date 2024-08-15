@@ -31,7 +31,7 @@ export class PostsService {
     );
   }
 
-  Call_API_Search_Post(params: string): Observable<any>{
+  Call_API_Search_Post(params: any): Observable<any>{
     return this._api.postTypeRequest('home?'+params,params).pipe(
       map(response => response || throwError('Không tìm thấy kết quả phù hợp')),
       catchError(error => {

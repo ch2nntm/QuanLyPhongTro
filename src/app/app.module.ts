@@ -41,7 +41,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NewListContentComponent } from './components/new-list-content/new-list-content.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { RegisterOwnerContentComponent } from './components/register-owner-content/register-owner-content.component';
-
+import { authguardserviceGuard } from './services/authguardservice.guard';
 
 @NgModule({
   declarations: [
@@ -98,10 +98,11 @@ import { RegisterOwnerContentComponent } from './components/register-owner-conte
     ReactiveFormsModule,
     MatIconModule,
     HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    authguardserviceGuard
   ],
   bootstrap: [AppComponent]
 })

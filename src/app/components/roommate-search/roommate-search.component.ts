@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Post } from '../../models/post/post';
 import { PostsService } from '../../services/post/posts.service';
 import { Router } from '@angular/router';
+import e from 'express';
 
 interface Location {
   Id: string;
@@ -30,10 +31,37 @@ interface Ward {
 export class RoommateSearchComponent {
   
   infs: Post[] = [];
-  startPrice=0;
-  endPrice=50000000;
-  startAcreage=0;
-  endAcreage=150;
+  Array_Price = [
+    { min: 0, max: 500000000, label: 'Tất cả giá thành'},
+    { min: 0, max: 1000000, label: 'Dưới 1 triệu' },
+    { min: 1000000, max: 2000000, label: '1 triệu - 2 triệu đồng' },
+    { min: 2000000, max: 3000000, label: '2 triệu - 3 triệu đồng' },
+    { min: 3000000, max: 5000000, label: '3 triệu - 5 triệu đồng' },
+    { min: 5000000, max: 7000000, label: '5 triệu - 7 triệu đồng' },
+    { min: 7000000, max: 10000000, label: '7 triệu - 10 triệu đồng' },
+    { min: 10000000, max: 50000000, label: 'Từ 10 triệu trở lên' }
+  ];
+
+  Array_Acreage = [
+    { min: 0, max: 20, label: 'Dưới 20m2'},
+    { min: 20, max: 30, label: 'Từ 20m2 - 30m2' },
+    { min: 30, max: 50, label: 'Từ 30m2 - 50m2' },
+    { min: 50, max: 70, label: 'Từ 50m2 - 70m2' },
+    { min: 70, max: 100, label: 'Từ 70m2 - 100m2' },
+    { min: 100, max: 1000, label: 'Từ 100m2 trở lên' }
+  ];
+
+  Array_Category=[
+    { value: 'Tất cả nhà đất'},
+    { value: 'Phòng trọ, Nhà trọ'},
+    { value: 'Nhà thuê nguyên căn'},
+    { value: 'Căn hộ mini'},
+  ]
+
+  startPrice=this.Array_Price[0].min;
+  endPrice=this.Array_Price[this.Array_Price.length-1].max;
+  startAcreage=this.Array_Acreage[0].min;
+  endAcreage=this.Array_Acreage[this.Array_Acreage.length-1].max;
   selectedCategory: string = '';
   searchCategory: string='Tất cả';
   isClickSearch: boolean=false;
@@ -48,6 +76,7 @@ export class RoommateSearchComponent {
 
   constructor(private http: HttpClient, private postService: PostsService, private router: Router) {
     this.ListPosts();
+    console.log("End: ",this.Array_Acreage[this.Array_Acreage.length-1].max);
   }
 
   ngOnInit(): void {
@@ -55,50 +84,19 @@ export class RoommateSearchComponent {
     this.ListPosts();
   }
 
-  ToggleArrowKind(item: string) {
-    const button = document.getElementById('dropdownMenuButton1');
-    this.activeItem = this.activeItem === item ? null : item;
-    if (button) {
-      button.setAttribute('aria-expanded', button.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-      this.isClickBtnKind=!this.isClickBtnKind;
+  ToggleArrow(item: string) {
+    if (this.activeItem === item) {
+      this.activeItem = null;
+    } else {
+      this.activeItem = item;
     }
+    
+    this.isClickBtnKind = (this.activeItem === 'kind');
+    this.isClickBtnAddress = (this.activeItem === 'address');
+    this.isClickBtnAcreage = (this.activeItem === 'acreage');
+    this.isClickBtnPrice = (this.activeItem === 'price');
   }
-
-  ToggleArrowAddress(item: string) {
-    const button = document.getElementById('dropdownMenuButton2');
-    this.activeItem = this.activeItem === item ? null : item;
-    if (button) {
-      button.setAttribute('aria-expanded', button.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-      this.isClickBtnAddress=!this.isClickBtnAddress;
-    }
-  }
-
-  ToggleArrowAcreage(item: string) {
-    const button = document.getElementById('dropdownMenuButton3');
-    this.activeItem = this.activeItem === item ? null : item;
-    if (button) {
-      button.setAttribute('aria-expanded', button.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-      this.isClickBtnAcreage=!this.isClickBtnAcreage;
-    }
-  }
-
-  ToggleArrowPrice(item: string) {
-    const button = document.getElementById('dropdownMenuButton4');
-    this.activeItem = this.activeItem === item ? null : item;
-    if (button) {
-      button.setAttribute('aria-expanded', button.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-      this.isClickBtnPrice=!this.isClickBtnPrice;
-    }
-  }
-
-  ToggleArrowFilter(item: string) {
-    const button = document.getElementById('dropdownMenuButton5');
-    this.activeItem = this.activeItem === item ? null : item;
-    if (button) {
-      button.setAttribute('aria-expanded', button.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-      this.isClickBtnFilter=!this.isClickBtnFilter;
-    }
-  }
+  
 
   UpdateTypeHome(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -110,6 +108,19 @@ export class RoommateSearchComponent {
     this.isClickSearch = true;
   }
 
+  ResetAll(){
+    this.cityName='';
+    this.districtName='';
+    this.wardName='';
+    this.selectedCity='';
+    this.selectedDistrict='';
+    this.selectedWard='';
+    this.startAcreage=0;
+    this.endAcreage=this.Array_Acreage[this.Array_Acreage.length-1].max;
+    this.startPrice=0;
+    this.endPrice=this.Array_Price[this.Array_Price.length-1].max;
+  }
+
   ResetTypeHome(){
     this.searchCategory='Tất cả';
   }
@@ -117,25 +128,34 @@ export class RoommateSearchComponent {
   SetAllPrice(){
     this.startPrice=0;
     this.endPrice=50000000;
-    // this.SearchPrice(this.startPrice, this.endPrice);
+  }
+
+  onPriceRangeChange(event: any): void {
+    const value = event.target.value;
+    const [min, max] = value.split('-').map((val: string) => parseInt(val, 10));
+    this.SetPriceRange(min, max); 
+  }
+
+  onAcreageRangeChange(event: any): void {
+    const value = event.target.value;
+    const [min, max] = value.split('-').map((val: string) => parseInt(val, 10));
+    this.SetAcreageRange(min, max); 
   }
 
   SetPriceRange(start: number, end: number) {
     this.startPrice = start;
     this.endPrice = end;
-    // this.SearchPrice(this.startPrice, this.endPrice);
   }
 
   SetAllAcreage(){
     this.startAcreage=0;
     this.endAcreage=150;
-    // this.SearchAcreage(this.startAcreage, this.endAcreage);
   }
 
   SetAcreageRange(start: number, end: number) {
     this.startAcreage = start;
     this.endAcreage = end;
-    // this.SearchAcreage(this.startAcreage, this.endAcreage);
+    console.log("Acreage: "+start+" - "+end);
   }
 
 
@@ -154,6 +174,10 @@ export class RoommateSearchComponent {
   selectedCity: string = '';
   selectedDistrict: string = '';
   selectedWard: string = '';
+  cityName: string='';
+  districtName: string='';
+  wardName: string='';
+  region:string='';
 
   ListPosts(): void {
     let params = new HttpParams();
@@ -192,9 +216,16 @@ export class RoommateSearchComponent {
     this.selectedDistrict = '';
     this.selectedWard = '';
     this.districts = [];
-    console.log("City: ",this.selectedCity);
     if (this.selectedCity) {
       const selectedCity = this.cities.find(city => city.Id === this.selectedCity);
+      this.cityName=selectedCity?.Name ?? '';
+      if (this.cityName.startsWith('Tỉnh ')) {
+        this.cityName =  this.cityName.replace('Tỉnh ', '');
+      } else if (this.cityName.startsWith('Thành phố ')) {
+        this.cityName = this.cityName.replace('Thành phố ', '');
+      }
+      this.region=this.cityName;
+      this.cityName=this.removeVietnameseTones(this.cityName);
       if (selectedCity) {
         this.districts = selectedCity.Districts || [];
       }
@@ -209,10 +240,20 @@ export class RoommateSearchComponent {
       const selectedCity = this.cities.find(city => city.Id === this.selectedCity);
       if (selectedCity) {
         const selectedDistrict = selectedCity.Districts?.find(district => district.Id === this.selectedDistrict);
+        this.districtName=selectedDistrict?.Name ?? '';
+        if (this.districtName.startsWith('Huyện ')) {
+          this.districtName =  this.districtName.replace('Huyện ', '');
+        } else if (this.districtName.startsWith('Thành phố ')) {
+          this.districtName = this.districtName.replace('Thành phố ', '');
+        } else if (this.districtName.startsWith('Thị xã ')) {
+          this.districtName = this.districtName.replace('Thị xã ', '');
+        }
+        this.region=this.districtName+' - '+this.region;
+        this.districtName=this.removeVietnameseTones(this.districtName);
         if (selectedDistrict) {
           this.wards = selectedDistrict.Wards || [];
         }
-      }
+      } 
     }
   }
 
@@ -224,12 +265,14 @@ export class RoommateSearchComponent {
     this.wards=[];
   }
 
-  searchParams = {
-    region: '', 
-    priceFrom: 0,
-    priceTo: 0,
-    address:''
-  };
+  removeVietnameseTones(str: string): string {
+    return str.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+              .replace(/[^a-zA-Z0-9 ]/g, '')
+              .replace(/\s+/g, ' ')
+              .trim();
+  }
 
   cityNameMap: { [id: number]: string } = {};
   SearchAll(){
@@ -245,12 +288,13 @@ export class RoommateSearchComponent {
     if (this.endPrice != 0) {
         params = params.set('to', this.endPrice.toString());
     }
-    if (this.selectedCity != '') {
-      params = params.set('Address', this.searchParams.region.toString());
+    if (this.districtName != '') {
+      params = params.set('Address', this.districtName);
     }
-      params = params.set('CategoryName','chung');
-    if(this.selectedCity!=''){
-    }
+    else if(this.cityName != '')
+      params = params.set('Address', this.removeVietnameseTones(this.cityName));
+    params = params.set('CategoryName','chung');
+
     const queryParams = params.toString();
     this.postService.Call_API_Search_Post(queryParams).subscribe(
       (response: any) => { 
