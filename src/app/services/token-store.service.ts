@@ -1,61 +1,45 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStoreService {
+  private readonly TOKEN_KEY = 'auth-token';
+  private readonly USER_KEY = 'auth-user';
 
-  TOKEN_KEY = 'auth-token';
-  USER_KEY = 'auth-user';
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  constructor() {}
-
-  private isSessionStorageAvailable(): boolean {
-    return typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined';
-  }
-
-  setToken(token: string): void {
-    if (this.isSessionStorageAvailable()) {
-      sessionStorage.removeItem(this.TOKEN_KEY);
-      sessionStorage.setItem(this.TOKEN_KEY, token);
-    } else {
-      console.warn('Session storage is not available');
-    }
-  }
-
-  getToken(): string | null {
-    if (this.isSessionStorageAvailable()) {
+  public getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
       return sessionStorage.getItem(this.TOKEN_KEY);
-    } else {
-      console.warn('Session storage is not available');
-      return null;
+    }
+    return null;
+  }
+
+  public setToken(token: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.setItem(this.TOKEN_KEY, token);
     }
   }
 
-  setUser(user: any): void {
-    if (this.isSessionStorageAvailable()) {
-      sessionStorage.removeItem(this.USER_KEY);
-      sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
-    } else {
-      console.warn('Session storage is not available');
-    }
-  }
-
-  getUser(): any {
-    if (this.isSessionStorageAvailable()) {
+  public getUser(): any {
+    if (isPlatformBrowser(this.platformId)) {
       const user = sessionStorage.getItem(this.USER_KEY);
       return user ? JSON.parse(user) : null;
-    } else {
-      console.warn('Session storage is not available');
-      return null;
+    }
+    return null;
+  }
+
+  public setUser(user: any): void {
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
     }
   }
 
-  clearStorage(): void {
-    if (this.isSessionStorageAvailable()) {
+  public clearStorage(): void {
+    if (isPlatformBrowser(this.platformId)) {
       sessionStorage.clear();
-    } else {
-      console.warn('Session storage is not available');
     }
   }
 }

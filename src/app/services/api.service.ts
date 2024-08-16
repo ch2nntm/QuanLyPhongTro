@@ -23,8 +23,15 @@ export class ApiService {
     return this._http.post<any>(url, body);
   }
   
-  
   postTypeRequest(url: string, payload: any) {
+    return this._http.post(`${this.baseUrl}${url}`, payload).pipe(
+      map((res) => {
+        return res;
+      })
+    );
+  }
+  
+  postTypeRequestContent(url: string, payload: any) {
     return this._http.post(`${this.baseUrl}${url}`, payload).pipe(
       map((res) => {
         return res;

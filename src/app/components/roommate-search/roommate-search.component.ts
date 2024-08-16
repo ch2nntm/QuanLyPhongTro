@@ -29,7 +29,6 @@ interface Ward {
   styleUrl: './roommate-search.component.css'
 })
 export class RoommateSearchComponent {
-  
   infs: Post[] = [];
   Array_Price = [
     { min: 0, max: 500000000, label: 'Tất cả giá thành'},
@@ -50,13 +49,6 @@ export class RoommateSearchComponent {
     { min: 70, max: 100, label: 'Từ 70m2 - 100m2' },
     { min: 100, max: 1000, label: 'Từ 100m2 trở lên' }
   ];
-
-  Array_Category=[
-    { value: 'Tất cả nhà đất'},
-    { value: 'Phòng trọ, Nhà trọ'},
-    { value: 'Nhà thuê nguyên căn'},
-    { value: 'Căn hộ mini'},
-  ]
 
   startPrice=this.Array_Price[0].min;
   endPrice=this.Array_Price[this.Array_Price.length-1].max;
@@ -119,6 +111,7 @@ export class RoommateSearchComponent {
     this.endAcreage=this.Array_Acreage[this.Array_Acreage.length-1].max;
     this.startPrice=0;
     this.endPrice=this.Array_Price[this.Array_Price.length-1].max;
+    this.ListPosts();
   }
 
   ResetTypeHome(){
@@ -155,7 +148,6 @@ export class RoommateSearchComponent {
   SetAcreageRange(start: number, end: number) {
     this.startAcreage = start;
     this.endAcreage = end;
-    console.log("Acreage: "+start+" - "+end);
   }
 
 
@@ -181,20 +173,20 @@ export class RoommateSearchComponent {
 
   ListPosts(): void {
     let params = new HttpParams();
-      params = params.set('CategoryName','chung');
+    params = params.set('CategoryName','chung');
     const queryParams = params.toString();
     this.postService.Call_API_Search_Post(queryParams).subscribe(
-      (response: any) => { 
-        this.infs = response;
-        console.log("Params: ",queryParams);
-        console.log("All Response: ",response);
+      (response: { results: Post[] }) => { 
+        this.infs = response.results;
+        console.log("Request Body: ", queryParams); 
+        console.log("All Response: ", this.infs); 
       },
       error => {
-        console.error('Error:', error);
+        console.error('Error:', error); 
       }
     );
   }
-
+  
   GetFullAddress(address: any): string {
     const { province, district, ward, detail } = address;
     return `${district} - ${province}`;
@@ -276,9 +268,16 @@ export class RoommateSearchComponent {
 
   cityNameMap: { [id: number]: string } = {};
   SearchAll(){
-    // this.searchParams.priceFrom=this.startPrice;
-    // this.searchParams.priceTo=this.endPrice;
     let params = new HttpParams();
+    if (this.startAcreage != 0) {
+      params = params.set('ArceFrom', this.startAcreage.toString());
+    }
+    else{
+        params = params.set('ArceFrom','0');
+    }
+    if (this.endAcreage != 0) {
+        params = params.set('ArceTo', this.endAcreage.toString());
+    }
     if (this.startPrice != 0) {
         params = params.set('from', this.startPrice.toString());
     }
@@ -297,8 +296,8 @@ export class RoommateSearchComponent {
 
     const queryParams = params.toString();
     this.postService.Call_API_Search_Post(queryParams).subscribe(
-      (response: any) => { 
-        this.infs = response;
+      (response: { results: Post[] }) => { 
+        this.infs = response.results;
         console.log("Params: ",queryParams);
         console.log("All Response: ",response);
       },

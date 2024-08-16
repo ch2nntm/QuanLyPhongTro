@@ -17,25 +17,26 @@ import { NewListContentComponent } from './components/new-list-content/new-list-
 import { RegisterOwnerContentComponent } from './components/register-owner-content/register-owner-content.component';
 import { RoommateSearchDetailComponent } from './components/roommate-search-detail/roommate-search-detail.component';
 import { AppComponent } from './app.component';
-import { authguardserviceGuard } from './services/authguardservice.guard';
+import { AuthGuardService } from './services/authguardservice.guard';
 
 const routes: Routes = [
   { path: '', component: AppComponent},
-  { path: 'uiuser', component: UIUserComponent,canActivate: [authguardserviceGuard], children:[
-    { path: 'rent-room', component: RentRoomComponent},
+  { path: 'uiuser', component: UIUserComponent, children:[
+    { path: 'rent-room', component: RentRoomComponent, canActivate:[AuthGuardService]},
     { path: 'roommate-search', component: RoommateSearchComponent},
     { path: 'news', component: NewsComponent},
-    { path: 'homepage', component: HomepagemainComponent},
+    { path: 'homepage', component: HomepagemainComponent, canActivate:[AuthGuardService]},
     { path: 'edituser', component: EditUserComponent, children:[
       { path: 'post-for-roommate', component: FindRoommateComponent },
       { path: 'edit-profile', component: EditProfileContentComponent },
       { path: 'change-password', component: ChangePasswordContentComponent },
       { path: 'news-list', component: NewListContentComponent },
       { path: 'register-owner', component: RegisterOwnerContentComponent },
-    ]},
+    ] },
   ]},
   { path: 'detailroommate/:id', component: RoommateSearchDetailComponent },
-  { path: 'uiadmin', component: UIAdminComponent, children:[
+  { path: 'uiadmin', component: UIAdminComponent, canActivate:[AuthGuardService]
+    , data: { roles: ['admin'] }, children:[
     { path: 'user-list', component: UserListComponent },
     { path: 'post-manage', component: PostManagementComponent},
     { path: 'approve-application', component: ApproveLandlordApplicationComponent},

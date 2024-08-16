@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { ApiService } from '../api.service';
 import { TokenStoreService } from '../token-store.service';
+import { Post } from '../../models/post/post';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ import { TokenStoreService } from '../token-store.service';
 export class PostsService {
   private userSubject : BehaviorSubject<any>;
   public user : Observable<any>;
-  private baseUrl: string = 'http://localhost:5000/api/';
+  // private baseUrl: string = 'http://localhost:5000/api/home/';
 
-  constructor (private _api: ApiService, private _token: TokenStoreService ) {
+  constructor (private _api: ApiService, private _token: TokenStoreService) {
     this.userSubject = new BehaviorSubject<any>(this._token.getUser());
     this.user = this.userSubject.asObservable();
   }
-
+  public url = this._api;
   ListPost(requestBody: any): Observable<any> {
-    return this._api.postTypeRequest('home', requestBody);
+    return this._api.postTypeRequestContent('home', requestBody);
   }
   
   SearchPost(params: any): Observable<any> {
-    return this._api.postTypeRequest('home', params).pipe(
+    return this._api.postTypeRequestContent('home', params).pipe(
       map(response => response || throwError('Không tìm thấy kết quả phù hợp')),
       catchError(error => {
         console.error('Error in SearchPost:', error);
@@ -32,7 +33,18 @@ export class PostsService {
   }
 
   Call_API_Search_Post(params: any): Observable<any>{
-    return this._api.postTypeRequest('home?'+params,params).pipe(
+    return this._api.postTypeRequestContent('home?'+params,params).pipe(
+      map(response => response || throwError('Không tìm thấy kết quả phù hợp')),
+      catchError(error => {
+        console.error('Error in SearchPost:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  
+  Call_API_Admin_Management(params: any): Observable<any>{
+    return this._api.getTypeRequest('admin/management-user').pipe(
       map(response => response || throwError('Không tìm thấy kết quả phù hợp')),
       catchError(error => {
         console.error('Error in SearchPost:', error);
@@ -42,7 +54,7 @@ export class PostsService {
   }
 
   Register_User(requestBody: any): Observable<any> {
-    return this._api.postTypeRequest('register', requestBody);
+    return this._api.postTypeRequestContent('register', requestBody);
   }
 
   DetailPost(param: any){
