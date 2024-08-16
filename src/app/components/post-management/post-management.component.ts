@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../models/post/post';
 import { PostsService } from '../../services/post/posts.service';
+import { ManagePostService } from '../../services/manage-post.service';
+import { TokenStoreService } from '../../services/token-store.service';
 
 @Component({
   selector: 'app-post-management',
@@ -64,24 +66,24 @@ export class PostManagementComponent implements OnInit{
 
   ItemStatus(item: any) {
     this.selectedItem = item;
-    this.ListPosts(item.status);
+    //this.ListPosts(item.status);
     this.itemClick=item.status;
   }
 
-  constructor(private postService: PostsService) {
-    this.ListPosts('active');
+  constructor(private postService: PostsService, private manage_post: ManagePostService, private token : TokenStoreService) {
+   
   }
 
-  ListPosts(status: string): void {
-    const requestBody = { key: 'value' }; 
-    this.postService.ListPost(requestBody).subscribe(
+  ListPosts(statust: string): void {
+    this.manage_post.getPost().subscribe(
       response => {
         this.posts=response;
+        console.log(response);
         this.updateQuantities();
-        if (status === 'active') {
+        if (statust === 'active') {
           this.posts = this.posts.filter(post => post.status === 'active');
         }
-        else if(status !== 'active'){
+        else if(statust !== 'active'){
           this.posts = this.posts.filter(post => post.status !== 'active');
         }
       },
@@ -108,7 +110,16 @@ export class PostManagementComponent implements OnInit{
     this.isMenuExpanded = !this.isMenuExpanded;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //this.ListPosts('active');
+    const token = this.token.getUser();
+    if(token.roles ==="admin"){
+      this.manage_post.getPost1().subscribe(
+        response => {
+          this.posts=response;
+     } );
+    }
+  }
 
   ChangeToBan(item: any){}
 

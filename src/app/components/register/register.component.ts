@@ -103,17 +103,16 @@ export class RegisterComponent implements OnInit{
       this._auth.login({ email: this.emaillogin, password: this.passwordlogin })
         .subscribe(
           (actor) => {
-            if (actor.roles === 'user') {
-              alert("User: "+this._token.getToken());
-              alert('Bạn đang đăng nhập với tư cách là người dùng');
+            console.log(actor.roles);
+            if (actor.roles == 'user') {
               this._router.navigate(['/uiuser'], { queryParams: { name: actor.name } }); // Điều hướng tới trang User
               this.isLoggedIn=true;
-            } else if (actor.roles === 'admin') {
-              alert('Bạn đang đăng nhập với tư cách là người quản trị');
-              this._router.navigate(['/uiadmin']); // Điều hướng tới trang Admin
+            } else if (actor.roles == 'admin') {
+              console.log("Token admin: "+this._token.getToken());
+              this._router.navigate(['/uiadmin']); 
               this.isLoggedIn=true;
             } else {
-              alert('Vai trò người dùng không hợp lệ');
+              alert(actor.user.role);
             }
           },
           (error) => {

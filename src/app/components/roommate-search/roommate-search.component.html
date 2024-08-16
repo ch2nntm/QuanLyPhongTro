@@ -78,7 +78,9 @@
                         <a *ngIf="startAcreage==0 && endAcreage==Array_Acreage[Array_Acreage.length-1].max" class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle3': activeItem == 'acreage'}" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrow('acreage')">
                             Diện tích
                         </a>
-                        <a *ngIf="startAcreage!=0 && endAcreage!=Array_Acreage[Array_Acreage.length-1].max" class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle3': activeItem == 'acreage'}" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrow('acreage')">
+                        <a *ngIf="(startAcreage!=0 && endAcreage!=Array_Acreage[Array_Acreage.length-1].max) || 
+                                (startAcreage==0 && endAcreage!=Array_Acreage[Array_Acreage.length-1].max) || 
+                                (startAcreage!=0 && endAcreage==Array_Acreage[Array_Acreage.length-1].max)" class="btn dropdown-toggle custom-dropdown-toggle" [ngClass]="{'custom-dropdown-toggle3': activeItem == 'acreage'}" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" (click)="ToggleArrow('acreage')">
                             Từ {{startAcreage}}m<sup>2</sup> - {{endAcreage}}m<sup>2</sup>
                         </a>
                     </div>

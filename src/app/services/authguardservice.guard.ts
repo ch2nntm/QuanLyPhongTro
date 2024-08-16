@@ -1,31 +1,30 @@
-
-
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenStoreService } from './token-store.service';
 
 @Injectable({
   providedIn: 'root',
 })
-//triển khai interface CanActivate để xác định liệu một route có thể được kích hoạt hay không.
-export class authguardserviceGuard implements CanActivate {
-  constructor(private _route: Router, private _token: TokenStoreService) {}
-  //Kiểm tra user đã đăng nhập hay chưa
-  
-  //để kiểm tra xem người dùng có quyền truy cập vào route hay không.
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    const currentUser = this._token.getUser();//Nếu đăng nhập thì dùng getUser của TokenStorageService tìm = trues
+export class AuthGuardService implements CanActivate {
+  constructor(private router: Router, private tokenStorageService: TokenStoreService) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | Observable<boolean> | Promise<boolean> {
+    const currentUser = this.tokenStorageService.getUser();
+
     if (currentUser) {
-      return true;
+      const requiredRoles: string[] = route.data['roles'] || [];
+
+      if (requiredRoles.length === 0 || requiredRoles.includes(currentUser.roles)) {
+        return true;
+      }
+      this.router.navigate(['']);
+      return false;
     }
-    this._route.navigate(['/uiuser']);// đăng nhập thất bại, điều hướng sang trang login
+    this.router.navigate(['']);
     return false;
   }
 }

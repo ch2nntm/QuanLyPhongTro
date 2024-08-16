@@ -282,6 +282,7 @@ button:hover {
 
 .body .content h1 {
     margin-left: 5%;
+    width: 500px;
 }
 
 .body .content .name-kind {
@@ -533,7 +534,7 @@ button:hover {
 @media (max-width: 768px){
     .body .content{
         margin-top: 60px;
-        margin-left: 0;
+        margin-left: 100px;
     }
 
     .body .search-box{
@@ -549,3 +550,5 @@ button:hover {
         width: 80vw;
     }
 }
+
+
